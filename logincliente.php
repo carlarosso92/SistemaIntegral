@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['usuario_id'] = $user['usuario_id'];
             echo "<script>alert('Inicio de sesión exitoso.');window.location.href = 'index.php';</script>";
         } else {
-            echo "<script>alert('Email o contraseña incorrectos.');window.location.href = 'logincliente.php';</script>";
+            echo "<script>alert('Email o contraseña incorrectos.');window.location.href = 'crudlogincliente.php';</script>";
         }
 
         mysqli_close($conexion);
