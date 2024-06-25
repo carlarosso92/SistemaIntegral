@@ -1,34 +1,31 @@
 -- Crear la tabla usuarios
 CREATE TABLE usuarios (
-id INT AUTO_INCREMENT PRIMARY KEY,
-nombre_usuario VARCHAR(255) NOT NULL UNIQUE,
-contrasena VARCHAR(255) NOT NULL
+usuario_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(255) NOT NULL UNIQUE,
+contrasena VARCHAR(255) NOT NULL,
+rut VARCHAR(255)
 );
 
 -- Crear la tabla clientes
 CREATE TABLE clientes (
 id INT AUTO_INCREMENT PRIMARY KEY,
-usuario_id INT,
-rut VARCHAR(255),
-correo_electronico VARCHAR(255),
+usuario_id INT NOT NULL,
+email VARCHAR(255),
 direccion VARCHAR(255),
-comuna VARCHAR(255),
 telefono VARCHAR(255),
-FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 );
 
 -- Crear la tabla trabajadores
 CREATE TABLE trabajadores (
 id INT AUTO_INCREMENT PRIMARY KEY,
-usuario_id INT,
--- Otros campos relevantes para los trabajadores
-FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+usuario_id INT NOT NULL,
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 );
 
 -- Crear la tabla administradores
 CREATE TABLE administradores (
 id INT AUTO_INCREMENT PRIMARY KEY,
-usuario_id INT,
--- Otros campos relevantes para los administradores
-FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+usuario_id INT NOT NULL,
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 );
