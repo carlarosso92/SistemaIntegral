@@ -10,23 +10,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $contrasena = $_POST["contrasena"];
    
-
-    // Insertar datos en la base de datos
-    $insertar1 = "INSERT INTO usuarios (nombre, contrasena, rut) VALUES ('$nombre', '$contrasena', '$rut')";
-    $insertar2 = "INSERT INTO clientes (telefono, email, direccion) VALUES ('$telefono', '$direccion', '$email')";
-
     // Verificar si la conexión a la base de datos fue exitosa
     if ($conexion) {
-        // Ejecutar la consulta de inserción
+        // Insertar datos en la tabla usuarios
+        $insertar1 = "INSERT INTO usuarios (nombre, contrasena, rut) VALUES ('$nombre', '$contrasena', '$rut')";
         $resultado1 = mysqli_query($conexion, $insertar1);
-        $resultado2 = mysqli_query($conexion, $insertar2);
-
-        // Verificar si la consulta fue exitosa
-        if ($resultado1 && $resultado2) {
-            // Mensaje emergente en JS
-            //echo "<script>alert('Los registros se ingresaron correctamente.');window.location.href = 'sistemaintegral.php';</script>";
+        
+        if ($resultado1) {
+            // Obtener el ID del último usuario insertado
+            $usuario_id = mysqli_insert_id($conexion);
+            
+            // Insertar datos en la tabla clientes
+            $insertar2 = "INSERT INTO clientes (usuario_id, telefono, email, direccion) VALUES ('$usuario_id', '$telefono', '$email', '$direccion')";
+            $resultado2 = mysqli_query($conexion, $insertar2);
+            
+            // Verificar si la consulta fue exitosa
+            if ($resultado2) {
+                // Mensaje emergente en JS
+                echo "<script>alert('Los registros se ingresaron correctamente.');window.location.href = 'crudcliente.php';</script>";
+            } else {
+                echo "Error al ingresar los registros en la tabla clientes: " . mysqli_error($conexion);
+            }
         } else {
-            echo "Error al ingresar los registros: " . mysqli_error($conexion);
+            echo "Error al ingresar los registros en la tabla usuarios: " . mysqli_error($conexion);
         }
 
         // Cerrar la conexión a la base de datos
@@ -36,4 +42,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
