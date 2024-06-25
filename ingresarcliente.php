@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Verificar si la consulta fue exitosa
             if ($resultado2) {
                 // Mensaje emergente en JS
-                echo "<script>alert('Los registros se ingresaron correctamente.');window.location.href = 'crudcliente.php';</script>";
+                echo "<script>alert('Los registros se ingresaron correctamente.');window.location.href = 'crudlogincliente.php';</script>";
             } else {
                 echo "Error al ingresar los registros en la tabla clientes: " . mysqli_error($conexion);
             }

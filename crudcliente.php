@@ -12,7 +12,7 @@
         telefono: <input type="text" name="telefono" placeholder="Telefono" required><br>
         direccion: <input type="text" name="direccion" placeholder="Direccion" required><br>
         Email: <input type="email" name="email" required placeholder="email@gmail.com"><br>
-        Contraseña: <input type="contrasena" name="constrasena" required><br>
+        Contraseña: <input type="contrasena" name="contrasena" required><br>
         
         <button type="submit">Registrarse</button>
     </form>
