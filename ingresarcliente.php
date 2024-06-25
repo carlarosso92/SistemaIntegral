@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verificar si la consulta fue exitosa
         if ($resultado1 && $resultado2) {
             // Mensaje emergente en JS
-            echo "<script>alert('Los registros se ingresaron correctamente.');window.location.href = 'sistemaintegral.php';</script>";
+            //echo "<script>alert('Los registros se ingresaron correctamente.');window.location.href = 'sistemaintegral.php';</script>";
         } else {
             echo "Error al ingresar los registros: " . mysqli_error($conexion);
         }
