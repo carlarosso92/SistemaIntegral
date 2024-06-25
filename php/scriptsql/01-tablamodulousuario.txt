@@ -1,0 +1,34 @@
+-- Crear la tabla usuarios
+CREATE TABLE usuarios (
+id INT AUTO_INCREMENT PRIMARY KEY,
+nombre_usuario VARCHAR(255) NOT NULL UNIQUE,
+contrasena VARCHAR(255) NOT NULL
+);
+
+-- Crear la tabla clientes
+CREATE TABLE clientes (
+id INT AUTO_INCREMENT PRIMARY KEY,
+usuario_id INT,
+rut VARCHAR(255),
+correo_electronico VARCHAR(255),
+direccion VARCHAR(255),
+comuna VARCHAR(255),
+telefono VARCHAR(255),
+FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+-- Crear la tabla trabajadores
+CREATE TABLE trabajadores (
+id INT AUTO_INCREMENT PRIMARY KEY,
+usuario_id INT,
+-- Otros campos relevantes para los trabajadores
+FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+-- Crear la tabla administradores
+CREATE TABLE administradores (
+id INT AUTO_INCREMENT PRIMARY KEY,
+usuario_id INT,
+-- Otros campos relevantes para los administradores
+FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
