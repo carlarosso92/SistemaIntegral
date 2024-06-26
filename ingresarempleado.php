@@ -5,10 +5,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recuperar datos del formulario
     $nombre = $_POST["nombre"];
     $rut = $_POST["rut"]; 
-    $telefono = $_POST["telefono"];
+    $email = $_POST["email"];
     $contrasena = $_POST["contrasena"];
+    $telefono = $_POST["telefono"];
     $cargo = $_POST["cargo"];
     $sueldo = $_POST["sueldo"];
+    
    
     // Verificar si la conexión a la base de datos fue exitosa
     if ($conexion) {
@@ -21,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $usuario_id = mysqli_insert_id($conexion);
             
             // Insertar datos en la tabla clientes
-            $insertar2 = "INSERT INTO trabajadores (usuario_id, telefono, cargo, sueldo) VALUES ('$usuario_id', '$telefono', '$cargo', '$sueldo')";
+            $insertar2 = "INSERT INTO empleados (usuario_id, email, telefono, cargo, sueldo) VALUES ('$usuario_id', '$email','$telefono', '$cargo', '$sueldo')";
             $resultado2 = mysqli_query($conexion, $insertar2);
             
             // Verificar si la consulta fue exitosa
