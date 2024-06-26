@@ -23,8 +23,6 @@ CREATE TABLE trabajadores (
 id INT AUTO_INCREMENT PRIMARY KEY,
 usuario_id INT NOT NULL,
 telefono VARCHAR (255),
-cargo VARCHAR (255),
-sueldo INT(20),
 FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 );
 
