@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $usuario_id = mysqli_insert_id($conexion);
             
             // Insertar datos en la tabla clientes
-            $insertar2 = "INSERT INTO empleados (usuario_id,  telefono, cargo, sueldo) VALUES ('$usuario_id', '$telefono', '$cargo', '$sueldo')";
+            $insertar2 = "INSERT INTO empleados (usuario_id, telefono, cargo, sueldo) VALUES ('$usuario_id', '$telefono', '$cargo', '$sueldo')";
             $resultado2 = mysqli_query($conexion, $insertar2);
             
             // Verificar si la consulta fue exitosa

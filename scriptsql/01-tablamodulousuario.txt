@@ -1,0 +1,342 @@
+-- Crear la tabla usuarios
+CREATE TABLE usuarios (
+usuario_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+nombre VARCHAR(255) NOT NULL UNIQUE,
+email VARCHAR(255),
+contrasena VARCHAR(255) NOT NULL,
+rut VARCHAR(255)
+);
+
+-- Crear la tabla clientes
+CREATE TABLE clientes (
+id INT AUTO_INCREMENT PRIMARY KEY,
+usuario_id INT NOT NULL,
+direccion VARCHAR(255),
+telefono VARCHAR(255),
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
+);
+
+-- Crear la tabla empleados
+CREATE TABLE trabajadores (
+id INT AUTO_INCREMENT PRIMARY KEY,
+usuario_id INT NOT NULL,
+cargo VARCHAR (255),
+sueldo INT,
+telefono VARCHAR(255),
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
+
+);
+
+CREATE TABLE administradores (
+id INT AUTO_INCREMENT PRIMARY KEY,
+usuario_id INT NOT NULL,
+empleado_id INT NOT NULL,
+FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id),
+FOREIGN KEY (empleado_id) REFERENCES empleados(id)
+);
+
+
+
+CREATE TABLE Categoria (
+    ID_Categoria INT PRIMARY KEY,
+    Nombre VARCHAR(255),
+    Descripción TEXT
+); 
+
+CREATE TABLE subcategorias (
+    id_subcategoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    descripcion TEXT,
+    id_categoria INT NOT NULL,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
+);
+
+
+CREATE TABLE productos (
+    id_producto INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    descripcion TEXT,
+    id_categoria INT NOT NULL,
+    id_subcategoria INT,
+    precio FLOAT NOT NULL,
+    cantidad_stock INT NOT NULL,
+    fecha_vencimiento DATE,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
+    FOREIGN KEY (id_subcategoria) REFERENCES subcategorias(id_subcategoria)
+);
+
+CREATE TABLE alertas_stock (
+    id_alerta INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT NOT NULL,
+    fecha_alerta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    estado VARCHAR(255) DEFAULT 'pendiente',
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+);
+
+--Para manejar las alertas de stock bajo, podrías crear un trigger que inserte una alerta en la tabla alertas_stock cuando el stock de un producto sea menor que un umbral definido (por ejemplo, 10 unidades).
+
+
+DELIMITER //
+
+CREATE TRIGGER stock_bajo_trigger
+AFTER UPDATE ON productos
+FOR EACH ROW
+BEGIN
+    IF NEW.cantidad_stock < 10 THEN
+        INSERT INTO alertas_stock (id_producto) VALUES (NEW.id_producto);
+    END IF;
+END //
+
+DELIMITER ;
+
+
+--registrar producto
+//ejemplos para analizar
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrar Producto</title>
+</head>
+<body>
+    <h2>Registrar Producto</h2>
+    <form action="registrar_producto.php" method="POST">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br>
+        
+        <label for="descripcion">Descripción:</label><br>
+        <textarea id="descripcion" name="descripcion" required></textarea><br>
+        
+        <label for="precio">Precio:</label><br>
+        <input type="text" id="precio" name="precio" required><br>
+        
+        <label for="cantidad_stock">Cantidad en Stock:</label><br>
+        <input type="text" id="cantidad_stock" name="cantidad_stock" required><br>
+        
+        <label for="fecha_vencimiento">Fecha de Vencimiento:</label><br>
+        <input type="date" id="fecha_vencimiento" name="fecha_vencimiento" required><br>
+        
+        <label for="id_categoria">Categoría:</label><br>
+        <input type="text" id="id_categoria" name="id_categoria" required><br>
+        
+        <label for="id_subcategoria">Subcategoría:</label><br>
+        <input type="text" id="id_subcategoria" name="id_subcategoria"><br>
+        
+        <input type="submit" value="Registrar">
+    </form>
+</body>
+</html>
+
+
+<?php
+include 'conexion.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nombre = $_POST['nombre'];
+    $descripcion = $_POST['descripcion'];
+    $precio = $_POST['precio'];
+    $cantidad_stock = $_POST['cantidad_stock'];
+    $fecha_vencimiento = $_POST['fecha_vencimiento'];
+    $id_categoria = $_POST['id_categoria'];
+    $id_subcategoria = $_POST['id_subcategoria'];
+
+    $query = "INSERT INTO productos (nombre, descripcion, precio, cantidad_stock, fecha_vencimiento, id_categoria, id_subcategoria) 
+              VALUES ('$nombre', '$descripcion', '$precio', '$cantidad_stock', '$fecha_vencimiento', '$id_categoria', '$id_subcategoria')";
+
+    if (mysqli_query($conexion, $query)) {
+        echo "Producto registrado correctamente";
+    } else {
+        echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+    }
+}
+?>
+
+--Editar Producto
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Producto</title>
+</head>
+<body>
+    <h2>Editar Producto</h2>
+    <form action="editar_producto.php" method="POST">
+        <label for="id_producto">ID del Producto:</label><br>
+        <input type="text" id="id_producto" name="id_producto" required><br>
+        
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre"><br>
+        
+        <label for="descripcion">Descripción:</label><br>
+        <textarea id="descripcion" name="descripcion"></textarea><br>
+        
+        <label for="precio">Precio:</label><br>
+        <input type="text" id="precio" name="precio"><br>
+        
+        <label for="cantidad_stock">Cantidad en Stock:</label><br>
+        <input type="text" id="cantidad_stock" name="cantidad_stock"><br>
+        
+        <label for="fecha_vencimiento">Fecha de Vencimiento:</label><br>
+        <input type="date" id="fecha_vencimiento" name="fecha_vencimiento"><br>
+        
+        <label for="id_categoria">Categoría:</label><br>
+        <input type="text" id="id_categoria" name="id_categoria"><br>
+        
+        <label for="id_subcategoria">Subcategoría:</label><br>
+        <input type="text" id="id_subcategoria" name="id_subcategoria"><br>
+        
+        <input type="submit" value="Actualizar">
+    </form>
+</body>
+</html>
+
+<?php
+include 'conexion.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id_producto = $_POST['id_producto'];
+    $nombre = $_POST['nombre'];
+    $descripcion = $_POST['descripcion'];
+    $precio = $_POST['precio'];
+    $cantidad_stock = $_POST['cantidad_stock'];
+    $fecha_vencimiento = $_POST['fecha_vencimiento'];
+    $id_categoria = $_POST['id_categoria'];
+    $id_subcategoria = $_POST['id_subcategoria'];
+
+    $query = "UPDATE productos SET 
+              nombre = '$nombre', 
+              descripcion = '$descripcion', 
+              precio = '$precio', 
+              cantidad_stock = '$cantidad_stock', 
+              fecha_vencimiento = '$fecha_vencimiento', 
+              id_categoria = '$id_categoria', 
+              id_subcategoria = '$id_subcategoria' 
+              WHERE id_producto = '$id_producto'";
+
+    if (mysqli_query($conexion, $query)) {
+        echo "Producto actualizado correctamente";
+    } else {
+        echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+    }
+}
+?>
+
+
+--eliminar_producto
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eliminar Producto</title>
+</head>
+<body>
+    <h2>Eliminar Producto</h2>
+    <form action="eliminar_producto.php" method="POST">
+        <label for="id_producto">ID del Producto:</label><br>
+        <input type="text" id="id_producto" name="id_producto" required><br>
+        
+        <input type="submit" value="Eliminar">
+    </form>
+</body>
+</html>
+
+
+<?php
+include 'conexion.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id_producto = $_POST['id_producto'];
+
+    $query = "DELETE FROM productos WHERE id_producto = '$id_producto'";
+
+    if (mysqli_query($conexion, $query)) {
+        echo "Producto eliminado correctamente";
+    } else {
+        echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+    }
+}
+?>
+
+
+--alerta de stock bajos
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alertas de Stock Bajo</title>
+</head>
+<body>
+    <h2>Alertas de Stock Bajo</h2>
+    <table border="1">
+        <tr>
+            <th>Nombre del Producto</th>
+            <th>Cantidad en Stock</th>
+            <th>Fecha de Alerta</th>
+            <th>Acción</th>
+        </tr>
+        <?php
+        include 'mostrar_alertas.php'; // Este script contiene el código PHP para mostrar las alertas
+        ?>
+    </table>
+</body>
+</html>
+
+
+<?php
+include 'conexion.php';
+
+$query = "SELECT a.id_alerta, p.nombre, p.cantidad_stock, a.fecha_alerta 
+          FROM alertas_stock a 
+          JOIN productos p ON a.id_producto = p.id_producto 
+          WHERE a.estado = 'pendiente'";
+$result = mysqli_query($conexion, $query);
+
+while ($row = mysqli_fetch_assoc($result)) {
+    echo '<tr>';
+    echo '<td>' . $row['nombre'] . '</td>';
+    echo '<td>' . $row['cantidad_stock'] . '</td>';
+    echo '<td>' . $row['fecha_alerta'] . '</td>';
+    echo '<td>';
+    echo '<form action="resolver_alerta.php" method="POST">';
+    echo '<input type="hidden" name="id_alerta" value="' . $row['id_alerta'] . '">';
+    echo '<input type="submit" value="Resolver">';
+    echo '</form>';
+    echo '</td>';
+    echo '</tr>';
+}
+?>
+
+
+resolver stock bajo
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alertas de Stock Bajo</title>
+</head>
+<body>
+    <h2>Alertas de Stock Bajo</h2>
+    <table border="1">
+  <!-- Formulario para resolver alerta -->
+    <h3>Resolver Alerta de Stock Bajo</h3>
+    <form action="resolver_alerta.php" method="POST">
+        <label for="id_alerta">ID de la Alerta a Resolver:</label>
+        <input type="text" id="id_alerta" name="id_alerta" required>
+        <input type="submit" value="Resolver">
+    </form>
+</body>
+</html>
+
+
+<?php
+include 'conexion.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id_alerta = $_POST['id_alerta'];
+
+    $query = "UPDATE alertas_stock SET estado = 'resuelta' WHERE id_alerta = '$id_alerta'";
+    if (mysqli_query($conexion, $query)) {
+        echo "Alerta resuelta correctamente";
+    } else {
+        echo "Error: " . $query . "<br>" . mysqli_error($conexion);
+    }
+}
+?>
