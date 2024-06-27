@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificar si la conexión a la base de datos fue exitosa
     if ($conexion) {
         // Insertar datos en la tabla usuarios
-        $insertar1 = "INSERT INTO usuarios (nombre, contrasena, rut) VALUES ('$nombre', '$contrasena', '$rut')";
+        $insertar1 = "INSERT INTO usuarios (nombre, email, contrasena, rut) VALUES ('$nombre', '$email', '$contrasena', '$rut')";
         $resultado1 = mysqli_query($conexion, $insertar1);
         
         if ($resultado1) {
@@ -23,7 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $usuario_id = mysqli_insert_id($conexion);
             
             // Insertar datos en la tabla clientes
-            $insertar2 = "INSERT INTO empleados (usuario_id, email, telefono, cargo, sueldo) VALUES ('$usuario_id', '$email','$telefono', '$cargo', '$sueldo')";
+
+            $insertar2 = "INSERT INTO empleados (usuario_id, telefono, cargo, sueldo) VALUES ('$usuario_id', '$telefono', '$cargo', '$sueldo')";
             $resultado2 = mysqli_query($conexion, $insertar2);
             
             // Verificar si la consulta fue exitosa
