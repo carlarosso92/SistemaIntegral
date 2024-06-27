@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verificar si la conexión a la base de datos fue exitosa
     if ($conexion) {
         // Insertar datos en la tabla usuarios
-        $insertar1 = "INSERT INTO usuarios (nombre, email, contrasena, rut) VALUES ('$nombre', '$contrasena', '$rut')";
+        $insertar1 = "INSERT INTO usuarios (nombre, email, contrasena, rut) VALUES ('$nombre', '$email', '$contrasena', '$rut')";
         $resultado1 = mysqli_query($conexion, $insertar1);
         
         if ($resultado1) {
