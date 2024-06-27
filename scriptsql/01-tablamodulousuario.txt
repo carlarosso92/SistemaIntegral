@@ -37,7 +37,7 @@ FOREIGN KEY (empleado_id) REFERENCES empleados(id)
 
 
 
-CREATE TABLE Categoria (
+CREATE TABLE Categorias (
     ID_Categoria INT PRIMARY KEY,
     Nombre VARCHAR(255),
     Descripción TEXT
