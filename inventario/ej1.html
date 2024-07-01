@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Categoría y Subcategoría</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="form-container">
+        <h2>Agregar Categoría y Subcategoría</h2>
+        <form id="categoryForm" action="agregar_categoria.php" method="POST">
+            <label for="categoria">Categoría:</label>
+            <input type="text" id="categoria" name="categoria" required><br>
+            
+            <div id="subcategorias">
+                <label for="subcategoria_1">Subcategoría 1:</label>
+                <input type="text" id="subcategoria_1" name="subcategoria[]" required><br>
+            </div>
+            
+            <button type="button" id="addSubcategoryButton">Agregar otra subcategoría</button><br>
+            <button type="submit">Ingresar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('addSubcategoryButton').addEventListener('click', function() {
+            const subcategoriesDiv = document.getElementById('subcategorias');
+            const newSubcategoryIndex = subcategoriesDiv.children.length / 2 + 1; // Adjust index to account for existing elements
+            const newLabel = document.createElement('label');
+            newLabel.setAttribute('for', `subcategoria_${newSubcategoryIndex}`);
+            newLabel.textContent = `Subcategoría ${newSubcategoryIndex}:`;
+            
+            const newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.id = `subcategoria_${newSubcategoryIndex}`;
+            newInput.name = 'subcategoria[]';
+            newInput.required = true;
+            
+            subcategoriesDiv.appendChild(newLabel);
+            subcategoriesDiv.appendChild(newInput);
+            subcategoriesDiv.appendChild(document.createElement('br'));
+        });
+    </script>
+</body>
+</html>
