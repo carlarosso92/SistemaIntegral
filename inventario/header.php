@@ -11,13 +11,16 @@
 
     /* Encabezado */
     header {
-      background-color: #669900;
+      background-color: #72A603;
       color: yellow;
       padding: 15px 0;
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 100;
+    }
+    img{
+      width: 10%;
     }
 
      /* Header Container */
@@ -38,10 +41,10 @@
 
     input[type="text"] {
       padding: 8px;
-      border: none;
-      border-radius: 5px;
+      border: black 1px;
+      border-radius: 20px;
       flex-grow: 1;
-      margin: 0 10px;
+      margin: 0 px;
     }
 
     .user-options {
@@ -53,6 +56,7 @@
       color: yellow;
       text-decoration: none;
       margin-left: 15px;
+      position: top;
     }
 
     .cart {
@@ -164,7 +168,7 @@
   <div class="main-container">
     <header>
       <div class="container">
-        <img src="logo.png" alt="Don Perico Logo">
+        <img src="../img/logo.png" alt="Don Perico Logo">
         <h1>Don Perico</h1>
         <input type="text" placeholder="¿Qué buscas?...">
 
