@@ -36,7 +36,7 @@
     h1 {
       margin: 0;
       font-size: 2em;
-      font-family: 'Comic Sans MS', cursive;
+      font-family: sans-serif;
     }
 
     input[type="text"] {
