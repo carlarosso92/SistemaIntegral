@@ -37,19 +37,27 @@ FOREIGN KEY (empleado_id) REFERENCES empleados(id)
 
 
 
-CREATE TABLE Categoria (
-    ID_Categoria INT PRIMARY KEY,
-    Nombre VARCHAR(255),
-    Descripción TEXT
-); 
+CREATE TABLE categorias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_categoria VARCHAR(255) NOT NULL
+);
 
 CREATE TABLE subcategorias (
-    id_subcategoria INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL,
-    descripcion TEXT,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     id_categoria INT NOT NULL,
-    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
+    nombre_subcategoria VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id)
 );
+
+CREATE TABLE proveedores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_proveedor VARCHAR(255) NOT NULL,
+    contacto_proveedor VARCHAR(255),
+    telefono_proveedor VARCHAR(255),
+    email_proveedor VARCHAR(255)
+);
+
+
 
 
 CREATE TABLE productos (
@@ -58,12 +66,15 @@ CREATE TABLE productos (
     descripcion TEXT,
     id_categoria INT NOT NULL,
     id_subcategoria INT,
+    id_proveedor INT,
     precio FLOAT NOT NULL,
     cantidad_stock INT NOT NULL,
     fecha_vencimiento DATE,
-    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria),
-    FOREIGN KEY (id_subcategoria) REFERENCES subcategorias(id_subcategoria)
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id),
+    FOREIGN KEY (id_subcategoria) REFERENCES subcategorias(id),
+    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id)
 );
+
 
 CREATE TABLE alertas_stock (
     id_alerta INT AUTO_INCREMENT PRIMARY KEY,
@@ -90,66 +101,6 @@ END //
 DELIMITER ;
 
 
---registrar producto
-//ejemplos para analizar
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Registrar Producto</title>
-</head>
-<body>
-    <h2>Registrar Producto</h2>
-    <form action="registrar_producto.php" method="POST">
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre" required><br>
-        
-        <label for="descripcion">Descripción:</label><br>
-        <textarea id="descripcion" name="descripcion" required></textarea><br>
-        
-        <label for="precio">Precio:</label><br>
-        <input type="text" id="precio" name="precio" required><br>
-        
-        <label for="cantidad_stock">Cantidad en Stock:</label><br>
-        <input type="text" id="cantidad_stock" name="cantidad_stock" required><br>
-        
-        <label for="fecha_vencimiento">Fecha de Vencimiento:</label><br>
-        <input type="date" id="fecha_vencimiento" name="fecha_vencimiento" required><br>
-        
-        <label for="id_categoria">Categoría:</label><br>
-        <input type="text" id="id_categoria" name="id_categoria" required><br>
-        
-        <label for="id_subcategoria">Subcategoría:</label><br>
-        <input type="text" id="id_subcategoria" name="id_subcategoria"><br>
-        
-        <input type="submit" value="Registrar">
-    </form>
-</body>
-</html>
-
-
-<?php
-include 'conexion.php';
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nombre = $_POST['nombre'];
-    $descripcion = $_POST['descripcion'];
-    $precio = $_POST['precio'];
-    $cantidad_stock = $_POST['cantidad_stock'];
-    $fecha_vencimiento = $_POST['fecha_vencimiento'];
-    $id_categoria = $_POST['id_categoria'];
-    $id_subcategoria = $_POST['id_subcategoria'];
-
-    $query = "INSERT INTO productos (nombre, descripcion, precio, cantidad_stock, fecha_vencimiento, id_categoria, id_subcategoria) 
-              VALUES ('$nombre', '$descripcion', '$precio', '$cantidad_stock', '$fecha_vencimiento', '$id_categoria', '$id_subcategoria')";
-
-    if (mysqli_query($conexion, $query)) {
-        echo "Producto registrado correctamente";
-    } else {
-        echo "Error: " . $query . "<br>" . mysqli_error($conexion);
-    }
-}
-?>
 
 --Editar Producto
 <!DOCTYPE html>
