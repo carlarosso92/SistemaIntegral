@@ -15,7 +15,8 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        <th scope="col">Codigo de barra</th>
+                        <!--<th scope="col">ID</th>-->
                         <th scope="col">Categoría</th>
                         <th scope="col">Subcategoría</th>
                         <th scope="col">Nombre</th>
@@ -30,8 +31,8 @@
                     // Incluir el archivo de configuración para la conexión a la base de datos
                     require("config/conexion.php");
 
-                    // Consulta SQL para obtener el listado de productos con categorías y subcategorías
-                    $sql = "SELECT p.id_producto, c.nombre_categoria, s.nombre_subcategoria, p.nombre, p.descripcion, p.precio, p.cantidad_stock
+                    // Consulta SQL para obtener el listado de productos con categorías y subcategorías p.id_producto
+                    $sql = "SELECT p.codigo_barras, c.nombre_categoria, s.nombre_subcategoria, p.nombre, p.descripcion, p.precio, p.cantidad_stock
                             FROM productos p
                             INNER JOIN categorias c ON p.id_categoria = c.id
                             LEFT JOIN subcategorias s ON p.id_subcategoria = s.id";
@@ -45,7 +46,8 @@
                         while ($producto = $resultado->fetch_assoc()) {
                     ?>
                             <tr>
-                                <td><?php echo $producto['id_producto']; ?></td>
+                                <td><?php echo $producto['codigo_barras']; ?></td>
+                                <!--<td><?php echo $producto['id_producto']; ?></td>-->
                                 <td><?php echo $producto['nombre_categoria']; ?></td>
                                 <td><?php echo $producto['nombre_subcategoria']; ?></td>
                                 <td><?php echo $producto['nombre']; ?></td>
