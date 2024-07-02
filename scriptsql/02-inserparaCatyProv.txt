@@ -1,0 +1,274 @@
+-- Inserción de Categorías
+INSERT INTO categorias (nombre_categoria) VALUES
+    ('Lácteos'),
+    ('Carnes'),
+    ('Bebidas Alcohólicas'),
+    ('Bebidas no Alcohólicas'),
+    ('Snacks'),
+    ('Productos de Limpieza'),
+    ('Congelados'),
+    ('Panadería'),
+    ('Frutas y Verduras'),
+    ('Artículos de Aseo Personal');
+
+-- Obtener IDs de las Categorías Insertadas
+SET @idLacteos := LAST_INSERT_ID();
+SET @idCarnes := LAST_INSERT_ID() + 1;
+SET @idBebidasAlcoholicas := LAST_INSERT_ID() + 2;
+SET @idBebidasNoAlcoholicas := LAST_INSERT_ID() + 3;
+SET @idSnacks := LAST_INSERT_ID() + 4;
+SET @idProductosLimpieza := LAST_INSERT_ID() + 5;
+SET @idCongelados := LAST_INSERT_ID() + 6;
+SET @idPanaderia := LAST_INSERT_ID() + 7;
+SET @idFrutasVerduras := LAST_INSERT_ID() + 8;
+SET @idAseoPersonal := LAST_INSERT_ID() + 9;
+
+-- Inserción de Subcategorías
+INSERT INTO subcategorias (id_categoria, nombre_subcategoria) VALUES
+    (@idLacteos, 'Leche'),
+    (@idLacteos, 'Queso'),
+    (@idLacteos, 'Yogurt'),
+
+    (@idCarnes, 'Vacuno'),
+    (@idCarnes, 'Pollo'),
+    (@idCarnes, 'Cerdo'),
+
+    (@idBebidasAlcoholicas, 'Vino'),
+    (@idBebidasAlcoholicas, 'Cerveza'),
+    (@idBebidasAlcoholicas, 'Pisco'),
+
+    (@idBebidasNoAlcoholicas, 'Bebidas Gaseosas'),
+    (@idBebidasNoAlcoholicas, 'Jugos'),
+    (@idBebidasNoAlcoholicas, 'Agua'),
+
+    (@idSnacks, 'Papas Fritas'),
+    (@idSnacks, 'Galletas'),
+    (@idSnacks, 'Chocolate'),
+
+    (@idProductosLimpieza, 'Detergentes'),
+    (@idProductosLimpieza, 'Desinfectantes'),
+    (@idProductosLimpieza, 'Limpiadores'),
+
+    (@idCongelados, 'Helados'),
+    (@idCongelados, 'Pescados Congelados'),
+    (@idCongelados, 'Productos Congelados'),
+
+    (@idPanaderia, 'Pan'),
+    (@idPanaderia, 'Facturas'),
+    (@idPanaderia, 'Tortillas'),
+
+    (@idFrutasVerduras, 'Frutas Frescas'),
+    (@idFrutasVerduras, 'Verduras Frescas'),
+    (@idFrutasVerduras, 'Ensaladas'),
+
+    (@idAseoPersonal, 'Jabones'),
+    (@idAseoPersonal, 'Shampoo'),
+    (@idAseoPersonal, 'Cremas');
+
+
+INSERT INTO proveedores (nombre_proveedor, contacto_proveedor, telefono_proveedor, email_proveedor) VALUES 
+('Soprole', 'Juan Pérez', '123456789', 'soprole@gmail.com'),
+('Colún', 'Ana Gómez', '987654321', 'colun@gmail.com'),
+('Nestlé', 'Carlos López', '456789123', 'nestle@gmail.com'),
+('Carozzi', 'María Rodríguez', '789123456', 'carozzi@gmail.com'),
+('Santa Isabel', 'Pedro Sánchez', '321654987', 'santaisabel@gmail.com'),
+('Super Cerdo', 'Laura Fernández', '654987321', 'supercerdo@gmail.com'),
+('Agrosuper', 'Diego González', '987321654', 'agrosuper@gmail.com'),
+('Aconcagua Foods', 'Isabel Martínez', '654321987', 'aconcaguafoods@gmail.com'),
+('Empresas Carozzi', 'Javier Torres', '321987654', 'empresascarozzi@gmail.com'),
+('Viña Concha y Toro', 'Sofía Ramírez', '789654321', 'conchaytoro@gmail.com'),
+('Compañía Cervecerías Unidas (CCU)', 'Pablo Hernández', '456123789', 'ccu@gmail.com'),
+('Pisco Capel', 'Valentina Díaz', '987789456', 'capel@gmail.com'),
+('Coca-Cola', 'Andrés Vargas', '321456789', 'cocacola@gmail.com'),
+('Pepsi', 'Camila Flores', '654789321', 'pepsi@gmail.com'),
+('Schweppes', 'Matías Muñoz', '123987456', 'schweppes@gmail.com'),
+('Watt''s', 'Francisca Morales', '789456123', 'watts@gmail.com'),
+('Lay''s', 'Gabriel Gutiérrez', '456123987', 'lays@gmail.com'),
+('Unilever', 'Javiera Castro', '987456321', 'unilever@gmail.com'),
+('Procter & Gamble', 'Vicente Rojas', '321789456', 'pg@gmail.com'),
+('Kimberly-Clark', 'Antonia Herrera', '654321789', 'kimberlyclark@gmail.com'),
+('SC Johnson', 'Maximiliano Valenzuela', '123789654', 'scjohnson@gmail.com'),
+('Iansa', 'Constanza Fuentes', '789654123', 'iansa@gmail.com'),
+('Cristal', 'Tomás Fernández', '456987789', 'cristal@gmail.com'),
+('Cachantún', 'Emilia Pérez', '987123456', 'cachantun@gmail.com'),
+('Biosalud', 'Nicolás González', '321654789', 'biosalud@gmail.com'),
+('Ostermann', 'Josefina López', '654789123', 'ostermann@gmail.com'),
+('Pescanova', 'Ignacio Rodríguez', '123456987', 'pescanova@gmail.com');
+
+
+
+Entendido, aquí tienes la lista completa de productos con descripciones, cantidad, precio y proveedor para cada categoría y subcategoría:
+
+1. **Lácteos:**
+   - Leche Entera
+     - Descripción: Leche entera en envase de 1 litro.
+     - Proveedor: Soprole
+     - Precio: $1200.00
+     - Cantidad: 50 unidades
+
+   - Queso Gouda
+     - Descripción: Queso gouda de 500g.
+     - Proveedor: Colún
+     - Precio: $3500.00
+     - Cantidad: 30 unidades
+
+   - Yogurt Natural
+     - Descripción: Yogurt natural en pack de 4 unidades.
+     - Proveedor: Nestlé
+     - Precio: $2500.00
+     - Cantidad: 20 unidades
+
+2. **Carnes:**
+   - Vacuno Filete
+     - Descripción: Filete de vacuno premium.
+     - Proveedor: Santa Isabel
+     - Precio: $10000.00
+     - Cantidad: 10 unidades
+
+   - Pollo Entero
+     - Descripción: Pollo entero fresco de granja.
+     - Proveedor: Colún
+     - Precio: $5000.00
+     - Cantidad: 15 unidades
+
+   - Cerdo Costillas
+     - Descripción: Costillas de cerdo marinadas.
+     - Proveedor: Super Cerdo
+     - Precio: $7000.00
+     - Cantidad: 12 unidades
+
+3. **Bebidas Alcohólicas:**
+   - Vino Tinto Reserva
+     - Descripción: Vino tinto reserva de 750ml.
+     - Proveedor: Jumbo
+     - Precio: $6500.00
+     - Cantidad: 15 unidades
+
+   - Cerveza Rubia
+     - Descripción: Cerveza rubia artesanal de 500ml.
+     - Proveedor: Soprole
+     - Precio: $1800.00
+     - Cantidad: 40 unidades
+
+   - Pisco Nacional
+     - Descripción: Pisco chileno de 750ml.
+     - Proveedor: Colún
+     - Precio: $8500.00
+     - Cantidad: 10 unidades
+
+4. **Bebidas no Alcohólicas:**
+   - Bebida Gaseosa
+     - Descripción: Bebida gaseosa de cola.
+     - Proveedor: Nestlé
+     - Precio: $1200.00
+     - Cantidad: 50 unidades
+
+   - Jugo Natural
+     - Descripción: Jugo natural de naranja en envase de 1 litro.
+     - Proveedor: Santa Isabel
+     - Precio: $1500.00
+     - Cantidad: 30 unidades
+
+   - Agua Mineral
+     - Descripción: Agua mineral sin gas en botella de 1.5 litros.
+     - Proveedor: Super Cerdo
+     - Precio: $1000.00
+     - Cantidad: 20 unidades
+
+5. **Snacks:**
+   - Papas Fritas
+     - Descripción: Papas fritas en bolsa familiar.
+     - Proveedor: Agrosuper
+     - Precio: $2500.00
+     - Cantidad: 10 unidades
+
+   - Galletas de Chocolate
+     - Descripción: Galletas de chocolate en pack de 6 unidades.
+     - Proveedor: Aconcagua Foods
+     - Precio: $1800.00
+     - Cantidad: 25 unidades
+
+   - Chocolate Amargo
+     - Descripción: Tableta de chocolate amargo 70%.
+     - Proveedor: Empresas Carozzi
+     - Precio: $3000.00
+     - Cantidad: 15 unidades
+
+6. **Productos de Limpieza:**
+   - Detergente Líquido
+     - Descripción: Detergente líquido para ropa de 1 litro.
+     - Proveedor: Viña Concha y Toro
+     - Precio: $3500.00
+     - Cantidad: 20 unidades
+
+   - Desinfectante Multiuso
+     - Descripción: Desinfectante multiuso en spray de 500ml.
+     - Proveedor: Compañía Cervecerías Unidas (CCU)
+     - Precio: $2500.00
+     - Cantidad: 15 unidades
+
+   - Limpiador Baño
+     - Descripción: Limpiador líquido para baño de 750ml.
+     - Proveedor: Pisco Capel
+     - Precio: $1800.00
+     - Cantidad: 25 unidades
+
+7. **Congelados:**
+   - Helado de Vainilla
+     - Descripción: Helado de vainilla en envase de 1 litro.
+     - Proveedor: Coca-Cola
+     - Precio: $4000.00
+     - Cantidad: 8 unidades
+
+   - Pescado Congelado
+     - Descripción: Filete de pescado blanco congelado.
+     - Proveedor: Pepsi
+     - Precio: $6000.00
+     - Cantidad: 10 unidades
+
+   - Pizza Congelada
+     - Descripción: Pizza de pepperoni congelada.
+     - Proveedor: Schweppes
+     - Precio: $4500.00
+     - Cantidad: 12 unidades
+
+8. **Panadería:**
+   - Pan Integral
+     - Descripción: Pan integral de 500g.
+     - Proveedor: Watt's
+     - Precio: $1500.00
+     - Cantidad: 20 unidades
+
+   - Facturas Variadas
+     - Descripción: Pack de facturas variadas (media docena).
+     - Proveedor: Lay's
+     - Precio: $2500.00
+     - Cantidad: 15 unidades
+
+   - Tortillas de Harina
+     - Descripción: Tortillas de harina de trigo (10 unidades).
+     - Proveedor: Unilever
+     - Precio: $1800.00
+     - Cantidad: 30 unidades
+
+9. **Frutas y Verduras:**
+   - Manzanas Frescas
+     - Descripción: Manzanas frescas de la región.
+     - Proveedor: Procter & Gamble
+     - Precio: $1200.00
+     - Cantidad: 40 unidades
+
+   - Lechugas Variadas
+     - Descripción: Pack de lechugas variadas.
+     - Proveedor: Kimberly-Clark
+     - Precio: $1500.00
+     - Cantidad: 35 unidades
+
+10. **Artículos de Aseo Personal:**
+    - Pasta de Dientes
+      - Descripción: Pasta de dientes con fluoruro.
+      - Proveedor: SC Johnson
+      - Precio: $2000.00
+      - Cantidad: 25 unidades
+
+Estos son los detalles completos para cada producto. Asegúrate de ajustar los valores según tu base de datos y proveedores específicos.
