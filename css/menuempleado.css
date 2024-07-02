@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #F2EDD0;
+}
+
+
+.contenido {
+    text-align: center; 
+    background-color: #E4F2B5;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(8, 93, 212, 0.3);
+   
+    width: 80%;
+    height: auto;
+}
+.contenido h1 {
+    text-align:  center;
+    color: #72A603;
+    
+}
+
+
+.foto-empleado {
+    position: relative;
+    size: 200%;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* Style for the menu list */
+.menu-lista {
+    display: flex;
+    flex-direction: block;
+    list-style: none;
+    padding: 0px;
+    width: 50%;
+    text-align: left;
+    position: relative;
+}
+
+.menu-lista li {
+    margin: 20px;
+    width: 20%;
+}
+
+.menu-lista li a {
+    display: block;
+    width: 70%;
+    padding: 20px;   
+    color: white;       
+    background-color: #72A603;   
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-lista li a:hover {
+    background-color: #45a049;
+}

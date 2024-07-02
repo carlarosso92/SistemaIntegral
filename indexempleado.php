@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/menuempleado.css">
     <title>minimarket</title>
 </head>
 <body>
@@ -30,5 +31,17 @@
         </nav>
         </div>
     </header>
+
+    
+    <div class="contenido">
+      <h1>Menú empleado</h1>
+      <img src="img/fotoempleado1.png" alt="foto empleado">
+      <ul class="menu-lista">
+        <li><a href=""></a>Registrar venta</li>
+        <li><a href=""></a>Devoluciones</li>
+        <li><a href=""></a>Reservas</li>
+        <li><a href="inventario/index.php"></a>Inventario</li>
+      </ul>
+    </div>
 </body>
 </html>
