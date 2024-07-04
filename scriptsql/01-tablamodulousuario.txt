@@ -17,7 +17,7 @@ FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 );
 
 -- Crear la tabla empleados
-CREATE TABLE trabajadores (
+CREATE TABLE empleados (
 id INT AUTO_INCREMENT PRIMARY KEY,
 usuario_id INT NOT NULL,
 cargo VARCHAR (255),
