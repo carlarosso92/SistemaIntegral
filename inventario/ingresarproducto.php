@@ -1,10 +1,12 @@
-<?php include "config/conexion.php"; ?>
-
 <?php
+include "config/conexion.php";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recuperar datos del formulario
     $nombre = $_POST["nombre"];
-    $nombrecategoria = $_POST["nombrecategoria"]; 
+    $categoria = $_POST["categoria"];
+    $subcategoria = $_POST["subcategoria"];
+    $proveedor = $_POST["proveedor"];
     $descripcion = $_POST["descripcion"];
     $precio = $_POST["precio"];
     $cantidad_stock = $_POST["cantidad_stock"];
@@ -12,27 +14,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
     // Verificar si la conexión a la base de datos fue exitosa
     if ($conexion) {
-        // Insertar datos en la tabla ..
-        $insertar1 = "INSERT INTO categorias (nombrecategoria) VALUES ('$nombrecategoria')";
-        $resultado1 = mysqli_query($conexion, $insertar1);
-        
-        if ($resultado1) {
-            // Obtener el ID del último usuario insertado
-            $id_categoria = mysqli_insert_id($conexion);
-            
-            // Insertar datos en la tabla ..
-            $insertar2 = "INSERT INTO productos (nombre, id_categoria, descripcion, precio, cantidad_stock, fecha_vencimiento) VALUES ('$nombre','$id_categoria',  '$descripcion', '$precio', '$cantidad_stock', '$fecha_vencimiento')";
-            $resultado2 = mysqli_query($conexion, $insertar2);
-            
-            // Verificar si la consulta fue exitosa
-            if ($resultado2) {
-                // Mensaje emergente en JS
-                echo "<script>alert('Los registros se ingresaron correctamente.');window.location.href = 'agregarproducto.php';</script>";
-            } else {
-                echo "Error al ingresar los registros en la tabla clientes: " . mysqli_error($conexion);
-            }
+        $randomNumber = rand(1000, 9999);
+        $barcodeNumber = '00' . $categoria . '00' . $subcategoria .'00'. $proveedor . $randomNumber;
+        // Insertar datos en la tabla productos
+        $insertar = "INSERT INTO productos (nombre, id_categoria, id_subcategoria, id_proveedor, descripcion, precio, cantidad_stock, fecha_vencimiento, codigo_barras) VALUES ('$nombre', '$categoria', '$subcategoria', '$proveedor', '$descripcion', '$precio', '$cantidad_stock', '$fecha_vencimiento', '$barcodeNumber')";
+        $resultado = mysqli_query($conexion, $insertar);
+
+        // Verificar si la consulta fue exitosa
+        if ($resultado) {
+            // Mensaje emergente en JS
+            echo "<script>alert('Los registros se ingresaron correctamente.');window.location.href = 'index.php';</script>";
         } else {
-            echo "Error al ingresar los registros en la tabla usuarios: " . mysqli_error($conexion);
+            echo "Error al ingresar los registros en la tabla productos: " . mysqli_error($conexion);
         }
 
         // Cerrar la conexión a la base de datos

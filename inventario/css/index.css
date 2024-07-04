@@ -1,14 +1,15 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #F2EDD0;
-    margin:20px;
-    padding: 20px;
-    display: auto;  
-    justify-content: center;
+    background-color: #F2EDD0; 
+    display: flex;
+    /*justify-content: center;*/
     align-items: center;
-    height: 100vh;
+    /*height: 100vh;*/
+    margin: 0;
+    /*padding: 20px;*/
     box-sizing: border-box;
-    
+    display: grid;
+    align-content: center;
 }
 
 .conteiner {
@@ -18,12 +19,12 @@ body {
 }
 
 h1.text-center {
+    margin-top: 162px;
     margin-bottom: 20px;
     font-size: 2em;
     color: #333;
     text-align: center;
     background-color: #72A603;
-    
 }
 
 .table {
