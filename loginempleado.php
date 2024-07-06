@@ -6,15 +6,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasena = $_POST["contrasena"];
 
     if ($conexion) {
-        $query = "SELECT * FROM usuarios INNER JOIN empleados ON usuarios.usuario_id = trabajadores.usuario_id WHERE empleados.email='$email' AND usuarios.contrasena='$contrasena'";
+        $query = "SELECT * FROM usuarios INNER JOIN empleados ON usuarios.usuario_id = empleados.usuario_id WHERE empleados.email='$email' AND usuarios.contrasena='$contrasena'";
         $result = mysqli_query($conexion, $query);
         $user = mysqli_fetch_assoc($result);
 
         if ($user) {
             $_SESSION['usuario_id'] = $user['usuario_id'];
-            echo "<script>alert('Inicio de sesión exitoso.');window.location.href = 'index.php';</script>";
+            echo "<script>alert('Inicio de sesión exitoso.');window.location.href = 'indexempleado.php';</script>";
         } else {
-            echo "<script>alert('Email o contraseña incorrectos.');window.location.href = 'crudloginempleado.php';</script>";
+            echo "<script>alert('Email o contraseña incorrectos.');window.location.href = 'loginempleado.php';</script>";
         }
 
         mysqli_close($conexion);
