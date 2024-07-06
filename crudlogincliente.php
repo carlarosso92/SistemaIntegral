@@ -20,7 +20,7 @@
                 <button type="submit" value="Iniciar Sesión">Iniciar sesión</button>
             </form>
             <p><a href="crudrecuperarcontrasena.php">¿Olvidaste tu contraseña?</a></p>
-            <p><a href="indexempleado.php">ingresar como empleado</a></p>
+            <p><a href="crudloginempleado.php">ingresar como empleado</a></p> 
         </div>
     </div>
 </body>

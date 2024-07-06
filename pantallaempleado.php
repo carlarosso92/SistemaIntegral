@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/menuempleado.css">
+    <title>Minimarket - Empleado</title>
 </head>
 <body>
     <header>
@@ -22,34 +23,40 @@
                 <ul>
                     <li><a href="">Categorías</a></li>
                     <li><a href="">Ofertas</a></li>
-                    <li><a href="#">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
-
-    <main class="contenido">
+    <main>
         <div class="employee-section">
             <div class="employee-info">
-                <div class="image-container">
-                    <img src="img/fotoempleado1.png" alt="foto empleado">
-                </div>
+                <img src="foto_empleado.jpg" alt="Foto Empleado">
                 <div class="details">
-                    <div class="name">Nombre: ____________________</div>
-                    <div class="role">Cargo: ____________________</div>
+                    <div>Nombre:</div>
+                    <div>Cargo:</div>
                 </div>
             </div>
+
             <h2>Actividades empleado</h2>
+
             <div class="activities">
-                <button class="activity"><span class="icon">✓</span> Registrar venta</button>
-                <button class="activity"><span class="icon">🧩</span> Gestionar Producto</button>
-                <button class="activity"><span class="icon">✏️</span> Devoluciones</button>
-                <button class="activity"><span class="icon">📑</span> Reservas</button>
-                <button class="activity"><span class="icon">📦</span> Inventario</button>
+                <button class="activity">
+                    <span class="icon">✓</span> Registrar Venta
+                </button>
+                <button class="activity">
+                    <span class="icon">🧩</span> Gestionar Producto
+                </button>
+                <button class="activity">
+                    <span class="icon">✏️</span> Devoluciones
+                </button>
+                <button class="activity">
+                    <span class="icon">📑</span> Reservas
+                </button>
+                <button class="activity">
+                    <span class="icon">📦</span> Inventario
+                </button>
             </div>
         </div>
     </main>
-
 </body>
 </html>
