@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css" />
     <title>Listado de Productos</title>
+    <link rel="icon" href="../img/logo2.png" type="image/png">
 </head>
 <body>
 <?php include "header.php"; ?>

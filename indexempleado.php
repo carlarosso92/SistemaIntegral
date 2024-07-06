@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/menuempleado.css">
-    <title>Minimarket - Empleado</title>
 </head>
 <body>
     <header>
@@ -29,6 +28,7 @@
         </div>
     </header>
 
+
     <main class="contenido">
         <div class="employee-section">
             <div class="employee-info">
@@ -50,5 +50,6 @@
             </div>
         </div>
     </main>
+
 </body>
 </html>

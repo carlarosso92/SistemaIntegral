@@ -14,6 +14,7 @@ if (!$resultCategoria) {
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="icon" href="../img/logo2.png" type="image/png">
     <title>Ingreso de Producto</title>
     <link rel="stylesheet" href="css/agregarproducto.css" />
     <link rel="stylesheet" href="./global.css" />
