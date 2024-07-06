@@ -23,6 +23,7 @@
                 <ul>
                     <li><a href="">Categorías</a></li>
                     <li><a href="">Ofertas</a></li>
+                    <li><a href="#">Contacto</a></li>
                 </ul>
             </nav>
         </div>
