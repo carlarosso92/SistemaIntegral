@@ -15,8 +15,7 @@ body {
     padding: 50px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(8, 93, 212, 0.3);
-   
-    width: 80%;
+    width: 60%;
     height: auto;
 }
 .contenido h1 {
@@ -35,12 +34,13 @@ body {
 
 /* Style for the menu list */
 .menu-lista {
+    align-items: center;
     display: flex;
     flex-direction: block;
     list-style: none;
     padding: 0px;
     width: 50%;
-    text-align: left;
+    text-align: center;
     position: relative;
 }
 

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/menuempleado.css">
     <title>minimarket</title>
+    <link rel="icon" href="img/logo2.png" type="image/png">
 </head>
 <body>
     <header>
@@ -37,10 +38,10 @@
       <h1>Menú empleado</h1>
       <img src="img/fotoempleado1.png" alt="foto empleado">
       <ul class="menu-lista">
-        <li><a href=""></a>Registrar venta</li>
-        <li><a href=""></a>Devoluciones</li>
-        <li><a href=""></a>Reservas</li>
-        <li><a href="inventario/index.php"></a>Inventario</li>
+        <li><a href="">Registrar venta</a></li>
+        <li><a href="">Devoluciones</a></li>
+        <li><a href="">Reservas</a></li>
+        <li><a href="inventario/index.php">Inventario</a></li>
       </ul>
     </div>
 </body>
