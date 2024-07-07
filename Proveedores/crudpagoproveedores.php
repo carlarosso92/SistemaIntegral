@@ -10,6 +10,7 @@ $result = $conexion->query($query);
 <html>
 <head>
     <title>Registrar Pago a Proveedor</title>
+    <link rel="icon" href="../img/logo2.png" type="image/png">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
 <body>
