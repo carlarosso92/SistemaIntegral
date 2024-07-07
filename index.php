@@ -9,35 +9,17 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <header>
-        <div class="contenedor">
-            <img src="img/logo.png" alt="Logo">
-            <h1>Don Perico</h1>
-            <input type="text" placeholder="¿Qué buscas?">
-            <div class="opcionusuario">
-                <a href="#">Iniciar Sesión</a>
-                <a href="#">Registrarse</a>
-            </div>
-        </div>
-        <nav>
-        <div class="menuopcion">
-            <ul>
-                <li><a href="#">Productos</a></li>
-                <li><a href="#">Ofertas</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-            </div>
-        </nav>
-    </header>
+    <?php include 'header.php'; ?>
+
     <main>
-        
-        <section class="banner">
-            <img src="img/banner.jpg" alt="Banner">
+        <section class="carrusel">
+            <div class="slides">
+                <img src="img/banner1.jpg" alt="Banner 1">
+                <img src="img/banner2.jpg" alt="Banner 2">
+                <img src="img/banner3.jpg" alt="Banner 3">
+            </div>
         </section>
-        <section class="oferta-principal">
-            <h2>¡Oferta! 15%</h2>
-        </section>
-        <section class="ofertas">
+        <section id="ofertas" class="ofertas">
             <h2>Ofertas</h2>
             <div class="ofertas-grid">
                 <div class="oferta">Oferta 10%</div>
@@ -46,7 +28,7 @@
                 <div class="oferta">Oferta 25%</div>
             </div>
         </section>
-        <section class="productos">
+        <section id="productos" class="productos">
             <h2>Productos</h2>
             <div class="productos-grid">
                 <div class="producto">
@@ -66,13 +48,12 @@
                 </div>
             </div>
         </section>
-        <section class="galeria">
-            <img src="tienda1.jpg" alt="Tienda 1">
-            <img src="tienda2.jpg" alt="Tienda 2">
+        <section id="galeria" class="galeria">
+            <img src="img/tienda1.jpg" alt="Tienda 1">
+            <img src="img/tienda2.jpg" alt="Tienda 2">
         </section>
     </main>
-    <footer>
-    <p>&copy; 2024 Don Perico. Todos los derechos reservados.</p>
-    </footer>
+
+    <?php include 'footer.php'; ?>
 </body>
 </html>
