@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ingreso de Proveedor</title>
+    <link rel="icon" href="../img/logo2.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

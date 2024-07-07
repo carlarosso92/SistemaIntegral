@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Don Perico</title>
+  <link rel="icon" href="../img/logo2.png" type="image/png">
   <style>
     /* Estilos generales */
     body {
