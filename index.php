@@ -6,6 +6,7 @@
     <title>Don Perico</title>
     <link rel="icon" href="img/logo2.png" type="image/png">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
     <header>
