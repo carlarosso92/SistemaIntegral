@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Registro de Cliente</title>
+    <link rel="icon" href="img/logo2.png" type="image/png">
 </head>
 <body>
     <h2>Registro</h2>

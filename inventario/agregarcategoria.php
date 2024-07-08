@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingreso de categorías</title>
+    <link rel="icon" href="../img/logo2.png" type="image/png">
     <link rel="stylesheet" href="css/agregarcategoria.css" />
 </head>
 <body>

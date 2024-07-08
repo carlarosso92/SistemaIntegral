@@ -3,6 +3,7 @@
 <head>
 <link rel="stylesheet" href="css/modal.css">
     <title>Inicio de Sesión</title>
+    <link rel="icon" href="img/logo2.png" type="image/png">
 </head>
 <body>
          <div class="modal">

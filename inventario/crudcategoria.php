@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Crear categorías y subcategorías</title>
+    <link rel="icon" href="../img/logo2.png" type="image/png">
     <script>
         function addSubcategoryField() {
             const subcategoriesDiv = document.getElementById('subcategories');
