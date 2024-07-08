@@ -5,29 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Don Perico</title>
     <link rel="stylesheet" href="css/index.css">
+    <?php include "headerindex.php"; ?>
     
 </head>
 
 <body>
     <main>
-        <div>
+        
             <section class="carrusel">
                 <div class="slides">
                     <img src="img/banner1.jpg" alt="Banner 1" class="active">
                     <img src="img/banner2.jpg" alt="Banner 2">
                     <img src="img/banner3.jpg" alt="Banner 3">
                 </div>
-                <div class="controls">
+                 <!--<div class="controls">
                     <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
                     <span class="next" onclick="changeSlide(1)">&#10095;</span>
-                </div>
+                </div> -->
                 <div class="indicators">
                     <span class="dot" onclick="currentSlide(0)"></span>
                     <span class="dot" onclick="currentSlide(1)"></span>
                     <span class="dot" onclick="currentSlide(2)"></span>
-                </div>
+                </div> 
             </section>
-        </div>
+    
         <section id="ofertas" class="ofertas">
             <h2>Ofertas</h2>
             <div class="ofertas-grid">
