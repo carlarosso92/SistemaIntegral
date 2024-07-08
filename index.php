@@ -67,6 +67,27 @@
     </main>
 
     <?php include 'footer.php'; ?>
+<<<<<<< HEAD
+    <!-- Incluir este script en tu archivo index.php, justo antes del cierre del body -->
+<script>
+    let index = 0;
+
+    function showSlides() {
+        const slides = document.querySelector('.slides');
+        const totalSlides = slides.querySelectorAll('img').length;
+        
+        index++;
+        if (index >= totalSlides) {
+            index = 0;
+        }
+        
+        slides.style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    setInterval(showSlides, 3000); // Cambia la imagen cada 3 segundos
+</script>
+
+=======
 
     <script>
         let slideIndex = 0;
@@ -103,5 +124,6 @@
 
         document.addEventListener('DOMContentLoaded', startCarousel);
     </script>
+>>>>>>> 92f21ba44cccc5c18c480de0151711d8222c2deb
 </body>
 </html>
