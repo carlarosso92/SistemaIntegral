@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Don Perico</title>
-    <link rel="icon" href="img/logo2.png" type="image/png">
-    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/index.css">
+    
 </head>
-<body>
-    <?php include 'headerindex.php'; ?>
 
+<body>
     <main>
         <div>
             <section class="carrusel">
@@ -59,35 +57,7 @@
                 </div>
             </div>
         </section>
-        <section id="galeria" class="galeria">
-            <img src="img/tienda1.jpg" alt="Tienda 1">
-            <img src="img/tienda2.jpg" alt="Tienda 2">
-        </section>
-
     </main>
-
-    <?php include 'footer.php'; ?>
-<<<<<<< HEAD
-    <!-- Incluir este script en tu archivo index.php, justo antes del cierre del body -->
-<script>
-    let index = 0;
-
-    function showSlides() {
-        const slides = document.querySelector('.slides');
-        const totalSlides = slides.querySelectorAll('img').length;
-        
-        index++;
-        if (index >= totalSlides) {
-            index = 0;
-        }
-        
-        slides.style.transform = `translateX(${-index * 100}%)`;
-    }
-
-    setInterval(showSlides, 3000); // Cambia la imagen cada 3 segundos
-</script>
-
-=======
 
     <script>
         let slideIndex = 0;
@@ -124,6 +94,5 @@
 
         document.addEventListener('DOMContentLoaded', startCarousel);
     </script>
->>>>>>> 92f21ba44cccc5c18c480de0151711d8222c2deb
 </body>
 </html>
