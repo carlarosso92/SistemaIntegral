@@ -170,13 +170,9 @@
       <div class="container">
         <img src="../img/logo.png" alt="Don Perico Logo">
         <h1>Don Perico</h1>
-        <input type="text" placeholder="¿Qué buscas?...">
 
         <div class="user-options">
-          <a href="#">¡Hola!</a>
-          <a href="#">Inicia sesión</a>
-          <span class="cart">0</span>
-          <a href="#">Mis pedidos</a>
+          <a href="#">Empleado</a>
         </div>
       </div>
     </header>
