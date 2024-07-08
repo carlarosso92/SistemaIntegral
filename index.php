@@ -6,28 +6,21 @@
     <title>Don Perico</title>
     <link rel="stylesheet" href="css/index.css">
     <?php include "headerindex.php"; ?>
-    
 </head>
-
 <body>
     <main>
-        
-            <section class="carrusel">
-                <div class="slides">
-                    <img src="img/banner1.jpg" alt="Banner 1" class="active">
-                    <img src="img/banner2.jpg" alt="Banner 2">
-                    <img src="img/banner3.jpg" alt="Banner 3">
-                </div>
-                 <!--<div class="controls">
-                    <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
-                    <span class="next" onclick="changeSlide(1)">&#10095;</span>
-                </div> -->
-                <div class="indicators">
-                    <span class="dot" onclick="currentSlide(0)"></span>
-                    <span class="dot" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                </div> 
-            </section>
+        <section class="carrusel">
+            <div class="slides">
+                <img src="img/banner1.jpg" alt="Banner 1" class="active">
+                <img src="img/banner2.jpg" alt="Banner 2">
+                <img src="img/banner3.jpg" alt="Banner 3">
+            </div>
+            <div class="indicators">
+                <span class="dot" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+        </section>
     
         <section id="ofertas" class="ofertas">
             <h2>Ofertas</h2>
@@ -38,9 +31,10 @@
                 <div class="oferta">Oferta 25%</div>
             </div>
         </section>
+        
         <section id="productos" class="productos">
             <h2>Productos</h2>
-            <div class="productos-grid">
+            <div class="productos-carrusel">
                 <div class="producto">
                     <h3>Nombre del producto</h3>
                     <p>Valor</p>
@@ -56,6 +50,20 @@
                     <p>Valor</p>
                     <button>Agregar</button>
                 </div>
+                <div class="producto">
+                    <h3>Nombre del producto</h3>
+                    <p>Valor</p>
+                    <button>Agregar</button>
+                </div>
+                <div class="producto">
+                    <h3>Nombre del producto</h3>
+                    <p>Valor</p>
+                    <button>Agregar</button>
+                </div>
+            </div>
+            <div class="controls">
+                <span class="prev" onclick="changeProductSlide(-1)">&#10094;</span>
+                <span class="next" onclick="changeProductSlide(1)">&#10095;</span>
             </div>
         </section>
     </main>
@@ -94,6 +102,32 @@
         }
 
         document.addEventListener('DOMContentLoaded', startCarousel);
+        
+        let productSlideIndex = 0;
+const products = document.querySelectorAll('.productos-carrusel .producto');
+const totalProducts = products.length;
+const visibleProducts = 3; // Número de productos visibles
+const productWidth = 280; // Ancho del producto más el margen
+
+function showProductSlide(index) {
+    const offset = index * -productWidth;
+    products.forEach(product => {
+        product.style.transform = `translateX(${offset}px)`;
+    });
+}
+
+function changeProductSlide(n) {
+    const maxIndex = totalProducts - visibleProducts;
+    productSlideIndex = (productSlideIndex + n + totalProducts) % totalProducts;
+    if (productSlideIndex > maxIndex) {
+        productSlideIndex = maxIndex;
+    } else if (productSlideIndex < 0) {
+        productSlideIndex = 0;
+    }
+    showProductSlide(productSlideIndex);
+}
+
+document.addEventListener('DOMContentLoaded', () => showProductSlide(productSlideIndex));
     </script>
 </body>
 </html>

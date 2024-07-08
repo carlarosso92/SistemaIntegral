@@ -12,11 +12,12 @@
     <header>
         <div class="contenedor">
             <img src="img/logo.png" alt="Logo">
+            </img>
             <h1>Don Perico</h1>
             <input type="text" placeholder="¿Qué buscas?">
             <div class="opcionusuario">
-                <a href="#">Iniciar Sesión</a>
-                <a href="#">Registrarse</a>
+                <a href="crudlogincliente.php">Iniciar Sesión</a>
+                <a href="crudcliente.php">Registrarse</a>
             </div>
             <div class="carrito">
                 <button id="carritoButton"><i class="fas fa-shopping-cart"></i> Carrito</button>

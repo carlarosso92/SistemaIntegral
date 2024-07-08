@@ -48,7 +48,7 @@
     </style>
 </head>
 <body>
-    <?php include 'header.php'; ?>
+    
     <form method="POST" action="recuperarcontrasena.php">
         <label for="email">Email:</label>
         <input type="email" name="email" required>
