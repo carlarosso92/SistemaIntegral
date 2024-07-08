@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasena = $_POST["contrasena"];
 
     if ($conexion) {
-        $query = "SELECT * FROM usuarios INNER JOIN clientes ON usuarios.usuario_id = clientes.usuario_id WHERE clientes.email='$email' AND usuarios.contrasena='$contrasena'";
+        $query = "SELECT * FROM usuarios INNER JOIN clientes ON usuarios.usuario_id = clientes.usuario_id WHERE usuarios.email='$email' AND usuarios.contrasena='$contrasena'";
         $result = mysqli_query($conexion, $query);
         $user = mysqli_fetch_assoc($result);
 
