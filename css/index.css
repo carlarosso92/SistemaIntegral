@@ -6,14 +6,15 @@ main {
 }
 
 .carrusel {
-    position: sticky;
-    top: 0; /* Asegura que el carrusel se mantenga en la parte superior cuando se desplaza */
-    width: 90%; /* Ajusta el ancho del carrusel */
-    max-width: 1200px; /* Añade un ancho máximo para pantallas grandes */
-    overflow: hidden; /* Para evitar que la imagen se desborde */
-    height: 300px; /* Ajusta la altura según sea necesario */
-    background-color: #f5f5f5; /* Fondo para evitar que el contenido se vea detrás de la imagen */
-    margin-bottom: 40px; /* Añade espacio debajo del carrusel */
+    padding-top: 39px;
+
+    top: 0;
+    width: 98%;
+    overflow: hidden;
+    height: 300px;
+    background-color: #F2EDD0;
+    margin-bottom: 40px;
+
 }
 
 .slides {
@@ -29,6 +30,7 @@ main {
     display: none; /* Ocultar todas las imágenes inicialmente */
     object-fit: cover; /* Ajusta la imagen para que cubra el contenedor */
     height: 100%; /* Ajusta la altura de las imágenes para que llenen el contenedor */
+    z-index: auto;
 }
 
 .slides img.active {
@@ -61,9 +63,24 @@ main {
     justify-content: center;
 }
 
+.next {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    color: white;
+    padding: 16px;
+    cursor: pointer;
+    pointer-events: auto; /* Permite que los botones sean clicables */
+    z-index: 10; /* Asegúrate de que estén sobre las imágenes */
+    border: none;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .indicators {
     position: absolute;
-    bottom: 10px;
+
     left: 50%;
     transform: translateX(-50%);
     display: flex;
