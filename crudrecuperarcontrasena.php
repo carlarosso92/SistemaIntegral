@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/menuempleado.css">
     <title>Recuperar Contraseña</title>
     <link rel="icon" href="img/logo2.png" type="image/png">
     <style>
@@ -14,7 +16,7 @@
     border-radius: 10px;
     background-color: #E4F2B5;
     text-align: center;
-    }
+    }   
 
     form label {
         display: block;
@@ -46,6 +48,7 @@
     </style>
 </head>
 <body>
+    <?php include 'header.php'; ?>
     <form method="POST" action="recuperarcontrasena.php">
         <label for="email">Email:</label>
         <input type="email" name="email" required>

@@ -55,5 +55,24 @@
     </main>
 
     <?php include 'footer.php'; ?>
+    <!-- Incluir este script en tu archivo index.php, justo antes del cierre del body -->
+<script>
+    let index = 0;
+
+    function showSlides() {
+        const slides = document.querySelector('.slides');
+        const totalSlides = slides.querySelectorAll('img').length;
+        
+        index++;
+        if (index >= totalSlides) {
+            index = 0;
+        }
+        
+        slides.style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    setInterval(showSlides, 3000); // Cambia la imagen cada 3 segundos
+</script>
+
 </body>
 </html>
