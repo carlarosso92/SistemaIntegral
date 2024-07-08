@@ -160,7 +160,7 @@ nav li a:hover {
 }
 
 .dropdown-category a {
-    color: #72A603;
+    color: black;
     padding: 5px;
     text-decoration: none;
     display: inline-block;
@@ -173,9 +173,134 @@ nav li a:hover {
     color: #EAF207; /* Opcional: cambia el color del texto si es necesario */
 }
 
-
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+/* Estilo para el carrito y su menú desplegable */
+.carrito {
+    position: relative;
+}
+
+#carritoButton {
+    background-color: #EAF207;
+    color: green;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-block;
+}
+
+#carritoButton:hover {
+    background-color: #72A603;
+    color: #EAF207;
+}
+
+.carrito-lateral {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #F2EDD0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+.carrito-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #72A603;
+    border-bottom: 1px solid #ddd;
+}
+
+.carrito-header span {
+    font-size: 18px;
+    font-weight: bold;
+    color: yellow;
+}
+
+.close-carrito {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: yellow;
+}
+
+.carrito-body {
+    padding: 20px;
+}
+
+.carrito-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.carrito-body ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.carrito-footer {
+    padding: 20px;
+    background-color: #72A603;
+    border-top: 1px solid #ddd;
+}
+
+.carrito-footer p {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: yellow;
+}
+
+.carrito-footer button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.carrito-footer button:hover {
+    background-color: #72A603;
+}
+
+/* Estilo para el carrito vacío */
+.carrito-vacio {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.carrito-vacio p {
+    font-size: 18px;
+    color: green;
+}
+
+#intentaloAquiButton {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+#intentaloAquiButton:hover {
+    background-color: #72A603;
 }
 
 /* Estilo para el botón de volver arriba */

@@ -6,6 +6,7 @@
     <title>Don Perico</title>
     <link rel="icon" href="img/logo2.png" type="image/png">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -16,6 +17,9 @@
             <div class="opcionusuario">
                 <a href="#">Iniciar Sesión</a>
                 <a href="#">Registrarse</a>
+            </div>
+            <div class="carrito">
+                <button id="carritoButton"><i class="fas fa-shopping-cart"></i> Carrito</button>
             </div>
         </div>
         <nav>
@@ -34,6 +38,28 @@
             </div>
         </nav>
     </header>
+
+    <!-- Pantalla lateral del carrito -->
+    <div id="carritoLateral" class="carrito-lateral">
+        <div class="carrito-header">
+            <span>Carrito de Compras</span>
+            <button id="closeCarrito" class="close-carrito">&times;</button>
+        </div>
+        <div class="carrito-body">
+            <div class="carrito-vacio">
+                <p>Tu carro está vacío</p>
+                <p>Navega por las ofertas y categorías</p>
+                <button id="intentaloAquiButton">Inténtalo aquí</button>
+            </div>
+            <ul id="carritoItems">
+                <!-- Aquí se cargarán los productos con JavaScript -->
+            </ul>
+            <div class="carrito-footer">
+                <p>Total: <span id="totalCarrito">$0</span></p>
+                <button id="checkoutButton">Ir a Pagar</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Botón de volver arriba -->
     <button id="backToTopBtn" title="Volver arriba">↑</button>
@@ -64,6 +90,15 @@
             } else {
                 menu.style.display = 'block';
             }
+        };
+
+        // Mostrar y ocultar el carrito lateral
+        document.getElementById('carritoButton').onclick = function() {
+            document.getElementById('carritoLateral').style.width = '300px';
+        };
+
+        document.getElementById('closeCarrito').onclick = function() {
+            document.getElementById('carritoLateral').style.width = '0';
         };
 
         // Cargar las categorías y subcategorías dinámicamente desde indexlogica.php
