@@ -44,7 +44,7 @@ if (!isset($_SESSION['usuario_id'])) {
                     <div class="role">Cargo: <?php echo htmlspecialchars($_SESSION['usuario_cargo']); ?></div>
                 </div>
             </div>
-            <h2>Actividades empleado</h2>
+            <h2>Actividades Empleado</h2>
             <div class="activities">
                 <button class="activity"><span class="icon">✓</span> Registrar venta</button>
                 <button class="activity"><span class="icon">🧩</span> Gestionar Producto</button>
