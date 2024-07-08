@@ -22,10 +22,6 @@ if (!isset($_SESSION['usuario_id'])) {
             <img src="img/logo.png" alt="Don Perico Logo">
             <h1>Don Perico</h1>
             <input type="text" placeholder="¿Qué buscas?...">
-            <div class="opcionusuario">
-                <a href="crudlogincliente.php">¡Hola! Inicia sesión</a>
-                <a href="#">Mis pedidos</a>
-            </div>
         </div>
         <div class="menuopcion">
             <nav>
@@ -44,13 +40,16 @@ if (!isset($_SESSION['usuario_id'])) {
                     <div class="role">Cargo: <?php echo htmlspecialchars($_SESSION['usuario_cargo']); ?></div>
                 </div>
             </div>
-            <h2>Actividades empleado</h2>
+            <h2>Actividades Administrador</h2>
             <div class="activities">
                 <button class="activity"><span class="icon">✓</span> Registrar venta</button>
                 <button class="activity"><span class="icon">🧩</span> Gestionar Producto</button>
                 <button class="activity"><span class="icon">✏️</span> Devoluciones</button>
                 <button class="activity"><span class="icon">📑</span> Reservas</button>
                 <button class="activity"><span class="icon">📦</span> Inventario</button>
+                <button class="activity"><span class="icon">📄</span> Generar informes</button>
+                <button class="activity"><span class="icon">👤</span> Gestión de Usuarios</button>
+                <button class="activity"><span class="icon">📚</span> Historial de ventas</button>
             </div>
         </div>
     </main>
