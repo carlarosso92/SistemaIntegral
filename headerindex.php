@@ -6,88 +6,6 @@
     <title>Don Perico</title>
     <link rel="icon" href="img/logo2.png" type="image/png">
     <link rel="stylesheet" href="css/global.css">
-
-    <style>
-        /* Estilo para el botón de todas las categorías y el menú desplegable */
-        .category-button {
-            background-color: #EAF207;
-            color: green;
-            padding: 10px;
-            border: 2px solid black;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .category-button:hover {
-            background-color: #72A603;
-            color: #EAF207;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #F9F9F9;
-            min-width: 300px;
-            max-height: 400px; /* Altura máxima del menú desplegable */
-            overflow-y: auto; /* Barra de desplazamiento vertical */
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            border-radius: 10px;
-            padding: 10px;
-            left: 0;
-        }
-
-        .dropdown-category {
-            margin-bottom: 10px;
-        }
-
-        /* Estilo para el texto de las categorías */
-        .dropdown-category strong {
-            display: block;
-            font-size: 18px;
-            margin-bottom: 5px;
-            color: #72A603; /* Cambia este valor al color deseado */
-        }
-
-        .dropdown-category a {
-            color: black;
-            padding: 5px;
-            text-decoration: none;
-            display: inline-block;
-            border-radius: 5px;
-            margin: 2px 0;
-        }
-
-        .dropdown-category a:hover {
-            background-color: #EAF207;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Estilo para el botón de volver arriba */
-        #backToTopBtn {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 99;
-            border: none;
-            outline: none;
-            background-color: #555;
-            color: white;
-            cursor: pointer;
-            padding: 15px;
-            border-radius: 10px;
-            font-size: 18px;
-        }
-
-        #backToTopBtn:hover {
-            background-color: #333;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -107,7 +25,7 @@
                     <li><a href="#ofertas">Ofertas</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                     <li class="dropdown">
-                        <button class="category-button">Todas las Categorías</button>
+                        <button class="category-button" id="categoryButton">Todas las Categorías</button>
                         <div class="dropdown-content" id="categoryMenu">
                             <!-- Aquí se cargarán dinámicamente las subcategorías con JavaScript -->
                         </div>
@@ -137,6 +55,16 @@
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         }
+
+        // Mostrar y ocultar el menú de categorías al hacer clic
+        document.getElementById('categoryButton').onclick = function() {
+            const menu = document.getElementById('categoryMenu');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        };
 
         // Cargar las categorías y subcategorías dinámicamente desde indexlogica.php
         document.addEventListener('DOMContentLoaded', function() {

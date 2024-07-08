@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Don Perico</title>
-    <link rel="icon" href="img/logo2.png" type="image/png">
-    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/index.css">
+    
 </head>
-<body>
-    <?php include 'headerindex.php'; ?>
 
+<body>
     <main>
         <div>
             <section class="carrusel">
@@ -59,14 +57,7 @@
                 </div>
             </div>
         </section>
-        <section id="galeria" class="galeria">
-            <img src="img/tienda1.jpg" alt="Tienda 1">
-            <img src="img/tienda2.jpg" alt="Tienda 2">
-        </section>
-
     </main>
-
-    <?php include 'footer.php'; ?>
 
     <script>
         let slideIndex = 0;

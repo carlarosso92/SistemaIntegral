@@ -1,13 +1,19 @@
 main {
     padding-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
 }
 
 .carrusel {
     position: sticky;
-    max-width: 99%;
+    top: 0; /* Asegura que el carrusel se mantenga en la parte superior cuando se desplaza */
+    width: 90%; /* Ajusta el ancho del carrusel */
+    max-width: 1200px; /* Añade un ancho máximo para pantallas grandes */
     overflow: hidden; /* Para evitar que la imagen se desborde */
     height: 300px; /* Ajusta la altura según sea necesario */
-    padding: 20px 0px;
+    background-color: #f5f5f5; /* Fondo para evitar que el contenido se vea detrás de la imagen */
+    margin-bottom: 40px; /* Añade espacio debajo del carrusel */
 }
 
 .slides {
@@ -36,13 +42,23 @@ main {
     display: flex;
     justify-content: space-between;
     transform: translateY(-50%);
+    pointer-events: none; /* Permite que los controles estén sobre la imagen */
 }
 
 .prev, .next {
-    background-color: #72a603;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
     color: white;
     padding: 16px;
     cursor: pointer;
+    pointer-events: auto; /* Permite que los botones sean clicables */
+    z-index: 10; /* Asegúrate de que estén sobre las imágenes */
+    border: none;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .indicators {
@@ -67,22 +83,11 @@ main {
     background-color: #717171;
 }
 
-.banner img {
-    max-width: 100%;
-    height: auto;
-}
-
-.oferta-principal {
-    background-color: #72A603;
-    color: yellow;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 2em;
-}
-
 .ofertas {
     text-align: center;
     padding: 20px 0;
+    width: 90%;
+    max-width: 1200px;
 }
 
 .ofertas-grid {
@@ -104,6 +109,8 @@ main {
 .productos {
     text-align: center;
     padding: 20px 0;
+    width: 90%;
+    max-width: 1200px;
 }
 
 .productos-grid {
@@ -144,27 +151,4 @@ main {
 .producto button:hover {
     background-color: #EAF207;
     color: #72A603;
-}
-
-.galeria {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 20px 0;
-}
-
-.galeria img {
-    width: 48%;
-    margin: 1%;
-    border-radius: 10px;
-}
-
-footer {
-    background-color: #72A603;
-    color: yellow;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
 }
