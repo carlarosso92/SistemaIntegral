@@ -9,16 +9,27 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'headerindex.php'; ?>
 
     <main>
-        <section class="carrusel">
-            <div class="slides">
-                <img src="img/banner1.jpg" alt="Banner 1">
-                <img src="img/banner2.jpg" alt="Banner 2">
-                <img src="img/banner3.jpg" alt="Banner 3">
-            </div>
-        </section>
+        <div>
+            <section class="carrusel">
+                <div class="slides">
+                    <img src="img/banner1.jpg" alt="Banner 1" class="active">
+                    <img src="img/banner2.jpg" alt="Banner 2">
+                    <img src="img/banner3.jpg" alt="Banner 3">
+                </div>
+                <div class="controls">
+                    <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+                    <span class="next" onclick="changeSlide(1)">&#10095;</span>
+                </div>
+                <div class="indicators">
+                    <span class="dot" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                </div>
+            </section>
+        </div>
         <section id="ofertas" class="ofertas">
             <h2>Ofertas</h2>
             <div class="ofertas-grid">
@@ -52,9 +63,11 @@
             <img src="img/tienda1.jpg" alt="Tienda 1">
             <img src="img/tienda2.jpg" alt="Tienda 2">
         </section>
+
     </main>
 
     <?php include 'footer.php'; ?>
+<<<<<<< HEAD
     <!-- Incluir este script en tu archivo index.php, justo antes del cierre del body -->
 <script>
     let index = 0;
@@ -74,5 +87,43 @@
     setInterval(showSlides, 3000); // Cambia la imagen cada 3 segundos
 </script>
 
+=======
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slides img');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = (i === index) ? 'block' : 'none';
+                dots[i].classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % totalSlides;
+            showSlide(slideIndex);
+        }
+
+        function changeSlide(n) {
+            slideIndex = (slideIndex + n + totalSlides) % totalSlides;
+            showSlide(slideIndex);
+        }
+
+        function currentSlide(n) {
+            slideIndex = n;
+            showSlide(slideIndex);
+        }
+
+        function startCarousel() {
+            showSlide(slideIndex);
+            setInterval(nextSlide, 3000); // Cambia de imagen cada 3 segundos
+        }
+
+        document.addEventListener('DOMContentLoaded', startCarousel);
+    </script>
+>>>>>>> 92f21ba44cccc5c18c480de0151711d8222c2deb
 </body>
 </html>
