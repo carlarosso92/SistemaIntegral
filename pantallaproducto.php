@@ -17,8 +17,7 @@
             <div class="subcategorias">
                 <h3>Subcategorías</h3>
                 <ul id="categorias-list">
-                    <!-- Categorías y subcategorías se cargarán aquí -->
-                </ul>
+                    </ul>
             </div>
             <div class="filtros-adicionales">
                 <h3>Filtros</h3>
@@ -26,8 +25,7 @@
                     <input type="checkbox" id="promociones"> Promociones
                 </label>
                 <h3>Marca</h3>
-                <!-- Aquí agregar filtros de marca -->
-            </div>
+                </div>
         </aside>
         <section class="productos">
             <div class="ordenar">
@@ -39,8 +37,7 @@
                 </select>
             </div>
             <div class="lista-productos" id="productos-list">
-                <!-- Productos se cargarán aquí -->
-            </div>
+                </div>
         </section>
     </div>
 
@@ -98,8 +95,7 @@
                             .then(response => response.json())
                             .then(data => {
                                 console.log('Producto agregado al carrito:', data);
-                                // Actualizar el carrito en el header
-                                actualizarCarrito(data.cart);
+                                actualizarCarrito(data.cart); // Llamada para actualizar el carrito
                             })
                             .catch(error => console.error('Error:', error));
                         });
@@ -107,25 +103,6 @@
                 })
                 .catch(error => console.error('Error:', error));
         });
-
-        function actualizarCarrito(carrito) {
-            const carritoItems = document.getElementById('carritoItems');
-            carritoItems.innerHTML = '';
-
-            let total = 0;
-            for (const [id, producto] of Object.entries(carrito)) {
-                const item = document.createElement('li');
-                item.innerHTML = `
-                    <p>${producto.name}</p>
-                    <p>Precio: $${producto.price}</p>
-                    <p>Cantidad: ${producto.quantity}</p>
-                `;
-                carritoItems.appendChild(item);
-                total += producto.price * producto.quantity;
-            }
-
-            document.getElementById('totalCarrito').innerText = `$${total}`;
-        }
     </script>
 </body>
 </html>

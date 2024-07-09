@@ -199,7 +199,7 @@ nav li a:hover {
 
 .carrito-lateral {
     height: 100%;
-    width: 0;
+    width: -1;
     position: fixed;
     top: 0;
     right: 0;
@@ -211,6 +211,8 @@ nav li a:hover {
     z-index: 2;
     display: flex;
     flex-direction: column; /* Habilita el layout de flex en columna */
+    min-width: 300px; /* Ancho mínimo para que no se corte el contenido */
+    max-width: 400px; /* Ancho máximo para que no ocupe toda la pantalla */
 }
 
 .carrito-header {
@@ -239,6 +241,7 @@ nav li a:hover {
 .carrito-body {
     padding: 20px;
     flex: 1; /* Permite que el cuerpo del carrito ocupe todo el espacio disponible */
+    overflow-y: auto; /* Habilita el scroll vertical si es necesario */
 }
 
 .carrito-body ul {
@@ -257,6 +260,7 @@ nav li a:hover {
     background-color: #72A603;
     border-top: 1px solid #ddd;
     margin-top: auto; /* Empuja el footer hacia abajo */
+  
 }
 
 .carrito-footer p {
@@ -267,8 +271,8 @@ nav li a:hover {
 }
 
 .carrito-footer button {
-    background-color: green;
-    color: white;
+    background-color: #eeea11;;
+    color: #72A603;
     padding: 10px 20px;
     border: none;
     border-radius: 20px;
@@ -294,45 +298,52 @@ nav li a:hover {
 /* CSS adicional para los productos del carrito */
 .producto-carrito {
     display: flex;
-    align-items: center;
+    align-items: center;  /* Alineación vertical al centro */
     margin-bottom: 15px;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    padding: 10px; /* Espacio interno alrededor de todo el producto */
+    width: 100%; 
 }
 
 .producto-carrito img {
-    width: 50px;
+    width: 50px; /* Ajusta el ancho de la imagen según prefieras */
     height: 50px;
-    margin-right: 10px;
+    margin-right: 15px;
     border-radius: 5px;
+    object-fit: cover; /* Para que la imagen se ajuste al contenedor manteniendo la relación de aspecto */
 }
 
-.producto-carrito div {
+.producto-carrito div { /* Cambios para alinear horizontalmente */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    width: 100%; /* Ajustar para que ocupe el espacio restante */
+    justify-content: space-between; /* Distribuye espacio entre nombre y botones */
 }
 
 .producto-carrito p {
-    margin: 5px 0;
+    margin: 0;
+    font-size: 14px;
+    margin-right: 15px; /* Espacio entre el nombre y los botones de cantidad */
 }
+
 
 .producto-carrito .cantidad {
     display: flex;
     align-items: center;
+    flex-direction: row; /* Alinea los botones horizontalmente */
+    margin-right: auto; /* Empuja los botones a la izquierda */
 }
 
 .producto-carrito .cantidad button {
-    background-color: #72A603;
+    background-color: #72A603; 
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 3px 7px; /* Reduce ligeramente el padding */
     cursor: pointer;
-    border-radius: 5px;
-    margin: 0 5px;
-}
-
-.producto-carrito .cantidad button:hover {
-    background-color: #5a8e04;
+    border-radius: 3px;
+    margin: 0 3px; /* Reduce ligeramente el margen */
+    font-size: 12px;
 }
 
 .producto-carrito .eliminar {
@@ -342,17 +353,9 @@ nav li a:hover {
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 5px;
 }
 
-.producto-carrito .eliminar:hover {
-    background-color: #c9302c;
-}
 
-.carrito-footer p {
-    font-size: 1.2em;
-    font-weight: bold;
-}
 
 
 
