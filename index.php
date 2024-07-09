@@ -33,39 +33,44 @@
         </section>
         
         <section id="productos" class="productos">
-            <h2>Productos</h2>
-            <div class="productos-carrusel">
-                <div class="producto">
-                    <h3>Nombre del producto</h3>
-                    <p>Valor</p>
-                    <button>Agregar</button>
-                </div>
-                <div class="producto">
-                    <h3>Nombre del producto</h3>
-                    <p>Valor</p>
-                    <button>Agregar</button>
-                </div>
-                <div class="producto">
-                    <h3>Nombre del producto</h3>
-                    <p>Valor</p>
-                    <button>Agregar</button>
-                </div>
-                <div class="producto">
-                    <h3>Nombre del producto</h3>
-                    <p>Valor</p>
-                    <button>Agregar</button>
-                </div>
-                <div class="producto">
-                    <h3>Nombre del producto</h3>
-                    <p>Valor</p>
-                    <button>Agregar</button>
-                </div>
-            </div>
-            <div class="controls">
-                <span class="prev" onclick="changeProductSlide(-1)">&#10094;</span>
-                <span class="next" onclick="changeProductSlide(1)">&#10095;</span>
-            </div>
-        </section>
+    <h2>Productos</h2>
+    <div class="productos-carrusel">
+        <div class="producto">
+            <img src="img/producto1.jpg" alt="Producto 1">
+            <h3>Nombre del producto</h3>
+            <p>Valor</p>
+            <button>Agregar</button>
+        </div>
+        <div class="producto">
+            <img src="img/producto2.jpg" alt="Producto 2">
+            <h3>Nombre del producto</h3>
+            <p>Valor</p>
+            <button>Agregar</button>
+        </div>
+        <div class="producto">
+            <img src="img/producto3.jpg" alt="Producto 3">
+            <h3>Nombre del producto</h3>
+            <p>Valor</p>
+            <button>Agregar</button>
+        </div>
+        <div class="producto">
+            <img src="img/producto4.jpg" alt="Producto 4">
+            <h3>Nombre del producto</h3>
+            <p>Valor</p>
+            <button>Agregar</button>
+        </div>
+        <div class="producto">
+            <img src="img/producto5.jpg" alt="Producto 5">
+            <h3>Nombre del producto</h3>
+            <p>Valor</p>
+            <button>Agregar</button>
+        </div>
+    </div>
+    <div class="controls">
+        <span class="prev" onclick="changeProductSlide(-1)">&#10094;</span>
+        <span class="next" onclick="changeProductSlide(1)">&#10095;</span>
+    </div>
+</section>
     </main>
 
     <script>
@@ -128,6 +133,9 @@ function changeProductSlide(n) {
 }
 
 document.addEventListener('DOMContentLoaded', () => showProductSlide(productSlideIndex));
+
     </script>
+    
 </body>
+
 </html>
