@@ -26,6 +26,58 @@ if (!$resultCategoria) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kameron:wght@400&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JejuGothic:wght@400&display=swap" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        h2 {
+            padding: 10px;
+            font-style: normal;
+            text-align: center;
+            margin: 3em 26em auto;
+            color: #72A603;
+            background-color: #E4F2B5;
+            max-width: 500px;
+            border-radius: 10px;
+            border: 1px solid #72A603;
+        }
+        h2:hover{
+            background-color: #D3E1A4;
+            color: #61A502;
+        }
+        
+        form {
+            max-width: 500px;
+            margin: 2em auto;
+            padding: 20px;
+            border: 1px solid #72A603;
+            border-radius: 10px;
+            background-color: #E4F2B5;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"],
+        form input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #72A603;
+            border-radius: 20px;
+        }
+
+        form button {
+            margin-top: 1.5em;
+            background-color: #72A603;
+            color: yellow;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #EAF207;
+            color: #72A603;
+        }
+    </style>
     <script>
         $(document).ready(function() {
             $('#categoria').change(function() {

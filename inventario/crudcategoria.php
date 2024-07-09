@@ -1,8 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Crear categorías y subcategorías</title>
-    <link rel="icon" href="../img/logo2.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/menuempleado.css">
+    <title>Crear categorias y subcategorias</title>
+    <link rel="icon" href="img/logo2.png" type="image/png">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #F2EDD0;
+        }
+        h2 {
+            padding: 10px;
+            font-style: normal;
+            text-align: center;
+            margin: 2em 20em auto;
+            color: #72A603;
+            background-color: #E4F2B5;
+            max-width: 500px;
+            border-radius: 10px;
+            border: 1px solid #72A603;
+        }
+        h2:hover{
+            background-color: #D3E1A4;
+            color: #61A502;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 2em auto;
+            padding: 20px;
+            border: 1px solid #72A603;
+            border-radius: 10px;
+            background-color: #E4F2B5;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"],
+        form input[type="number"],
+        form input[type="submit"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #72A603;
+            border-radius: 20px;
+        }
+
+        form button {
+            margin-top: 1.5em;
+            background-color: #72A603;
+            color: yellow;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #EAF207;
+            color: #72A603;
+        }
+    </style>
     <script>
         function addSubcategoryField() {
             const subcategoriesDiv = document.getElementById('subcategories');
@@ -16,7 +78,7 @@
     </script>
 </head>
 <body>
-    <h1>Crear categoría nueva y subcategorías de la misma</h1>
+    <h2>Crear categoría nueva y subcategorías de la misma</h2>
     
     <form action="process_category.php" method="POST">
         <label for="category">Categoría:</label>
