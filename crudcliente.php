@@ -59,7 +59,7 @@
             color: #72A603;
         }
     </style>
-
+</head>
 <body>
     <h2>Registro</h2>
     <form action="ingresarcliente.php" method="POST">
