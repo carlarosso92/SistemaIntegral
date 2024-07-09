@@ -13,10 +13,9 @@
             padding: 10px;
             font-style: normal;
             text-align: center;
-            margin: 8em 26em auto;
+            margin: 2em 26em auto;
             color: #72A603;
             background-color: #E4F2B5;
-            max-width: 500px;
             border-radius: 10px;
             border: 1px solid #72A603;
         }
@@ -28,7 +27,7 @@
         form {
             max-width: 500px;
             margin: 2em auto;
-            padding: 20px;
+            padding: 40px;
             border: 1px solid #72A603;
             border-radius: 10px;
             background-color: #E4F2B5;
@@ -61,7 +60,6 @@
     </style>
 </head>
 <body>
-    <?php include 'header.php'; ?>
     <h2>Registro</h2>
     <form action="ingresarempleado.php" method="POST">
         Nombre: <input type="text" name="nombre" required><br>
