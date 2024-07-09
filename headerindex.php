@@ -47,10 +47,8 @@
             <button id="closeCarrito" class="close-carrito">&times;</button>
         </div>
         <div class="carrito-body">
-            <div class="carrito-vacio">
+            <div class="carrito-vacio" id="carritoVacio">
                 <p>Tu carro está vacío</p>
-                <p>Navega por las ofertas y categorías</p>
-                <button id="intentaloAquiButton">Inténtalo aquí</button>
             </div>
             <ul id="carritoItems">
                 <!-- Aquí se cargarán los productos con JavaScript -->
@@ -101,6 +99,78 @@
         document.getElementById('closeCarrito').onclick = function() {
             document.getElementById('carritoLateral').style.width = '0';
         };
+
+        // Función para actualizar el carrito
+        function actualizarCarrito(carrito) {
+            const carritoItems = document.getElementById('carritoItems');
+            const carritoVacio = document.getElementById('carritoVacio');
+            carritoItems.innerHTML = '';
+
+            let total = 0;
+            let tieneProductos = false;
+            for (const [id, producto] of Object.entries(carrito)) {
+                const item = document.createElement('li');
+                item.innerHTML = `
+                    <div class="producto-carrito">
+                        <img src="${producto.imagen}" alt="${producto.name}">
+                        <div>
+                            <p>${producto.name}</p>
+                            <p>Precio: $${producto.price}</p>
+                            <div class="cantidad">
+                                <button onclick="modificarCantidad(${id}, -1)">-</button>
+                                <span>${producto.quantity}</span>
+                                <button onclick="modificarCantidad(${id}, 1)">+</button>
+                            </div>
+                            <button class="eliminar" onclick="eliminarProducto(${id})">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+                carritoItems.appendChild(item);
+                total += producto.price * producto.quantity;
+                tieneProductos = true;
+            }
+
+            document.getElementById('totalCarrito').innerText = `$${total}`;
+
+            // Mostrar u ocultar el mensaje de carrito vacío
+            if (tieneProductos) {
+                carritoVacio.style.display = 'none';
+            } else {
+                carritoVacio.style.display = 'block';
+            }
+        }
+
+        // Función para modificar la cantidad de un producto en el carrito
+        function modificarCantidad(productId, cantidad) {
+            fetch('logicapantallaproducto.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `action=modify&product_id=${productId}&quantity=${cantidad}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                actualizarCarrito(data.cart);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Función para eliminar un producto del carrito
+        function eliminarProducto(productId) {
+            fetch('logicapantallaproducto.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `action=remove&product_id=${productId}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                actualizarCarrito(data.cart);
+            })
+            .catch(error => console.error('Error:', error));
+        }
 
         // Cargar las categorías y subcategorías dinámicamente desde indexlogica.php
         document.addEventListener('DOMContentLoaded', function() {

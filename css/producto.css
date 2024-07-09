@@ -1,0 +1,120 @@
+.contenedor-productos {
+    display: flex;
+    margin-top: 100px; /* Ajuste para que no se solape con el header */
+}
+
+aside.filtros {
+    width: 20%;
+    padding: 45px;
+    background-color: #E4F2B5;
+    border-right: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+aside.filtros h2, 
+aside.filtros p {
+    color: #72a603;
+}
+
+.subcategorias ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.subcategorias li {
+    margin-bottom: 10px;
+}
+
+.subcategorias a {
+    color: #72a603;
+    text-decoration: none;
+}
+
+.subcategorias a:hover {
+    text-decoration: underline;
+}
+
+.filtros-adicionales h3 {
+    color: #72a603;
+    margin-top: 20px;
+}
+
+.filtros-adicionales label {
+    display: block;
+    margin-top: 10px;
+}
+
+section.productos {
+    width: 80%;
+    padding: 20px;
+    background-color: #F2EDD0;
+    padding: 35px;
+}
+
+.ordenar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.ordenar label {
+    margin-right: 10px;
+}
+
+.lista-productos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.producto {
+    width: calc(25% - 20px);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.producto img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.producto .precio {
+    color: #72a603;
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.producto .descripcion {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.btn-agregar {
+    background-color: #72a603;
+    color: #eaf207;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-agregar:hover {
+    background-color: #72A603;
+}
+
+/* Estilo para las imágenes */
+.producto img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
