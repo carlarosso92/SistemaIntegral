@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/menuempleado.css">
-    <title>Registro de Empleados</title>
+    <title>Registro de Cliente</title>
     <link rel="icon" href="img/logo2.png" type="image/png">
     <style>
         h2 {
@@ -16,6 +15,7 @@
             margin: 2em 26em auto;
             color: #72A603;
             background-color: #E4F2B5;
+            max-width: 500px;
             border-radius: 10px;
             border: 1px solid #72A603;
         }
@@ -27,7 +27,7 @@
         form {
             max-width: 500px;
             margin: 2em auto;
-            padding: 40px;
+            padding: 20px;
             border: 1px solid #72A603;
             border-radius: 10px;
             background-color: #E4F2B5;
@@ -45,6 +45,7 @@
         }
 
         form button {
+            margin-top: 1.5em;
             background-color: #72A603;
             color: yellow;
             border: none;
