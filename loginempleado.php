@@ -1,5 +1,4 @@
-<?php
-include "php/config.php";
+<?php include "php/config.php";
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -8,10 +7,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conexion) {
         // Consulta para administradores
-        $query = "SELECT usuarios.usuario_id, usuarios.nombre, administradores.id AS admin_id, 'Administrador' AS cargo 
-                  FROM usuarios 
-                  INNER JOIN administradores ON usuarios.usuario_id = administradores.usuario_id 
-                  WHERE usuarios.email='$email' AND usuarios.contrasena='$contrasena'";
+        $query = "SELECT us.usuario_id, us.nombre, ad.id AS admin_id, em.cargo AS cargo 
+                  FROM usuarios us
+                  INNER JOIN administradores ad ON us.usuario_id = ad.usuario_id 
+                  INNER JOIN empleados em ON us.usuario_id = em.usuario_id
+                  WHERE us.email='$email' AND us.contrasena='$contrasena'";
         $result = mysqli_query($conexion, $query);
         $user = mysqli_fetch_assoc($result);
 

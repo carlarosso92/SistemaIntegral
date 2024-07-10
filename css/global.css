@@ -118,7 +118,7 @@ nav li a:hover {
 /* Estilo para el botón de todas las categorías y el menú desplegable */
 .category-button {
     background-color: #EAF207;
-    color: #72A603;
+    color: green;
     padding: 5px 7px;
     border: 1px solid black;
     border-radius: 20px;
@@ -136,7 +136,7 @@ nav li a:hover {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #F9F9F9;
+    background-color: #e4f2b5;
     min-width: 300px;
     max-height: 400px; /* Altura máxima del menú desplegable */
     overflow-y: auto; /* Barra de desplazamiento vertical */
@@ -160,7 +160,7 @@ nav li a:hover {
 }
 
 .dropdown-category a {
-    color: black;
+    color: green;
     padding: 5px;
     text-decoration: none;
     display: inline-block;
@@ -183,7 +183,7 @@ nav li a:hover {
 
 #carritoButton {
     background-color: #EAF207;
-    color: #72A603;
+    color: green;
     padding: 10px 20px;
     border: 1px solid black;
     border-radius: 20px;

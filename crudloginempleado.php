@@ -8,7 +8,7 @@
 <body>
     <div class="modal">
         <div class="modal-contenido">
-            <form method="POST" action="logincliente.php">
+            <form method="POST" action="loginempleado.php">
                 <label for="email">Email:</label>
                 <input type="email" name="email" required>
                 <br>

@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($user) {
             $_SESSION['usuario_id'] = $user['usuario_id'];
+            $_SESSION['cliente_nombre'] = $user['nombre']; // Almacena el nombre del cliente en la sesión
             echo "<script>alert('Inicio de sesión exitoso.');window.location.href = 'index.php';</script>";
         } else {
             echo "<script>alert('Email o contraseña incorrectos.');window.location.href = 'crudlogincliente.php';</script>";
