@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $usuario_id = mysqli_insert_id($conexion);
             
             // Insertar datos en la tabla clientes
-            $insertar2 = "INSERT INTO clientes (usuario_id, telefono, , direccion) VALUES ('$usuario_id', '$telefono', , '$direccion')";
+            $insertar2 = "INSERT INTO clientes (usuario_id, telefono, direccion) VALUES ('$usuario_id', '$telefono', '$direccion')";
             $resultado2 = mysqli_query($conexion, $insertar2);
             
             // Verificar si la consulta fue exitosa

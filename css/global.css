@@ -136,7 +136,7 @@ nav li a:hover {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #F9F9F9;
+    background-color: #e4f2b5;
     min-width: 300px;
     max-height: 400px; /* Altura máxima del menú desplegable */
     overflow-y: auto; /* Barra de desplazamiento vertical */
@@ -160,7 +160,7 @@ nav li a:hover {
 }
 
 .dropdown-category a {
-    color: black;
+    color: green;
     padding: 5px;
     text-decoration: none;
     display: inline-block;

@@ -1,3 +1,8 @@
+<?php
+// headerindex.php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,8 +21,12 @@
             <h1>Don Perico</h1>
             <input type="text" placeholder="¿Qué buscas?">
             <div class="opcionusuario">
-                <a href="crudlogincliente.php">Iniciar Sesión</a>
-                <a href="crudcliente.php">Registrarse</a>
+                <?php if (isset($_SESSION['cliente_nombre'])): ?>
+                    <span>Bienvenido, <?php echo htmlspecialchars($_SESSION['cliente_nombre']); ?></span>
+                <?php else: ?>
+                    <a href="crudlogincliente.php">Iniciar Sesión</a>
+                    <a href="crudcliente.php">Registrarse</a>
+                <?php endif; ?>
             </div>
             <div class="carrito">
                 <button id="carritoButton"><i class="fas fa-shopping-cart"></i> Carrito</button>
