@@ -31,7 +31,7 @@ try {
 
     // Insertar en la tabla reservas
     $stmt = $conexion->prepare("INSERT INTO reservas (usuario_id, hora_reserva, hora_retiro, total, flg_activo) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("issd", $usuario_id, $hora_actual, $hora_retiro, $cart_total, 1);
+    $stmt->bind_param("issdi", $usuario_id, $hora_actual, $hora_retiro, $cart_total, 1);
     $stmt->execute();
     $reserva_id = $stmt->insert_id;
 
