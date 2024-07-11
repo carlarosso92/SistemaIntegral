@@ -1,5 +1,4 @@
 <?php
-// headerindex.php
 session_start();
 ?>
 
@@ -17,12 +16,12 @@ session_start();
     <header>
         <div class="contenedor">
             <img src="img/logo.png" alt="Logo">
-            </img>
             <h1>Don Perico</h1>
             <input type="text" placeholder="¿Qué buscas?">
             <div class="opcionusuario">
                 <?php if (isset($_SESSION['cliente_nombre'])): ?>
                     <span>Bienvenido, <?php echo htmlspecialchars($_SESSION['cliente_nombre']); ?></span>
+                    <a href="cerrarsesioncliente.php" id="cerrarSesionButton">Cerrar Sesión</a> <!-- Botón de Cerrar Sesión -->
                 <?php else: ?>
                     <a href="crudlogincliente.php">Iniciar Sesión</a>
                     <a href="crudcliente.php">Registrarse</a>
@@ -35,7 +34,7 @@ session_start();
         <nav>
             <div class="menuopcion">
                 <ul>
-                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="pantallaproducto.php">Productos</a></li>
                     <li><a href="#ofertas">Ofertas</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                     <li class="dropdown">
