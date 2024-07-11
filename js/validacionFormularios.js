@@ -70,7 +70,8 @@ function validateForm() {
         {"nombreCampo": "descripcion", "subTexto":"descripcionOutput", "tipo": "letras"},
         {"nombreCampo": "precio", "subTexto":"precioOutput", "tipo": "numeros"},
         {"nombreCampo": "cantidad", "subTexto":"cantidadOutput", "tipo": "numeros"},
-        {"nombreCampo": "monto", "subTexto":"montoOutput", "tipo": "numeros"}
+        {"nombreCampo": "monto", "subTexto":"montoOutput", "tipo": "numeros"},
+        {"nombreCampo": "direccion", "subTexto":"direccionOutput", "tipo": "letras"}
     ]
 
     camposFormulario.forEach((elemento) => {
@@ -153,6 +154,12 @@ document.addEventListener("DOMContentLoaded", function() {
     if(document.getElementById('monto')){
         document.getElementById('monto').addEventListener('input', function() {
             validarCampo('monto', 'montoOutput', "numeros");
+            validateForm();
+        });
+    }
+    if(document.getElementById('direccion')){
+        document.getElementById('direccion').addEventListener('input', function() {
+            validarCampo('direccion', 'direccionOutput', "numeros");
             validateForm();
         });
     }
