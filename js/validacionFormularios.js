@@ -46,7 +46,7 @@ function validarCampo(inputId, outputId, inputType){
         }
     } else {
         if (value <= 0) {
-            document.getElementById(outputId).innerText = value + " no puede ser 0.";
+            document.getElementById(outputId).innerText = "No puede ser 0.";
             return false;
         } else {
             document.getElementById(outputId).innerText = "";
@@ -61,12 +61,15 @@ function validateForm() {
 
     let camposFormulario = [
         {"nombreCampo": "name", "subTexto":"nombreOutput", "tipo": "letras"},
-        {"nombreCampo": "rut", "subTexto":"rutOutput", "tipo": "string"},
-        {"nombreCampo": "telefono", "subTexto":"telefonoOutput", "tipo": "string"},
-        {"nombreCampo": "correo", "subTexto":"correoOutput", "tipo": "string"},
-        {"nombreCampo": "contrasena", "subTexto":"contrasenaOutput", "tipo": "string"},
-        {"nombreCampo": "cargo", "subTexto":"cargoOutput", "tipo": "string"},
-        {"nombreCampo": "sueldo", "subTexto":"sueldoOutput", "tipo": "numeros"}
+        {"nombreCampo": "rut", "subTexto":"rutOutput", "tipo": "letras"},
+        {"nombreCampo": "telefono", "subTexto":"telefonoOutput", "tipo": "letras"},
+        {"nombreCampo": "correo", "subTexto":"correoOutput", "tipo": "letras"},
+        {"nombreCampo": "contrasena", "subTexto":"contrasenaOutput", "tipo": "letras"},
+        {"nombreCampo": "cargo", "subTexto":"cargoOutput", "tipo": "letras"},
+        {"nombreCampo": "sueldo", "subTexto":"sueldoOutput", "tipo": "numeros"},
+        {"nombreCampo": "descripcion", "subTexto":"descripcionOutput", "tipo": "letras"},
+        {"nombreCampo": "precio", "subTexto":"precioOutput", "tipo": "numeros"},
+        {"nombreCampo": "cantidad", "subTexto":"cantidadOutput", "tipo": "numeros"}
     ]
 
     camposFormulario.forEach((elemento) => {
@@ -125,6 +128,24 @@ document.addEventListener("DOMContentLoaded", function() {
     if(document.getElementById('sueldo')){
         document.getElementById('sueldo').addEventListener('input', function() {
             validarCampo('sueldo', 'sueldoOutput', "numeros");
+            validateForm();
+        });
+    }    
+    if(document.getElementById('descripcion')){
+        document.getElementById('descripcion').addEventListener('input', function() {
+            validarCampo('descripcion', 'descripcionOutput', "letras");
+            validateForm();
+        });
+    }
+    if(document.getElementById('precio')){
+        document.getElementById('precio').addEventListener('input', function() {
+            validarCampo('precio', 'precioOutput', "numeros");
+            validateForm();
+        });
+    }
+    if(document.getElementById('cantidad')){
+        document.getElementById('cantidad').addEventListener('input', function() {
+            validarCampo('cantidad', 'cantidadOutput', "numeros");
             validateForm();
         });
     }
