@@ -27,6 +27,7 @@ CREATE TABLE reservas (
     hora_reserva,
     hora_retiro,
     total DECIMAL(10, 2) NOT NULL,
+    flg_activo INT(1),
     FOREIGN KEY (usuario_id) REFERENCES clientes(usuario_id) ON DELETE SET NULL
 );
 
