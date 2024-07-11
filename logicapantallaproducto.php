@@ -49,6 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $categorias_result = mysqli_query($conexion, $categorias_query);
 
     $data = [];
+    $data['categorias'] = [];
+    $data['productos'] = [];
 
     while ($categoria = mysqli_fetch_assoc($categorias_result)) {
         $categoria_id = $categoria['id'];
@@ -72,19 +74,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ];
     }
 
-    $productos_query = "SELECT * FROM productos";
+    // Obtener productos con descuentos
+    $productos_query = "SELECT p.*, IFNULL(d.valor_descuento, 0) AS descuento 
+                        FROM productos p
+                        LEFT JOIN descuentos d ON p.id_producto = d.producto_id
+                        AND CURDATE() BETWEEN d.fecha_inicio AND d.fecha_fin";
     $productos_result = mysqli_query($conexion, $productos_query);
 
     while ($producto = mysqli_fetch_assoc($productos_result)) {
+        // Depuración: Verificar que los datos del producto son correctos
+        // echo "<pre>"; var_dump($producto); echo "</pre>"; // Puedes habilitar esto para depurar
+
         $data['productos'][] = [
             'id' => $producto['id_producto'],
             'nombre' => $producto['nombre'],
             'descripcion' => $producto['descripcion'],
-            'precio' => $producto['precio'],
+            'precio' => (float) $producto['precio'], // Asegurarse de que el precio es un número
+            'descuento' => (float) $producto['descuento'], // Asegurarse de que el descuento es un número
             'imagen' => 'img/producto_default.jpg'
         ];
     }
 
+    // Enviar los datos como JSON
     echo json_encode($data);
     exit();
 }

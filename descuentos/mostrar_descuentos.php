@@ -1,11 +1,25 @@
+<?php
+include "config/conexion.php";
+
+// Obtener los productos y sus descuentos si existen
+$sql = "SELECT p.nombre, p.precio, d.valor_descuento, 
+        CASE 
+            WHEN d.valor_descuento IS NOT NULL THEN p.precio * (1 - d.valor_descuento / 100)
+            ELSE p.precio
+        END AS precio_con_descuento
+        FROM productos p
+        LEFT JOIN descuentos d ON p.id_producto = d.producto_id 
+        AND CURDATE() BETWEEN d.fecha_inicio AND d.fecha_fin";
+
+$result = mysqli_query($conexion, $sql);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Don Perico</title>
-  <link rel="icon" href="../img/logo2.png" type="image/png">
-  <style>
-    /* Estilos generales */
-    body {
+    <title>Productos con Descuento - Don Perico</title>
+    <style>
+        body {
       font-family: sans-serif;
       margin: 0;
     }
@@ -15,7 +29,7 @@
       background-color: #72A603;
       color: yellow;
       padding: 15px 0;
-      position: fixed;
+      position: relative;
       top: 0;
       width: 100%;
       z-index: 100;
@@ -152,20 +166,47 @@
         margin-bottom: 5px;
       }
     }
-  </style>
+    </style>
 </head>
 <body>
-  <div class="main-container">
     <header>
-      <div class="container">
-        <img src="../img/logo.png" alt="Don Perico Logo">
-        <h1>Don Perico</h1>
-
-        <div class="user-options">
-          <a href="#">Empleado</a>
+        <div class="container">
+            <img src="../img/logo.png" alt="Don Perico Logo">
+            <h1>Don Perico</h1>
+            <div class="user-options">
+                <a href="#">Empleado</a>
+                <ul>
+                    <li><a href="logout.php">Cerrar sesión</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </header>
-  </div>
+
+    <div class="main-container">
+        <h2>Productos con Descuento</h2>
+        <div class="products-section">
+            <?php
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<div class='product'>";
+                    echo "<h3>" . $row['nombre'] . "</h3>";
+                    echo "<p>Precio Original: " . $row['precio'] . "€</p>";
+                    if ($row['valor_descuento'] != NULL) {
+                        echo "<p>Descuento: " . $row['valor_descuento'] . "%</p>";
+                        echo "<p>Precio con Descuento: " . $row['precio_con_descuento'] . "€</p>";
+                    } else {
+                        echo "<p>Precio: " . $row['precio'] . "€</p>";
+                    }
+                    echo "</div>";
+                }
+            } else {
+                echo "No hay productos disponibles.";
+            }
+            mysqli_close($conexion);
+            ?>
+        </div>
+    </div>
 </body>
 </html>
+
+
