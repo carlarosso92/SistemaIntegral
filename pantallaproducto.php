@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos - Don Perico</title>
+    <title >Productos - Don Perico</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/producto.css">
 
@@ -13,20 +13,14 @@
     
     <div class="contenedor-productos">
         <aside class="filtros">
-            <h2>Yoghurt</h2>
+            <h2>Productos</h2>
             <p id="productos-count">0 productos</p>
             <div class="subcategorias">
                 <h3>Subcategorías</h3>
                 <ul id="categorias-list">
                     </ul>
             </div>
-            <div class="filtros-adicionales">
-                <h3>Filtros</h3>
-                <label for="promociones">
-                    <input type="checkbox" id="promociones"> Promociones
-                </label>
-                <h3>Marca</h3>
-                </div>
+           
         </aside>
         <section class="productos">
             <div class="ordenar">

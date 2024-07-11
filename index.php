@@ -135,7 +135,7 @@ function changeProductSlide(n) {
 document.addEventListener('DOMContentLoaded', () => showProductSlide(productSlideIndex));
 
     </script>
-    
+    <?php include "footer.php"; ?>
 </body>
 
 </html>

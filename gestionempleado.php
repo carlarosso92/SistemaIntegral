@@ -47,7 +47,6 @@ if (!isset($_SESSION['usuario_id'])) {
             <h2>Actividades Empleado</h2>
             <div class="activities">
                 <button class="activity"><span class="icon">✓</span> Registrar venta</button>
-                <button class="activity"><span class="icon">🧩</span> Gestionar Producto</button>
                 <button class="activity"><span class="icon">✏️</span> Devoluciones</button>
                 <button class="activity"><span class="icon">📑</span> Reservas</button>
                 <button class="activity"><span class="icon">📦</span> Inventario</button>

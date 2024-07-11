@@ -23,11 +23,11 @@ CREATE TABLE detalle_ventas (
 -- Crear la tabla reservas
 CREATE TABLE reservas (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    cliente_id INT,
+    usuario_id INT,
     hora_reserva,
     hora_retiro,
     total DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE SET NULL
+    FOREIGN KEY (usuario_id) REFERENCES clientes(usuario_id) ON DELETE SET NULL
 );
 
 -- Crear la tabla detalle_reservas
