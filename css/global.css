@@ -15,9 +15,7 @@ header {
 }
 
 img {
-   
-    width: 7%;
-    
+    width: 10%;
     z-index: 2;
 }
 
@@ -53,6 +51,7 @@ input[type="text"] {
 .opcionusuario {
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
 .opcionusuario a, .opcionusuario span {
@@ -66,6 +65,33 @@ input[type="text"] {
     color: #72A603;
     border-radius: 10px;
     background-color: #EAF207;
+}
+
+.separator {
+    border-left: 2px solid yellow;
+    height: 50px; /* Ajusta la altura según sea necesario */
+    margin: 0 15px; /* Espaciado entre los elementos */
+}
+
+.carrito {
+    display: flex;
+    align-items: center;
+}
+
+#carritoButton {
+    background-color: #EAF207;
+    color: green;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-block;
+}
+
+#carritoButton:hover {
+    background-color: #72A603;
+    color: #EAF207;
 }
 
 .menuopcion {
@@ -119,13 +145,14 @@ nav li a:hover {
 .category-button {
     background-color: #EAF207;
     color: green;
-    padding: 5px 7px;
+    padding: 5px 6px 5px 4px;
     border: 1px solid black;
     border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
     margin: 8px;
     display: inline-block;
+    font-family: 'Comic Sans MS';
 }
 
 .category-button:hover {
@@ -157,6 +184,7 @@ nav li a:hover {
     font-size: 18px;
     margin-bottom: 5px;
     color: #72A603; /* Cambia este valor al color deseado */
+     font-family: 'Comic Sans MS';
 }
 
 .dropdown-category a {
@@ -175,26 +203,6 @@ nav li a:hover {
 
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-.carrito {
-    position: relative;
-}
-
-#carritoButton {
-    background-color: #EAF207;
-    color: green;
-    padding: 10px 20px;
-    border: 1px solid black;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 16px;
-    display: inline-block;
-}
-
-#carritoButton:hover {
-    background-color: #72A603;
-    color: #EAF207;
 }
 
 .carrito-lateral {
@@ -352,9 +360,6 @@ nav li a:hover {
     border-radius: 5px;
 }
 
-
-
-
 #intentaloAquiButton {
     background-color: green;
     color: white;
@@ -390,7 +395,6 @@ nav li a:hover {
 #backToTopBtn:hover {
     background-color: #333;
 }
-
 
 /* css/modal.css */
 .modal {

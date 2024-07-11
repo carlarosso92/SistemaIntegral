@@ -6,6 +6,7 @@
     <title >Productos - Don Perico</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/producto.css">
+    <link rel="icon" href="../img/logo2.png" type="image/png">
 
 </head>
 <body>
