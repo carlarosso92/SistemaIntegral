@@ -10,8 +10,12 @@ if (!isset($_SESSION['usuario_id'])) {
 }
 
 $usuario_id = $_SESSION['usuario_id'];
-$hora_retiro = $_POST['hora_retiro'];
+$hora_retiro_entrada = $_POST['hora_retiro'];
 $hora_actual = date("Y-m-d H:i:s");
+
+//formatear la hora de retiro
+$currentDate = date("Y-m-d");
+$hora_retiro = $currentDate . " " . $hora_retiro_entrada;
 
 // Obtener el total del carrito
 $cart_total = 0;
@@ -24,6 +28,9 @@ foreach ($cart as $item) {
 $conexion->begin_transaction();
 
 try {
+
+
+
     // Insertar en la tabla reservas
     $stmt = $conexion->prepare("INSERT INTO reservas (usuario_id, hora_reserva, hora_retiro, total) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("issd", $usuario_id, $hora_actual, $hora_retiro, $cart_total);
