@@ -15,6 +15,7 @@ $result = $conexion->query($query);
     <link rel="stylesheet" href="css/menuempleado.css">
     <title>Ingreso de proveedor</title>
     <link rel="icon" href="img/logo2.png" type="image/png">
+    <script src="../js/validacionFormularios.js"></script>
     <style>
         body {
             font-family: sans-serif;
@@ -76,6 +77,33 @@ $result = $conexion->query($query);
             width: 60%;
             heigth: 100%;
         }
+        .validation-message {
+            color: red;
+            margin: 0;
+            padding-left: 10px; /* Ajusta este valor según tus necesidades */
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: -40px;
+            font-size: small;
+        }
+
+        input[type="text"] {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Estilo para el botón "Guardar" cuando está deshabilitado */
+        #buttonSubmit:disabled {
+            background-color: #ddd; /* Color de fondo gris */
+            color: #666; /* Color de texto gris */
+            cursor: default; /* Cursor predeterminado */
+            pointer-events: none; /* Evitar eventos de puntero */
+        }
+
+        /* Estilo adicional para deshabilitar el efecto de hover */
+        #buttonSubmit:disabled:hover {
+            background-color: #ddd; /* Mantener el color de fondo gris */
+            color: #666; /* Mantener el color de texto gris */
+        }
     </style>
 <body>
     <h2>Registrar Pago a Proveedor</h2>
@@ -89,17 +117,16 @@ $result = $conexion->query($query);
         <br>
         <br>
         <label for="fecha_pago">Fecha de Pago:</label>
-        <input type="date" name="fecha_pago" id="fecha_pago" required>
-        <br>
-        <br>
-        <label for="monto">Monto:</label>
-        <input type="text" name="monto" id="monto" required>
-        <br>
-        <br>
-        <label for="descripcion">Descripción:</label>
-        <textarea name="descripcion" id="descripcion"></textarea>
-
-        <button type="submit">Registrar Pago</button>
+        <input type="date" name="fecha_pago" id="fecha_pago" required><br>
+        <div>
+            Monto: <input type="number" name="monto" id="monto" value="0" required><br>
+            <p id="montoOutput" class="validation-message"></p>
+        </div>
+        <div>
+            Descripción: <input type="text" name="descripcion" id="descripcion" required><br>
+            <p id="descripcionOutput" class="validation-message">La descripcion no puede estar vacía.</p>
+        </div>
+        <button type="submit" id="buttonSubmit">Registrar Pago</button>
     </form>
 </body>
 </html>

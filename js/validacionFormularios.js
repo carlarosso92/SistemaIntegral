@@ -69,7 +69,8 @@ function validateForm() {
         {"nombreCampo": "sueldo", "subTexto":"sueldoOutput", "tipo": "numeros"},
         {"nombreCampo": "descripcion", "subTexto":"descripcionOutput", "tipo": "letras"},
         {"nombreCampo": "precio", "subTexto":"precioOutput", "tipo": "numeros"},
-        {"nombreCampo": "cantidad", "subTexto":"cantidadOutput", "tipo": "numeros"}
+        {"nombreCampo": "cantidad", "subTexto":"cantidadOutput", "tipo": "numeros"},
+        {"nombreCampo": "monto", "subTexto":"montoOutput", "tipo": "numeros"}
     ]
 
     camposFormulario.forEach((elemento) => {
@@ -146,6 +147,12 @@ document.addEventListener("DOMContentLoaded", function() {
     if(document.getElementById('cantidad')){
         document.getElementById('cantidad').addEventListener('input', function() {
             validarCampo('cantidad', 'cantidadOutput', "numeros");
+            validateForm();
+        });
+    }
+    if(document.getElementById('monto')){
+        document.getElementById('monto').addEventListener('input', function() {
+            validarCampo('monto', 'montoOutput', "numeros");
             validateForm();
         });
     }
