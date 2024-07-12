@@ -8,6 +8,7 @@ if (!isset($_SESSION['usuario_id'])) {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@ if (!isset($_SESSION['usuario_id'])) {
     <title>Don Perico</title>
     <link rel="icon" href="img/logo2.png" type="image/png">
 </head>
+
 <body>
     <header>
         <div class="contenedor">
@@ -25,8 +27,8 @@ if (!isset($_SESSION['usuario_id'])) {
         </div>
         <div class="menuopcion">
             <nav>
-            <ul>
-                    <li><a href="logout.php">Cerrar sesión</a></li> 
+                <ul>
+                    <li><a href="logout.php">Cerrar sesión</a></li>
                 </ul>
             </nav>
         </div>
@@ -46,7 +48,9 @@ if (!isset($_SESSION['usuario_id'])) {
                 <button class="activity"><span class="icon">🧩</span> Gestionar Producto</button>
                 <button class="activity"><span class="icon">✏️</span> Devoluciones</button>
                 <button class="activity"><span class="icon">📑</span> Reservas</button>
-                <button class="activity"><span class="icon">📦</span> Inventario</button>
+                <a href="inventario/index.php">
+                    <button class="activity"><span class="icon">📦</span> Inventario</button>
+                </a>
                 <button class="activity"><span class="icon">📄</span> Generar informes</button>
                 <button class="activity"><span class="icon">👤</span> Gestión de Usuarios</button>
                 <button class="activity"><span class="icon">📚</span> Historial de ventas</button>
@@ -55,4 +59,5 @@ if (!isset($_SESSION['usuario_id'])) {
     </main>
 
 </body>
+
 </html>
