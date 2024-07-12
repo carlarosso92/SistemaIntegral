@@ -3,24 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title >Productos - Don Perico</title>
+    <title>Productos - Don Perico</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/producto.css">
+    <link rel="icon" href="../img/logo2.png" type="image/png">
+    <style>
+                /* Estilo para el precio original tachado */
+        .precio-original {
+            text-decoration: line-through !important;
+            color: red !important;
+            font-size: 1em !important;
+        }
 
+        /* Estilo para el precio con descuento */
+        .precio-con-descuento {
+            color: green;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Estilo para el porcentaje de descuento */
+        .descuento {
+            color: orange;
+            font-size: 1em;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <?php include('headerindex.php'); ?>
-    
+
     <div class="contenedor-productos">
         <aside class="filtros">
             <h2>Productos</h2>
             <p id="productos-count">0 productos</p>
             <div class="subcategorias">
                 <h3>Subcategorías</h3>
-                <ul id="categorias-list">
-                    </ul>
+                <ul id="categorias-list"></ul>
             </div>
-           
         </aside>
         <section class="productos">
             <div class="ordenar">
@@ -31,8 +51,7 @@
                     <option value="precio-desc">Precio: Mayor a Menor</option>
                 </select>
             </div>
-            <div class="lista-productos" id="productos-list">
-                </div>
+            <div class="lista-productos" id="productos-list"></div>
         </section>
     </div>
 
@@ -63,6 +82,8 @@
             fetch('logicapantallaproducto.php')
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data); // Depuración: Verificar datos recibidos
+
                     // Actualizar el conteo de productos
                     document.getElementById('productos-count').innerText = `${data.productos.length} productos`;
 
@@ -86,9 +107,15 @@
                     data.productos.forEach(producto => {
                         const productoDiv = document.createElement('div');
                         productoDiv.classList.add('producto');
+
+                        const precioConDescuento = producto.precio * (1 - producto.descuento / 100);
+                        const precioOriginal = producto.precio;
+
                         productoDiv.innerHTML = `
                             <img src="${producto.imagen}" alt="${producto.nombre}">
-                            <p class="precio">$${producto.precio}</p>
+                            ${producto.descuento > 0 ? `<p class="precio-original">$${precioOriginal.toFixed(2)}</p>` : ''}
+                            <p class="precio-con-descuento">$${precioConDescuento.toFixed(2)}</p>
+                            ${producto.descuento > 0 ? `<p class="descuento">-${producto.descuento}%</p>` : ''}
                             <p class="descripcion">${producto.nombre}</p>
                             <button class="btn-agregar" data-id="${producto.id}">Agregar</button>
                         `;

@@ -27,6 +27,7 @@ session_start();
                     <a href="crudcliente.php">Registrarse</a>
                 <?php endif; ?>
             </div>
+            <div class="separator"></div>
             <div class="carrito">
                 <button id="carritoButton"><i class="fas fa-shopping-cart"></i> Carrito</button>
             </div>

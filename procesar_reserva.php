@@ -35,11 +35,16 @@ try {
     $stmt->execute();
     $reserva_id = $stmt->insert_id;
 
-    // Insertar en la tabla detalle_reservas
-    $stmt_detalle = $conexion->prepare("INSERT INTO detalle_reservas (reserva_id, producto_id, cantidad, precio_unitario) VALUES (?, ?, ?, ?)"); // Corregido el nombre de la columna
+    // Insertar en la tabla detalle_reservas y actualizar el stock de productos
+    $stmt_detalle = $conexion->prepare("INSERT INTO detalle_reservas (reserva_id, producto_id, cantidad, precio_unitario) VALUES (?, ?, ?, ?)");
+    $stmt_update_stock = $conexion->prepare("UPDATE productos SET cantidad_stock = cantidad_stock - ? WHERE id_producto = ?");
+    
     foreach ($cart as $item) {
         $stmt_detalle->bind_param("iiid", $reserva_id, $item['id'], $item['quantity'], $item['price']);
         $stmt_detalle->execute();
+        
+        $stmt_update_stock->bind_param("ii", $item['quantity'], $item['id']);
+        $stmt_update_stock->execute();
     }
 
     $conexion->commit();
@@ -49,8 +54,9 @@ try {
 
     echo json_encode(['success' => true, 'message' => 'Reserva confirmada']);
 } catch (Exception $e) {
-    // $conexion->rollback();
+    $conexion->rollback();
     echo json_encode(['success' => false, 'message' => 'Error al procesar la reserva: ' . $e->getMessage()]); // Mensaje de error más detallado
 }
 
 $conexion->close();
+?>

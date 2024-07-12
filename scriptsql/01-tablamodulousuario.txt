@@ -69,7 +69,7 @@ CREATE TABLE productos (
     precio FLOAT NOT NULL,
     cantidad_stock INT NOT NULL,
     fecha_vencimiento DATE,
-    codigo_barras INT,
+    codigo_barras VARCHAR,
     FOREIGN KEY (id_categoria) REFERENCES categorias(id) ON DELETE CASCADE,
     FOREIGN KEY (id_subcategoria) REFERENCES subcategorias(id) ON DELETE SET NULL,
     FOREIGN KEY (id_proveedor) REFERENCES proveedores(id) ON DELETE SET NULL

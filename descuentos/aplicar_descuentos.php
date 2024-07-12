@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Don Perico</title>
-  <link rel="icon" href="../img/logo2.png" type="image/png">
-  <style>
+    <title>Aplicar Descuentos - Don Perico</title>
+    <link rel="icon" href="../img/logo2.png" type="image/png">
+    <style>
     /* Estilos generales */
     body {
       font-family: sans-serif;
@@ -15,7 +15,7 @@
       background-color: #72A603;
       color: yellow;
       padding: 15px 0;
-      position: fixed;
+      position: relative;
       top: 0;
       width: 100%;
       z-index: 100;
@@ -152,20 +152,55 @@
         margin-bottom: 5px;
       }
     }
-  </style>
+    </style>
 </head>
 <body>
-  <div class="main-container">
     <header>
-      <div class="container">
-        <img src="../img/logo.png" alt="Don Perico Logo">
-        <h1>Don Perico</h1>
-
-        <div class="user-options">
-          <a href="#">Empleado</a>
+        <div class="container">
+            <img src="../img/logo.png" alt="Don Perico Logo">
+            <h1>Don Perico</h1>
+            <div class="user-options">
+                <a href="#">Empleado</a>
+                <ul>
+                    <li><a href="logout.php">Cerrar sesión</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </header>
-  </div>
+
+    <div class="main-container">
+        <h2>Aplicar Descuentos</h2>
+        <form action="procesar_descuento.php" method="POST">
+            <label for="producto">Producto:</label>
+            <select id="producto" name="producto_id">
+                <?php
+                include "config/conexion.php";
+                $result = mysqli_query($conexion, "SELECT id_producto, nombre FROM productos");
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<option value='" . $row['id_producto'] . "'>" . $row['nombre'] . "</option>";
+                }
+                ?>
+            </select><br><br>
+
+            <label for="tipo_descuento">Tipo de Descuento:</label>
+            <select id="tipo_descuento" name="tipo_descuento">
+                <option value="categoria">Categoría</option>
+                <option value="producto">Producto</option>
+                <option value="marca">Marca</option>
+                <option value="dia">Día</option>
+            </select><br><br>
+
+            <label for="valor_descuento">Valor del Descuento (%):</label>
+            <input type="number" id="valor_descuento" name="valor_descuento" required><br><br>
+
+            <label for="fecha_inicio">Fecha de Inicio:</label>
+            <input type="date" id="fecha_inicio" name="fecha_inicio" required><br><br>
+
+            <label for="fecha_fin">Fecha de Fin:</label>
+            <input type="date" id="fecha_fin" name="fecha_fin" required><br><br>
+
+            <input type="submit" value="Aplicar Descuento">
+        </form>
+    </div>
 </body>
 </html>

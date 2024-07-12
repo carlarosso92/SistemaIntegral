@@ -118,3 +118,24 @@ section.productos {
     margin-bottom: 10px;
     border-radius: 10px;
 }
+
+/* Estilo para el precio original tachado */
+.precio-original {
+    text-decoration: line-through !important;
+    color: red !important;
+    font-size: 1em !important;
+}
+
+/* Estilo para el precio con descuento */
+.precio-con-descuento {
+    color: green;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Estilo para el porcentaje de descuento */
+.descuento {
+    color: orange;
+    font-size: 1em;
+    font-weight: bold;
+}
