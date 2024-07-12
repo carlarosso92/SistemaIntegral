@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recuperar datos del formulario
     $nombre = $_POST["nombre"];
     $rut = $_POST["rut"]; 
-    $email = $_POST["email"];
+    $email = $_POST["correo"];
     $contrasena = $_POST["contrasena"];
     $telefono = $_POST["telefono"];
     $cargo = $_POST["cargo"];

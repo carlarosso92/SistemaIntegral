@@ -204,7 +204,6 @@ nav li a:hover {
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
 .carrito-lateral {
     height: 100%;
     width: 0;
