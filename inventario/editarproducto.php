@@ -9,6 +9,85 @@
     <link rel="stylesheet" href="./global.css" />
     <link rel="stylesheet" href="./index.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        h2 {
+            padding: 10px;
+            font-style: normal;
+            text-align: center;
+            margin: 2em 26em auto;
+            color: #72A603;
+            background-color: #E4F2B5;
+            max-width: 500px;
+            border-radius: 10px;
+            border: 1px solid #72A603;
+        }
+        h2:hover{
+            background-color: #D3E1A4;
+            color: #61A502;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 2em auto;
+            padding: 20px;
+            border: 1px solid #72A603;
+            border-radius: 10px;
+            background-color: #E4F2B5;
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"],
+        form input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #72A603;
+            border-radius: 20px;
+        }
+
+        form button {
+            margin-top: 1.5em;
+            background-color: #72A603;
+            color: yellow;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #EAF207;
+            color: #72A603;
+        }
+        .validation-message {
+            color: red;
+            margin: 0;
+            padding-left: 10px; /* Ajusta este valor según tus necesidades */
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: -40px;
+            font-size: small;
+        }
+
+        input[type="text"] {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Estilo para el botón "Guardar" cuando está deshabilitado */
+        #buttonSubmit:disabled {
+            background-color: #ddd; /* Color de fondo gris */
+            color: #666; /* Color de texto gris */
+            cursor: default; /* Cursor predeterminado */
+            pointer-events: none; /* Evitar eventos de puntero */
+        }
+
+        /* Estilo adicional para deshabilitar el efecto de hover */
+        #buttonSubmit:disabled:hover {
+            background-color: #ddd; /* Mantener el color de fondo gris */
+            color: #666; /* Mantener el color de texto gris */
+        }
+    </style>
     <script>
         $(document).ready(function () {
             // Cargar subcategorías cuando cambia la categoría
