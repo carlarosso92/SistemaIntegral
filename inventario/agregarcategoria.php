@@ -43,7 +43,8 @@
         form input[type="number"] {
             width: calc(100% - 22px);
             padding: 10px;
-            margin-bottom: 20px;
+            margin-top: 4px;
+            margin-bottom: 4px;
             border: 1px solid #72A603;
             border-radius: 20px;
         }
