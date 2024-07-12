@@ -56,7 +56,7 @@
 <body>
    
 
-    <h1>Editar producto</h1>
+
     <?php
     include_once ("config/conexion.php");
 

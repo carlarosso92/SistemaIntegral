@@ -206,12 +206,18 @@
             let tieneProductos = false;
             for (const [id, producto] of Object.entries(carrito)) {
                 const item = document.createElement('li');
+                const precioOriginal = parseFloat(producto.price);
+                const descuento = parseFloat(producto.descuento) || 0;
+                const precioConDescuento = precioOriginal * (1 - descuento / 100);
+
+                console.log(`Producto ID: ${id}, Precio Original: ${precioOriginal}, Descuento: ${descuento}, Precio con Descuento: ${precioConDescuento}`);
+
                 item.innerHTML = `
                     <div class="producto-carrito">
                         <img src="${producto.imagen}" alt="${producto.name}">
                         <div>
                             <p>${producto.name}</p>
-                            <p>Precio: $${producto.price}</p>
+                            <p class="precio-con-descuento">$${precioConDescuento.toFixed(2)}</p>
                             <div class="cantidad">
                                 <button onclick="modificarCantidad(${id}, -1)">-</button>
                                 <span>${producto.quantity}</span>
@@ -222,11 +228,11 @@
                     </div>
                 `;
                 carritoItems.appendChild(item);
-                total += producto.price * producto.quantity;
+                total += precioConDescuento * producto.quantity;
                 tieneProductos = true;
             }
 
-            document.getElementById('totalCarrito').innerText = `$${total}`;
+            document.getElementById('totalCarrito').innerText = `$${total.toFixed(2)}`;
 
             // Mostrar u ocultar el mensaje de carrito vacío
             if (tieneProductos) {
