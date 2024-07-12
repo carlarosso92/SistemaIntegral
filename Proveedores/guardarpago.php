@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $descripcion = $_POST['descripcion'];
 
     // Inserta los datos en la tabla pagos_proveedores
-    $query = "INSERT INTO pagos_proveedores (proveedor_id, fecha_pago, monto, descripcion) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO facturas_proveedores (proveedor_id, fecha_pago, monto, descripcion) VALUES (?, ?, ?, ?)";
     $stmt = $conexion->prepare($query);
     $stmt->bind_param('isds', $proveedor_id, $fecha_pago, $monto, $descripcion);
 

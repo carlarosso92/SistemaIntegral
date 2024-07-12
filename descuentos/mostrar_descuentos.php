@@ -190,12 +190,12 @@ $result = mysqli_query($conexion, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<div class='product'>";
                     echo "<h3>" . $row['nombre'] . "</h3>";
-                    echo "<p>Precio Original: " . $row['precio'] . "€</p>";
+                    echo "<p>Precio Original: " . "$" . $row['precio'] . "</p>";
                     if ($row['valor_descuento'] != NULL) {
                         echo "<p>Descuento: " . $row['valor_descuento'] . "%</p>";
-                        echo "<p>Precio con Descuento: " . $row['precio_con_descuento'] . "€</p>";
+                        echo "<p>Precio con Descuento: " . "$" . $row['precio_con_descuento'] . "</p>";
                     } else {
-                        echo "<p>Precio: " . $row['precio'] . "€</p>";
+                        echo "<p>Precio: " . "$" . $row['precio'] . "</p>";
                     }
                     echo "</div>";
                 }

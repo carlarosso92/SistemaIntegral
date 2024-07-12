@@ -8,6 +8,7 @@ $result = $conexion->query($query);
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +23,7 @@ $result = $conexion->query($query);
             margin: 0;
             background-color: #F2EDD0;
         }
+
         h2 {
             padding: 10px;
             font-style: normal;
@@ -33,7 +35,8 @@ $result = $conexion->query($query);
             border-radius: 10px;
             border: 1px solid #72A603;
         }
-        h2:hover{
+
+        h2:hover {
             background-color: #D3E1A4;
             color: #61A502;
         }
@@ -77,10 +80,12 @@ $result = $conexion->query($query);
             width: 60%;
             heigth: 100%;
         }
+
         .validation-message {
             color: red;
             margin: 0;
-            padding-left: 10px; /* Ajusta este valor según tus necesidades */
+            padding-left: 10px;
+            /* Ajusta este valor según tus necesidades */
             display: inline-block;
             vertical-align: middle;
             margin-top: -40px;
@@ -91,20 +96,28 @@ $result = $conexion->query($query);
             display: inline-block;
             vertical-align: middle;
         }
+
         /* Estilo para el botón "Guardar" cuando está deshabilitado */
         #buttonSubmit:disabled {
-            background-color: #ddd; /* Color de fondo gris */
-            color: #666; /* Color de texto gris */
-            cursor: default; /* Cursor predeterminado */
-            pointer-events: none; /* Evitar eventos de puntero */
+            background-color: #ddd;
+            /* Color de fondo gris */
+            color: #666;
+            /* Color de texto gris */
+            cursor: default;
+            /* Cursor predeterminado */
+            pointer-events: none;
+            /* Evitar eventos de puntero */
         }
 
         /* Estilo adicional para deshabilitar el efecto de hover */
         #buttonSubmit:disabled:hover {
-            background-color: #ddd; /* Mantener el color de fondo gris */
-            color: #666; /* Mantener el color de texto gris */
+            background-color: #ddd;
+            /* Mantener el color de fondo gris */
+            color: #666;
+            /* Mantener el color de texto gris */
         }
     </style>
+
 <body>
     <h2>Registrar Pago a Proveedor</h2>
     <form action="guardarpago.php" method="POST">
@@ -129,4 +142,5 @@ $result = $conexion->query($query);
         <button type="submit" id="buttonSubmit">Registrar Pago</button>
     </form>
 </body>
+
 </html>
