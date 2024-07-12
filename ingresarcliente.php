@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rut = $_POST["rut"]; 
     $telefono = $_POST["telefono"];
     $direccion = $_POST["direccion"];
-    $email = $_POST["email"];
+    $email = $_POST["correo"];
     $contrasena = $_POST["contrasena"];
    
     // Verificar si la conexión a la base de datos fue exitosa

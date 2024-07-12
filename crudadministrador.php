@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/menuempleado.css">
     <title>Registro de Cliente</title>
     <link rel="icon" href="img/logo2.png" type="image/png">
+    <script src="js/validacionFormularios.js"></script>
     <style>
         h2 {
             padding: 10px;
@@ -58,19 +59,67 @@
             background-color: #EAF207;
             color: #72A603;
         }
+
+        .validation-message {
+            color: red;
+            margin: 0;
+            padding-left: 10px; /* Ajusta este valor según tus necesidades */
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: -40px;
+            font-size: small;
+        }
+
+        input[type="text"] {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Estilo para el botón "Guardar" cuando está deshabilitado */
+        #buttonSubmit:disabled {
+            background-color: #ddd; /* Color de fondo gris */
+            color: #666; /* Color de texto gris */
+            cursor: default; /* Cursor predeterminado */
+            pointer-events: none; /* Evitar eventos de puntero */
+        }
+
+        /* Estilo adicional para deshabilitar el efecto de hover */
+        #buttonSubmit:disabled:hover {
+            background-color: #ddd; /* Mantener el color de fondo gris */
+            color: #666; /* Mantener el color de texto gris */
+        }
     </style>
 <body>
     <h2>Registro</h2>
     <form action="ingresaradministrador.php" method="POST">
-        Nombre: <input type="text" name="nombre" required><br>
-        Rut: <input type="text" name="rut" placeholder="Rut, Ej:11.111.111-1" required><br>
-        telefono: <input type="text" name="telefono" placeholder="Telefono" required><br>
-        Email: <input type="email" name="email" required placeholder="email@gmail.com"><br>
-        Contraseña: <input type="contrasena" name="contrasena" required><br>
-        Cargo: <input type="text" name="cargo" required><br>
-        Sueldo: <input type="number" name="sueldo" required><br>
-        
-        <button type="submit">Registrarse</button>
+        <div>
+            Nombre: <input type="text" name="nombre" id="name"><br>
+            <p id="nombreOutput" class="validation-message">El nombre no puede estar vacío.</p>
+        </div>
+        <div>
+            Rut: <input type="text" name="rut" id="rut" placeholder="Rut, Ej:11.111.111-1"><br>
+            <p id="rutOutput" class="validation-message">El rut no puede ser vacio.</p>
+        </div>
+        <div>
+            Telefono: <input type="text" name="telefono" id="telefono" placeholder="Telefono"><br>
+            <p id="telefonoOutput" class="validation-message">El teléfono no puede ser vacio.</p>
+        </div>
+        <div>
+            Email: <input type="text" name="correo" id="correo" placeholder="email@correo.com"><br>
+            <p id="correoOutput" class="validation-message">El correo no puede ser vacio.</p>
+        </div>
+        <div>
+            Contraseña: <input type="text" name="contrasena" id="contrasena"><br>
+            <p id="contrasenaOutput" class="validation-message">La contraseña no puede ser vacia.</p>
+        </div>
+        <div>
+            Cargo: <input type="text" name="cargo" id="cargo"><br>
+            <p id="cargoOutput" class="validation-message">El cargo no puede ser vacio.</p>
+        </div>
+        <div>
+            Sueldo: <input type="number" name="sueldo" id="sueldo" value="0" required><br>
+            <p id="sueldoOutput" class="validation-message"></p>
+        </div>
+        <button type="submit" id="buttonSubmit" disabled>Registrarse</button>
     </form>
 </body>
 </html>

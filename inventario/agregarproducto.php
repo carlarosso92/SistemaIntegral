@@ -26,6 +26,7 @@ if (!$resultCategoria) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kameron:wght@400&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JejuGothic:wght@400&display=swap" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/validacionFormularios.js"></script>
     <style>
         h2 {
             padding: 10px;
@@ -77,6 +78,34 @@ if (!$resultCategoria) {
             background-color: #EAF207;
             color: #72A603;
         }
+
+        .validation-message {
+            color: red;
+            margin: 0;
+            padding-left: 10px; /* Ajusta este valor según tus necesidades */
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: -40px;
+            font-size: small;
+        }
+
+        input[type="text"] {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Estilo para el botón "Guardar" cuando está deshabilitado */
+        #buttonSubmit:disabled {
+            background-color: #ddd; /* Color de fondo gris */
+            color: #666; /* Color de texto gris */
+            cursor: default; /* Cursor predeterminado */
+            pointer-events: none; /* Evitar eventos de puntero */
+        }
+
+        /* Estilo adicional para deshabilitar el efecto de hover */
+        #buttonSubmit:disabled:hover {
+            background-color: #ddd; /* Mantener el color de fondo gris */
+            color: #666; /* Mantener el color de texto gris */
+        }
     </style>
     <script>
         $(document).ready(function() {
@@ -126,9 +155,12 @@ if (!$resultCategoria) {
         <h2>Nuevo producto</h2>
         <div class="centrar-form">
             <form action="ingresarproducto.php" method="POST">
-                Nombre: <input type="text" name="nombre" required><br>
+                <div>
+                    Nombre: <input type="text" name="nombre" id="name"><br>
+                    <p id="nombreOutput" class="validation-message">El nombre no puede estar vacío.</p>
+                </div>
                 <label for="categoria">Selecciona una categoría:</label>
-                <select name="categoria" id="categoria">
+                <select name="categoria" id="categoria" required>
                     <option value="" selected disabled>Seleccionar categoría</option>
                     <?php
                         if ($resultCategoria->num_rows > 0) {
@@ -141,18 +173,27 @@ if (!$resultCategoria) {
                     ?>
                 </select><br>
                 <label for="subcategoria">Selecciona una subcategoría:</label>
-                <select name="subcategoria" id="subcategoria">
+                <select name="subcategoria" id="subcategoria" required>
                     <option value="">Selecciona una categoría primero</option>
                 </select><br>
                 <label for="proveedor">Selecciona un proveedor:</label>
-                <select name="proveedor" id="proveedor">
+                <select name="proveedor" id="proveedor" required>
                     <!-- Placeholder añadido dinámicamente por JavaScript -->
                 </select><br>
-                Descripción: <input type="text" name="descripcion" required><br>
-                Precio: <input type="number" name="precio" required><br>
-                Cantidad: <input type="number" name="cantidad_stock" required><br>
+                <div>
+                    Descripción: <input type="text" name="descripcion" id="descripcion" required><br>
+                    <p id="descripcionOutput" class="validation-message">La descripcion no puede estar vacía.</p>
+                </div>
+                <div>
+                    Precio: <input type="number" name="precio" id="precio" value="0" required><br>
+                    <p id="precioOutput" class="validation-message"></p>
+                </div>
+                <div>
+                    Cantidad: <input type="number" name="cantidad_stock" id="cantidad" value="0" required><br>
+                    <p id="cantidadOutput" class="validation-message"></p>
+                </div>
                 Fecha de vencimiento: <input type="date" name="fecha_vencimiento" required><br>
-                <button type="submit">Ingresar</button>
+                <button type="submit" id="buttonSubmit">Ingresar</button>
             </form>
         </div>
     </div>
