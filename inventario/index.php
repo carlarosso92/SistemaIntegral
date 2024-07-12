@@ -18,7 +18,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Codigo de barra</th>
+                    <th scope="col">Código de barra</th>
                     <!--<th scope="col">ID</th>-->
                     <th scope="col">Categoría</th>
                     <th scope="col">Subcategoría</th>
@@ -26,19 +26,21 @@
                     <th scope="col">Descripción</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Stock</th>
+                    <th scope="col">Proveedor</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 // Incluir el archivo de configuración para la conexión a la base de datos
-                require ("config/conexion.php");
+                require("config/conexion.php");
 
-                // Consulta SQL para obtener el listado de productos con categorías y subcategorías
-                $sql = "SELECT p.id_producto, p.codigo_barras, c.nombre_categoria, s.nombre_subcategoria, p.nombre, p.descripcion, p.precio, p.cantidad_stock
+                // Consulta SQL para obtener el listado de productos con categorías, subcategorías y proveedores
+                $sql = "SELECT p.id_producto, p.codigo_barras, c.nombre_categoria, s.nombre_subcategoria, p.nombre, p.descripcion, p.precio, p.cantidad_stock, prov.nombre_proveedor
                         FROM productos p
                         INNER JOIN categorias c ON p.id_categoria = c.id
-                        LEFT JOIN subcategorias s ON p.id_subcategoria = s.id";
+                        LEFT JOIN subcategorias s ON p.id_subcategoria = s.id
+                        LEFT JOIN proveedores prov ON p.id_proveedor = prov.id";
 
                 // Ejecutar la consulta
                 $resultado = $conexion->query($sql);
@@ -57,6 +59,7 @@
                             <td><?php echo htmlspecialchars($producto['descripcion']); ?></td>
                             <td><?php echo htmlspecialchars($producto['precio']); ?></td>
                             <td><?php echo htmlspecialchars($producto['cantidad_stock']); ?></td>
+                            <td><?php echo htmlspecialchars($producto['nombre_proveedor']); ?></td>
                             <td>
                                 <a href="editarproducto.php?id_producto=<?php echo htmlspecialchars($producto['id_producto']); ?>">Editar</a>
                                 <a href="eliminarproducto.php?id_producto=<?php echo htmlspecialchars($producto['id_producto']); ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?');">Eliminar</a>
@@ -66,7 +69,7 @@
                     }
                 } else {
                     // Si no hay resultados encontrados
-                    echo "<tr><td colspan='8'>No se encontraron productos.</td></tr>";
+                    echo "<tr><td colspan='9'>No se encontraron productos.</td></tr>";
                 }
 
                 // Liberar resultado y cerrar la conexión

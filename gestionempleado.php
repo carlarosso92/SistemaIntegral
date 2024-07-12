@@ -50,7 +50,9 @@ if (!isset($_SESSION['usuario_id'])) {
                 <button class="activity"><span class="icon">🧩</span> Gestionar Producto</button>
                 <button class="activity"><span class="icon">✏️</span> Devoluciones</button>
                 <button class="activity"><span class="icon">📑</span> Reservas</button>
+                <a href="inventario/index.php" class=""button>
                 <button class="activity"><span class="icon">📦</span> Inventario</button>
+                </a>
             </div>
         </div>
     </main>
