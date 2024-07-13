@@ -452,3 +452,15 @@ nav li a:hover {
 #cerrarSesionButton:hover {
     text-decoration: underline;
 }
+
+.home-button {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 24px;
+    color: #EAF207;
+    text-decoration: none;
+}
+
+.home-button:hover {
+    color: #007bff;
+}
