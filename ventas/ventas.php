@@ -146,18 +146,18 @@
                 return;
             }
 
-            // Realizar la solicitud AJAX para generar el PDF
-            fetch('generar_ticket.php?venta_id=' + venta_id)
-                .then(response => response.blob())
-                .then(blob => {
-                    alert('Compra procesada');
-                    const pdfUrl = URL.createObjectURL(blob);
-                    window.open(pdfUrl, '_blank');
-                })
-                .catch(error => {
-                    console.error('Error al generar el ticket:' + error);
-                    alert('Hubo un problema al generar el ticket. Por favor, inténtalo de nuevo.');
-                });
+          // Realizar la solicitud AJAX para generar el PDF
+          fetch('generar_ticket.php')
+            .then(response => response.blob())
+            .then(blob => {
+                alert('Compra procesada');
+                const pdfUrl = URL.createObjectURL(blob);
+                window.open(pdfUrl, '_blank');
+            })
+            .catch(error => {
+                console.error('Error al generar el ticket:', error);
+                alert('Hubo un problema al generar el ticket. Por favor, inténtalo de nuevo.');
+            });
         });
     </script>
 </body>

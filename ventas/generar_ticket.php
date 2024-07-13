@@ -3,15 +3,13 @@ require '../vendor/autoload.php'; // Asegúrate de que la ruta a Dompdf sea corr
 
 use Dompdf\Dompdf;
 
-// Obtener datos de la venta y detalles de la venta
-$venta_id = $_GET['venta_id'];
 include '../php/config.php';
 
-$queryVenta = "SELECT * FROM ventas WHERE id = '$venta_id'";
+$queryVenta = "SELECT MAX(id), cliente_id, fecha_venta, total FROM ventas";
 $resultVenta = mysqli_query($conexion, $queryVenta);
 $venta = mysqli_fetch_assoc($resultVenta);
 
-$queryDetalles = "SELECT dv.*, p.nombre FROM detalle_ventas dv INNER JOIN productos p ON dv.producto_id = p.id_producto WHERE dv.venta_id = '$venta_id'";
+$queryDetalles = "SELECT dv.*, p.nombre FROM detalle_ventas dv INNER JOIN productos p ON dv.producto_id = p.id_producto WHERE dv.venta_id = '{$venta['id']}'";
 $resultDetalles = mysqli_query($conexion, $queryDetalles);
 
 // Generar el contenido HTML para el PDF
@@ -63,7 +61,7 @@ $html = '
     <div class="container">
         <img src="../img/logo.png" alt="Logo" class="logo">
         <h1>Minimarket Perico</h1>
-        <p>Número de Ticket: ' . $venta_id . '</p>
+        <p>Número de Ticket: ' . $venta['id'] . '</p>
         <p>Fecha: ' . $venta['fecha_venta'] . '</p>
         
         <table>
@@ -102,6 +100,6 @@ $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 
 header('Content-type: application/pdf');
-header('Content-Disposition: attachment; filename="ticket_' . $venta_id . '.pdf"'); // Cambiado a 'attachment'
+header('Content-Disposition: attachment; filename="ticket_' . $venta['id'] . '.pdf"'); // Cambiado a 'attachment'
 echo $dompdf->output();
 exit;
