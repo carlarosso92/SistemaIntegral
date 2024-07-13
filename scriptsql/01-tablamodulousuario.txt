@@ -58,7 +58,6 @@ CREATE TABLE proveedores (
     email_proveedor VARCHAR(255)
 );
 
--- Crear la tabla productos
 CREATE TABLE productos (
     id_producto INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
@@ -69,19 +68,23 @@ CREATE TABLE productos (
     precio FLOAT NOT NULL,
     cantidad_stock INT NOT NULL,
     fecha_vencimiento DATE,
-    codigo_barras VARCHAR,
+    codigo_barras VARCHAR(255),
+    factura_proveedor INT,
     FOREIGN KEY (id_categoria) REFERENCES categorias(id) ON DELETE CASCADE,
     FOREIGN KEY (id_subcategoria) REFERENCES subcategorias(id) ON DELETE SET NULL,
-    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id) ON DELETE SET NULL
+    FOREIGN KEY (id_proveedor) REFERENCES proveedores(id) ON DELETE SET NULL,
+    FOREIGN KEY (factura_proveedor) REFERENCES facturas_proveedores(id) ON DELETE SET NULL
 );
 
--- Crear la tabla pagos_proveedores
-CREATE TABLE pagos_proveedores (
+
+
+CREATE TABLE facturas_proveedores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     proveedor_id INT NOT NULL,
-    fecha_pago DATE NOT NULL,
+    fecha DATE NOT NULL,
     monto DECIMAL(10, 2) NOT NULL,
     descripcion TEXT,
+    vencimiento_factura DATE,
     FOREIGN KEY (proveedor_id) REFERENCES proveedores(id) ON DELETE CASCADE
 );
 

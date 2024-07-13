@@ -17,6 +17,9 @@ session_start();
         <div class="contenedor">
             <img src="img/logo.png" alt="Logo">
             <h1>Don Perico</h1>
+            <a href="index.php" class="home-button">
+                <i class="fas fa-home"></i>
+            </a>
             <input type="text" placeholder="¿Qué buscas?">
             <div class="opcionusuario">
                 <?php if (isset($_SESSION['cliente_nombre'])): ?>

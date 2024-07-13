@@ -25,52 +25,50 @@
         <section id="ofertas" class="ofertas">
             <h2>Ofertas</h2>
             <div class="ofertas-grid">
-                <div class="oferta">Oferta 10%</div>
-                <div class="oferta">Oferta 15%</div>
-                <div class="oferta">Oferta 20%</div>
-                <div class="oferta">Oferta 25%</div>
+                <?php
+                include 'php/config.php';
+                // Consultar productos con oferta
+                $ofertas_query = "SELECT p.*, d.valor_descuento 
+                                  FROM productos p 
+                                  JOIN descuentos d ON p.id_producto = d.producto_id 
+                                  WHERE CURDATE() BETWEEN d.fecha_inicio AND d.fecha_fin";
+                $ofertas_result = mysqli_query($conexion, $ofertas_query);
+                while ($oferta = mysqli_fetch_assoc($ofertas_result)) {
+                    echo '<div class="oferta">';
+                    echo '<img src="img/producto_default.jpg" alt="' . htmlspecialchars($oferta['nombre']) . '">';
+                    echo '<h3>' . htmlspecialchars($oferta['nombre']) . '</h3>';
+                    echo '<p class="precio-original">$' . number_format($oferta['precio'], 2) . '</p>';
+                    $precio_con_descuento = $oferta['precio'] * (1 - $oferta['valor_descuento'] / 100);
+                    echo '<p class="precio-con-descuento">$' . number_format($precio_con_descuento, 2) . '</p>';
+                    echo '<p class="descuento">-' . $oferta['valor_descuento'] . '%</p>';
+                    echo '</div>';
+                }
+                ?>
             </div>
         </section>
         
         <section id="productos" class="productos">
-    <h2>Productos</h2>
-    <div class="productos-carrusel">
-        <div class="producto">
-            <img src="img/producto1.jpg" alt="Producto 1">
-            <h3>Nombre del producto</h3>
-            <p>Valor</p>
-            <button>Agregar</button>
-        </div>
-        <div class="producto">
-            <img src="img/producto2.jpg" alt="Producto 2">
-            <h3>Nombre del producto</h3>
-            <p>Valor</p>
-            <button>Agregar</button>
-        </div>
-        <div class="producto">
-            <img src="img/producto3.jpg" alt="Producto 3">
-            <h3>Nombre del producto</h3>
-            <p>Valor</p>
-            <button>Agregar</button>
-        </div>
-        <div class="producto">
-            <img src="img/producto4.jpg" alt="Producto 4">
-            <h3>Nombre del producto</h3>
-            <p>Valor</p>
-            <button>Agregar</button>
-        </div>
-        <div class="producto">
-            <img src="img/producto5.jpg" alt="Producto 5">
-            <h3>Nombre del producto</h3>
-            <p>Valor</p>
-            <button>Agregar</button>
-        </div>
-    </div>
-    <div class="controls">
-        <span class="prev" onclick="changeProductSlide(-1)">&#10094;</span>
-        <span class="next" onclick="changeProductSlide(1)">&#10095;</span>
-    </div>
-</section>
+            <h2>Productos</h2>
+            <div class="productos-carrusel">
+                <?php
+                // Consultar todos los productos
+                $productos_query = "SELECT * FROM productos";
+                $productos_result = mysqli_query($conexion, $productos_query);
+                while ($producto = mysqli_fetch_assoc($productos_result)) {
+                    echo '<div class="producto">';
+                    echo '<img src="img/producto_default.jpg" alt="' . htmlspecialchars($producto['nombre']) . '">';
+                    echo '<h3>' . htmlspecialchars($producto['nombre']) . '</h3>';
+                    echo '<p>$' . number_format($producto['precio'], 2) . '</p>';
+                    echo '<button>Agregar</button>';
+                    echo '</div>';
+                }
+                ?>
+            </div>
+            <div class="controls">
+                <span class="prev" onclick="changeProductSlide(-1)">&#10094;</span>
+                <span class="next" onclick="changeProductSlide(1)">&#10095;</span>
+            </div>
+        </section>
     </main>
 
     <script>
@@ -109,36 +107,34 @@
         document.addEventListener('DOMContentLoaded', startCarousel);
         
         let productSlideIndex = 0;
-const products = document.querySelectorAll('.productos-carrusel .producto');
-const totalProducts = products.length;
-const visibleProducts = 3; // Número de productos visibles
-const productWidth = 280; // Ancho del producto más el margen
+        const products = document.querySelectorAll('.productos-carrusel .producto');
+        const totalProducts = products.length;
+        const visibleProducts = 3; // Número de productos visibles
+        const productWidth = 280; // Ancho del producto más el margen
 
-function showProductSlide(index) {
-    const offset = index * -productWidth;
-    products.forEach(product => {
-        product.style.transform = `translateX(${offset}px)`;
-    });
-}
+        function showProductSlide(index) {
+            const offset = index * -productWidth;
+            products.forEach(product => {
+                product.style.transform = `translateX(${offset}px)`;
+            });
+        }
 
-function changeProductSlide(n) {
-    const maxIndex = totalProducts - visibleProducts;
-    productSlideIndex = (productSlideIndex + n + totalProducts) % totalProducts;
-    if (productSlideIndex > maxIndex) {
-        productSlideIndex = maxIndex;
-    } else if (productSlideIndex < 0) {
-        productSlideIndex = 0;
-    }
-    showProductSlide(productSlideIndex);
-}
+        function changeProductSlide(n) {
+            const maxIndex = totalProducts - visibleProducts;
+            productSlideIndex = (productSlideIndex + n + totalProducts) % totalProducts;
+            if (productSlideIndex > maxIndex) {
+                productSlideIndex = maxIndex;
+            } else if (productSlideIndex < 0) {
+                productSlideIndex = 0;
+            }
+            showProductSlide(productSlideIndex);
+        }
 
-document.addEventListener('DOMContentLoaded', () => showProductSlide(productSlideIndex));
-
+        document.addEventListener('DOMContentLoaded', () => showProductSlide(productSlideIndex));
     </script>
-     <footer id="contacto">
+    <footer id="contacto">
         <p>&copy; 2024 Don Perico. Todos los derechos reservados.</p>
         <p><a href="formulario_contacto.php">Contáctanos aquí</a></p>
     </footer>
 </body>
-
 </html>
