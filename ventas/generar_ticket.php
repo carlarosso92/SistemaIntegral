@@ -101,6 +101,7 @@ $dompdf->setPaper('A4', 'portrait');
 // Renderizar el HTML como PDF
 $dompdf->render();
 
-// Enviar el PDF al navegador
-$dompdf->stream("ticket_$venta_id.pdf", array("Attachment" => 0));
-?>
+header('Content-type: application/pdf');
+header('Content-Disposition: attachment; filename="ticket_' . $venta_id . '.pdf"'); // Cambiado a 'attachment'
+echo $dompdf->output();
+exit;
