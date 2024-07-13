@@ -14,7 +14,9 @@ if (!isset($_SESSION['usuario_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/menuempleado.css">
     <link rel="stylesheet" href="css/agregarproducto.css" />
-    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="css/ventanacliente.css">
     <?php include "headerindex.php"; ?>
     <title>Don Perico</title>
     <link rel="icon" href="img/logo2.png" type="image/png">
@@ -56,7 +58,7 @@ if (!isset($_SESSION['usuario_id'])) {
                         Nombre: <input type="text" name="nombre" value="<?php echo htmlspecialchars($usuario['nombre']); ?>" required><br>
                         Email: <input type="text" name="email" value="<?php echo htmlspecialchars($usuario['email']); ?>" required><br>
                         Rut: <input type="text" name="rut" value="<?php echo htmlspecialchars($usuario['rut']); ?>" required><br>
-                        Teléfono: <input type="number" name="telefono" value="<?php echo htmlspecialchars($usuario['telefono']); ?>" required><br>
+                        Teléfono: <input type="text" name="telefono" value="<?php echo htmlspecialchars($usuario['telefono']); ?>" required><br>
                         Dirección: <input type="text" name="direccion" value="<?php echo htmlspecialchars($usuario['direccion']); ?>" required><br>
                         <button type="submit">Editar Datos</button>
                     </form>
@@ -106,7 +108,7 @@ if (!isset($_SESSION['usuario_id'])) {
                         <td><?php echo htmlspecialchars($reserva['nombre_producto']); ?></td>
                         <td><?php echo htmlspecialchars($reserva['cantidad']); ?></td>
                         <td>
-                            <a href="eliminarreserva.php?id_reserva=<?php echo htmlspecialchars($reserva['id_reserva']); ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar esta reserva?');">Eliminar</a>
+                            <a href="" onclick="return confirm('¿Estás seguro de que deseas eliminar esta reserva?');">Eliminar</a>
                         </td>
                     </tr>
                     <?php
