@@ -46,7 +46,8 @@ if (!$resultCategoria) {
         
         form {
             max-width: 500px;
-            margin: 2em auto;
+            margin: auto;
+            margin-top: 10px;
             padding: 20px;
             border: 1px solid #72A603;
             border-radius: 10px;

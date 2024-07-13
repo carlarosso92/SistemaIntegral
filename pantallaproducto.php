@@ -296,5 +296,9 @@
                 .catch(error => console.error('Error:', error));
         });
     </script>
+    <footer id="contacto">
+        <p>&copy; 2024 Don Perico. Todos los derechos reservados.</p>
+        <p><a href="formulario_contacto.php">Contáctanos aquí</a></p>
+    </footer>
 </body>
 </html>

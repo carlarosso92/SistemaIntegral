@@ -135,7 +135,10 @@ function changeProductSlide(n) {
 document.addEventListener('DOMContentLoaded', () => showProductSlide(productSlideIndex));
 
     </script>
-    <?php include "footer.php"; ?>
+     <footer id="contacto">
+        <p>&copy; 2024 Don Perico. Todos los derechos reservados.</p>
+        <p><a href="formulario_contacto.php">Contáctanos aquí</a></p>
+    </footer>
 </body>
 
 </html>

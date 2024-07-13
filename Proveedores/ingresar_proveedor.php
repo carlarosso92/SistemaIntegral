@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Ejecutar la consulta
         if (mysqli_query($conexion, $sql)) {
             // Éxito al insertar
-            echo "<script>alert('Proveedor ingresado correctamente.'); window.location.href = 'formulario_proveedor.php';</script>";
+            echo "<script>alert('Proveedor ingresado correctamente.'); window.location.href = '../proveedores.php';</script>";
         } else {
             // Error al insertar
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);

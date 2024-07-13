@@ -86,3 +86,56 @@ CREATE TABLE pagos_proveedores (
 );
 
 
+-- Crear la tabla ventas
+CREATE TABLE ventas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT,
+    fecha_venta DATE NOT NULL,
+    total DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE SET NULL
+);
+
+-- Crear la tabla detalle_ventas
+CREATE TABLE detalle_ventas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    venta_id INT NOT NULL,
+    producto_id INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (venta_id) REFERENCES ventas(id) ON DELETE CASCADE,
+    FOREIGN KEY (producto_id) REFERENCES productos(id_producto) ON DELETE CASCADE
+);
+
+
+
+-- Crear la tabla reservas
+CREATE TABLE reservas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    hora_reserva,
+    hora_retiro,
+    total DECIMAL(10, 2) NOT NULL,
+    flg_activo INT(1),
+    FOREIGN KEY (usuario_id) REFERENCES clientes(usuario_id) ON DELETE SET NULL
+);
+
+-- Crear la tabla detalle_reservas
+CREATE TABLE detalle_reservas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    reserva_id INT NOT NULL,
+    producto_id INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (reserva_id) REFERENCES reservas(id) ON DELETE CASCADE,
+    FOREIGN KEY (producto_id) REFERENCES productos(id_producto) ON DELETE CASCADE
+    );
+
+CREATE TABLE descuentos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    producto_id INT NOT NULL,
+    tipo_descuento ENUM('categoria', 'producto', 'marca', 'dia') NOT NULL,
+    valor_descuento DECIMAL(5, 2) NOT NULL,
+    fecha_inicio DATE NOT NULL,
+    fecha_fin DATE NOT NULL,
+    FOREIGN KEY (producto_id) REFERENCES productos(id_producto) ON DELETE CASCADE
+);
