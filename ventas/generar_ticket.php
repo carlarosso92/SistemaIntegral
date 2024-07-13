@@ -5,7 +5,7 @@ use Dompdf\Dompdf;
 
 include '../php/config.php';
 
-$queryVenta = "SELECT MAX(id), cliente_id, fecha_venta, total FROM ventas";
+$queryVenta = "SELECT * FROM ventas ORDER BY id DESC LIMIT 1";
 $resultVenta = mysqli_query($conexion, $queryVenta);
 $venta = mysqli_fetch_assoc($resultVenta);
 

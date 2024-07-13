@@ -148,9 +148,9 @@
                 alert(data.mensaje);
 
                 // Recargar la página si la operación fue exitosa
-                if (data.exito) {
-                    location.reload();
-                }
+                //if (data.exito) {
+                //    location.reload();
+                //}
             })
             .catch(error => {
                 console.error('Error:', error);
