@@ -18,7 +18,7 @@
             font-style: normal;
             text-align: center;
             margin: auto;
-            margin-top: 40px;
+            margin-top: 8em;
             color: #72A603;
             background-color: #E4F2B5;
             max-width: 400px;
@@ -47,9 +47,21 @@
         form input[type="submit"] {
             width: calc(100% - 22px);
             padding: 10px;
+            margin-top: 8px;
             margin-bottom: 20px;
             border: 1px solid #72A603;
             border-radius: 20px;
+        }
+
+        form input[type="submit"] {
+            background-color: #72A603;
+            color: yellow;
+            cursor: pointer;
+        }
+
+        form input[type="submit"]:hover{
+            background-color: blue;
+            color: white;
         }
 
         form button {
@@ -66,6 +78,7 @@
             background-color: #EAF207;
             color: #72A603;
         }
+       
     </style>
     <script>
         function addSubcategoryField() {
@@ -80,6 +93,8 @@
     </script>
 </head>
 <body>
+    <?php include "header.php"; ?>
+
     <h2>Crear categoría nueva y subcategorías de la misma</h2>
     
     <form action="process_category.php" method="POST">

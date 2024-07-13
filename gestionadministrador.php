@@ -19,20 +19,7 @@ if (!isset($_SESSION['usuario_id'])) {
 </head>
 
 <body>
-    <header>
-        <div class="contenedor">
-            <img src="img/logo.png" alt="Don Perico Logo">
-            <h1>Don Perico</h1>
-            <input type="text" placeholder="¿Qué buscas?...">
-        </div>
-        <div class="menuopcion">
-            <nav>
-                <ul>
-                    <li><a href="logout.php">Cerrar sesión</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <?php include "inventario/header.php"; ?>
 
     <main class="contenido">
         <div class="employee-section">
