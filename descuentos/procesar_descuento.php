@@ -12,9 +12,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$producto_id', '$tipo_descuento', '$valor_descuento', '$fecha_inicio', '$fecha_fin')";
 
     if (mysqli_query($conexion, $sql)) {
-        echo "Descuento aplicado exitosamente.";
+        echo "<script>
+                alert('Descuento aplicado exitosamente.');
+                window.location.href = 'aplicar_descuentos.php';
+              </script>";
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
+        echo "<script>
+                alert('Error: " . mysqli_error($conexion) . "');
+                window.location.href = 'aplicar_descuentos.php';
+              </script>";
     }
 
     mysqli_close($conexion);
