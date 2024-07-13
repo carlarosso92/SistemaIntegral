@@ -10,26 +10,7 @@
     <link rel="stylesheet" href="css/ventas.css">
 </head>
 <body>
-    <header>
-        <div class="contenedor">
-            <img src="../img/logo.png" alt="Logo">
-            <h1>Don Perico</h1>
-            <input type="text" placeholder="¿Qué buscas?">
-            <div class="opcionusuario">
-                <a href="#">Iniciar Sesión</a>
-                <a href="#">Registrarse</a>
-            </div>
-        </div>
-        <nav>
-            <div class="menuopcion">
-                <ul>
-                    <li><a href="#">Productos</a></li>
-                    <li><a href="#">Ofertas</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+<?php include "../inventario/header.php"; ?>
     <main>
         <div class="contenedor-ventas">
             <div class="productos">
