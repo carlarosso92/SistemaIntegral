@@ -21,17 +21,15 @@ $hora_retiro = $currentDate . " " . $hora_retiro_entrada;
 $cart_total = 0;
 $cart = $_SESSION['cart'] ?? []; // Usar el nombre correcto de la variable de sesión
 
-foreach ($cart as $item) {
-    $cart_total += $item['price'] * $item['quantity'];
-}
+$cart_total = $_SESSION['total'];
 
 $conexion->begin_transaction();
 
 try {
 
     // Insertar en la tabla reservas
-    $stmt = $conexion->prepare("INSERT INTO reservas (usuario_id, hora_reserva, hora_retiro, total, flg_activo) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("issdi", $usuario_id, $hora_actual, $hora_retiro, $cart_total, 1);
+    $stmt = $conexion->prepare("INSERT INTO reservas (usuario_id, hora_reserva, hora_retiro, total) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("issd", $usuario_id, $hora_actual, $hora_retiro, $cart_total);
     $stmt->execute();
     $reserva_id = $stmt->insert_id;
 

@@ -16,11 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product_result = mysqli_query($conexion, $product_query);
             $product = mysqli_fetch_assoc($product_result);
 
+            // Obtener descuento
+            $descuento_query = "SELECT valor_descuento FROM descuentos WHERE producto_id = $product_id AND CURDATE() BETWEEN fecha_inicio AND fecha_fin";
+            $descuento_result = mysqli_query($conexion, $descuento_query);
+            $descuento = mysqli_fetch_assoc($descuento_result);
+
+            $valor_descuento = $descuento ? $descuento['valor_descuento'] : 0;
+
             $_SESSION['cart'][$product_id] = [
                 'id' => $product['id_producto'],
                 'name' => $product['nombre'],
                 'price' => $product['precio'],
                 'quantity' => 1,
+                'descuento' => $valor_descuento,
                 'imagen' => 'img/producto_default.jpg' // Puedes cambiar esto para usar imágenes reales
             ];
         }
@@ -39,6 +47,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             unset($_SESSION['cart'][$product_id]);
         }
     }
+
+    // Calcular el total con descuentos para insertar en reserva
+    $total = 0;
+    foreach ($_SESSION['cart'] as $item) {
+        $precioOriginal = $item['price'];
+        $descuento = $item['descuento'];
+        $precioConDescuento = $precioOriginal * (1 - $descuento / 100);
+        $total += $precioConDescuento * $item['quantity'];
+    }
+
+    // Guardar el total en la sesión
+    $_SESSION['total'] = $total;
 
     $response['cart'] = $_SESSION['cart'];
     echo json_encode($response);
@@ -83,8 +103,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     while ($producto = mysqli_fetch_assoc($productos_result)) {
         // Depuración: Verificar que los datos del producto son correctos
-        // echo "<pre>"; var_dump($producto); echo "</pre>"; // Puedes habilitar esto para depurar
-
         $data['productos'][] = [
             'id' => $producto['id_producto'],
             'nombre' => $producto['nombre'],

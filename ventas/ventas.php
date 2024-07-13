@@ -42,7 +42,9 @@
                             <th scope="col">Subcategoría</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Descripción</th>
-                            <th scope="col">Precio</th>
+                            <th scope="col">Precio original</th>
+                            <th scope="col">% Descuento</th>
+                            <th scope="col">Precio final</th>
                             <th scope="col">Stock</th>
                             <th scope="col">Acciones</th>
                         </tr>
@@ -50,10 +52,21 @@
                     <tbody>
                         <?php
                         include '../php/config.php';
-                        $query = "SELECT p.codigo_barras, c.nombre_categoria, s.nombre_subcategoria, p.nombre, p.descripcion, p.precio, p.cantidad_stock, p.id_producto
-                                  FROM productos p
-                                  INNER JOIN categorias c ON p.id_categoria = c.id
-                                  LEFT JOIN subcategorias s ON p.id_subcategoria = s.id";
+                        $query = "SELECT 
+                            prod.codigo_barras, 
+                            cat.nombre_categoria, 
+                            subc.nombre_subcategoria, 
+                            prod.nombre, 
+                            prod.descripcion, 
+                            prod.precio, 
+                            prod.cantidad_stock, 
+                            prod.id_producto, 
+                            des.valor_descuento,
+                            (prod.precio * ( 1 - (IF(des.valor_descuento = 0,0,des.valor_descuento)) / 100)) as precio_final
+                        FROM productos prod
+                        INNER JOIN categorias cat ON prod.id_categoria = cat.id
+                        LEFT JOIN subcategorias subc ON prod.id_subcategoria = subc.id
+                        LEFT JOIN descuentos des ON prod.id_producto = des.producto_id";
                         $result = mysqli_query($conexion, $query);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -65,9 +78,11 @@
                             <td><?php echo $row['nombre']; ?></td>
                             <td><?php echo $row['descripcion']; ?></td>
                             <td><?php echo $row['precio']; ?></td>
+                            <td><?php echo $row['valor_descuento']; ?></td>
+                            <td><?php echo $row['precio_final']; ?></td>
                             <td><?php echo $row['cantidad_stock']; ?></td>
                             <td>
-                                <button class="button" onclick="agregarAlCarrito(<?php echo $row['id_producto']; ?>, '<?php echo $row['nombre']; ?>', <?php echo $row['precio']; ?>, <?php echo $row['cantidad_stock']; ?>)">Agregar al carrito</button>
+                                <button class="button" onclick="agregarAlCarrito(<?php echo $row['id_producto']; ?>, '<?php echo $row['nombre']; ?>', <?php echo $row['precio_final']; ?>, <?php echo $row['cantidad_stock']; ?>)">Agregar al carrito</button>
                             </td>
                         </tr>
                         <?php
@@ -146,13 +161,19 @@
             return;
         }
 
-        // Aquí puedes agregar la lógica para procesar la compra
-        // y disminuir el stock de productos en la base de datos
-        alert('Compra procesada');
-        
-        actualizarCarrito();
-        window.open('generar_ticket.php?venta_id=' + venta_id, '_blank');
-    });
+        // Realizar la solicitud AJAX para generar el PDF
+        fetch('generar_ticket.php?venta_id=' + venta_id)
+            .then(response => response.blob())
+            .then(blob => {
+                alert('Compra procesada');
+                const pdfUrl = URL.createObjectURL(blob);
+                window.open(pdfUrl, '_blank');
+            })
+            .catch(error => {
+                console.error('Error al generar el ticket:', error);
+                alert('Hubo un problema al generar el ticket. Por favor, inténtalo de nuevo.');
+            });
+        });
     </script>
 </body>
 </html>
