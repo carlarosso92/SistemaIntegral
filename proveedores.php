@@ -147,7 +147,7 @@
             </tbody>
         </table>
         <div>
-            <a href="Proveedores/ingresar_proveedor.php" class="button">Agregar Proveedor</a>
+            <a href="Proveedores/crudproveedores.php" class="button">Agregar Proveedor</a>
         </div>
     </div>
 </body>

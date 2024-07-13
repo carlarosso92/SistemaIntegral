@@ -42,7 +42,7 @@ main.contenido {
     padding: 10px;
     width: 100%;
     border-radius: 10px;
-    text-align: left;
+
 }
 
 .details .name, .details .role {
@@ -57,14 +57,14 @@ main.contenido {
     gap: 20px;
 }
 
-.activities .activity {
+.activities .activities {
     background-color: #e1f5a9;
     border: none;
     padding: 15px;
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
-    display: flex;
+
     align-items: center;
     justify-content: center;
     flex-direction: column;

@@ -191,3 +191,27 @@ main {
     background-color: #EAF207;
     color: #72A603;
 }
+
+/* Estilos para el footer */
+#contacto {
+    background-color: #72A603; /* Color verde */
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    color: yellow; /* Texto amarillo */
+}
+
+#contacto p {
+    margin: 0;
+}
+
+#contacto a {
+    color: yellow; /* Color del enlace amarillo */
+    text-decoration: none;
+}
+
+#contacto a:hover {
+    text-decoration: underline;
+}
