@@ -17,10 +17,11 @@
             padding: 10px;
             font-style: normal;
             text-align: center;
-            margin: 2em 20em auto;
+            margin: auto;
+            margin-top: 40px;
             color: #72A603;
             background-color: #E4F2B5;
-            max-width: 500px;
+            max-width: 400px;
             border-radius: 10px;
             border: 1px solid #72A603;
         }
@@ -31,7 +32,8 @@
 
         form {
             max-width: 500px;
-            margin: 2em auto;
+            margin: auto;
+            margin-top: 10px;
             padding: 20px;
             border: 1px solid #72A603;
             border-radius: 10px;

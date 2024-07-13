@@ -8,6 +8,7 @@
     body {
       font-family: sans-serif;
       margin: 0;
+      background-color:  #F2EDD0;
     }
 
     /* Encabezado */

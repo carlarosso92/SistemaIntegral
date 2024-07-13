@@ -1,180 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/menuempleado.css">
     <title>Aplicar Descuentos - Don Perico</title>
     <link rel="icon" href="../img/logo2.png" type="image/png">
     <style>
-    /* Estilos generales */
-    body {
-      font-family: sans-serif;
-      margin: 0;
-    }
+        h2 {
+            padding: 10px;
+            font-style: normal;
+            text-align: center;
+            margin: 8em 26em auto;
+            color: #72A603;
+            background-color: #E4F2B5;
+            max-width: 500px;
+            border-radius: 10px;
+            border: 1px solid #72A603;
+        }
+        h2:hover{
+            background-color: #D3E1A4;
+            color: #61A502;
+        }
+        
+        form {
+            max-width: 500px;
+            margin: auto;
+            margin-top: 1em;
+            padding: 20px;
+            border: 1px solid #72A603;
+            border-radius: 10px;
+            background-color: #E4F2B5;
+        }
 
-    /* Encabezado */
-    header {
-      background-color: #72A603;
-      color: yellow;
-      padding: 15px 0;
-      position: relative;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-    }
-    img{
-      width: 10%;
-    }
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"],
+        form input[type="number"]
+         {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #72A603;
+            border-radius: 20px;
+        }
 
-     /* Header Container */
-     .container {
-      max-width: 1200px;
-      margin: 0 auto; /* Centers the container horizontally */
-      padding: 0 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between; /* Distributes items evenly */
-      width: 100%; /* Ensures the container takes full width */
-    }
-    h1 {
-      margin: 0;
-      font-size: 2em;
-      font-family: sans-serif;
-    }
+        form input[type="submit"] {
+            width: calc(100% - 100px);
+            padding: 10px;
+            margin: center;
+            margin-bottom: 20px;
+            border: 1px solid #72A603;
+            border-radius: 20px;
+            background-color: #72A603;
+            color: yellow;
+            cursor: pointer;
+        }
 
-    input[type="text"] {
-      padding: 8px;
-      border: black 1px;
-      border-radius: 20px;
-      flex-grow: 1;
-      margin: 0 px;
-    }
+        form input[type="submit"]:hover {
+            background-color: blue;
+            color: white;
+        }
+        form button {
+            margin-top: 1.5em;
+            background-color: #72A603;
+            color: yellow;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
 
-    .user-options {
-      display: flex;
-      align-items: center;
-    }
+        form button:hover {
+            background-color: #EAF207;
+            color: #72A603;
+        }
 
-    .user-options a, .user-options span {
-      color: yellow;
-      text-decoration: none;
-      margin-left: 15px;
-      position: top;
-    }
+        .validation-message {
+            color: red;
+            margin: 0;
+            padding-left: 10px; /* Ajusta este valor según tus necesidades */
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: -40px;
+            font-size: small;
+        }
 
-    .cart {
-      background-color: yellow;
-      color: #669900;
-      padding: 5px 8px;
-      border-radius: 50%;
-    }
+        input[type="text"] {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /* Estilo para el botón "Guardar" cuando está deshabilitado */
+        #buttonSubmit:disabled {
+            background-color: #ddd; /* Color de fondo gris */
+            color: #666; /* Color de texto gris */
+            cursor: default; /* Cursor predeterminado */
+            pointer-events: none; /* Evitar eventos de puntero */
+        }
 
-    /* Menú de navegación */
-    nav {
-      background-color: #e6e6e6;
-      padding: 10px 0;
-      text-align: center;
-      margin-top: 70px; /* Espacio para el encabezado fijo */
-    }
-
-    nav a {
-      color: #333;
-      text-decoration: none;
-      margin: 0 15px;
-    }
-
-    /* Menú de categorías */
-    .categories-menu {
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 10px;
-      margin-top: 10px;
-    }
-
-    .categories-menu a {
-      display: block;
-      color: #333;
-      text-decoration: none;
-      padding: 5px 10px;
-    }
-
-
-    /* Sección de productos */
-    .products-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-    }
-
-    .product {
-      width: 23%;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .product img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* Media queries para responsive design */
-    @media (max-width: 768px) {
-      .product {
-        width: 48%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .product {
-        width: 100%;
-      }
-
-      .container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      h1 {
-        margin-bottom: 10px;
-      }
-
-      input[type="text"] {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-
-      .user-options {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .user-options a, .user-options span {
-        margin-left: 0;
-        margin-bottom: 5px;
-      }
-    }
+        /* Estilo adicional para deshabilitar el efecto de hover */
+        #buttonSubmit:disabled:hover {
+            background-color: #ddd; /* Mantener el color de fondo gris */
+            color: #666; /* Mantener el color de texto gris */
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <img src="../img/logo.png" alt="Don Perico Logo">
-            <h1>Don Perico</h1>
-            <div class="user-options">
-                <a href="#">Empleado</a>
-                <ul>
-                    <li><a href="logout.php">Cerrar sesión</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
-
+    <?php include "../inventario/header.php"; ?>
     <div class="main-container">
         <h2>Aplicar Descuentos</h2>
         <form action="procesar_descuento.php" method="POST">
             <label for="producto">Producto:</label>
             <select id="producto" name="producto_id">
                 <?php
-                include "config/conexion.php";
+                include "../inventario/config/conexion.php";
                 $result = mysqli_query($conexion, "SELECT id_producto, nombre FROM productos");
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<option value='" . $row['id_producto'] . "'>" . $row['nombre'] . "</option>";

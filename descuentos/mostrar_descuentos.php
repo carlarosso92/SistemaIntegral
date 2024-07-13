@@ -169,18 +169,7 @@ $result = mysqli_query($conexion, $sql);
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <img src="../img/logo.png" alt="Don Perico Logo">
-            <h1>Don Perico</h1>
-            <div class="user-options">
-                <a href="#">Empleado</a>
-                <ul>
-                    <li><a href="logout.php">Cerrar sesión</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    <?php include "../inventario/header.php"; ?>
 
     <div class="main-container">
         <h2>Productos con Descuento</h2>
