@@ -31,20 +31,21 @@ if (!isset($_SESSION['usuario_id'])) {
             </div>
             <h2>Actividades Administrador</h2>
             <div class="activities">
-                <button class="activity"><span class="icon">✓</span> Registrar venta</button>
-                <button class="activity"><span class="icon">🧩</span> Gestionar Producto</button>
-                <button class="activity"><span class="icon">✏️</span> Devoluciones</button>
+               <a href="ventas/ventas.php"><button class="activity"><span class="icon">✓</span> Registrar venta</button></a>
+                <a href="inventario/index.php"><button class="activity"><span class="icon">🧩</span> Gestionar Producto</button></a>
+                
                 <a href="ventas/reservas.php">
                 <button class="activity"><span class="icon">📑</span> Reservas</button>
                 </a>
                 <a href="inventario/index.php">
                     <button class="activity"><span class="icon">📦</span> Inventario</button>
                 </a>
-                <button class="activity"><span class="icon">📄</span> Generar informes</button>
+                <a href="informes/informes.php"><button class="activity"><span class="icon">📄</span> Generar informes</button></a>
                 <a href="empleados.php">
                 <button class="activity"><span class="icon">👤</span> Gestión de Empleados</button>
                 </a>
-                <button class="activity"><span class="icon">📚</span> Historial de ventas</button>
+                <a href="proveedores.php"><button class="activity"><span class="icon">📚</span> Proveedores</button></a>
+                <button class="activity"><span class="icon">✏️</span> Devoluciones</button>
             </div>
         </div>
     </main>
