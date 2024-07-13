@@ -162,7 +162,7 @@
         }
 
         // Realizar la solicitud AJAX para generar el PDF
-        fetch('generar_ticket.php?venta_id=' + venta_id)
+        fetch('generar_ticket.php')
             .then(response => response.blob())
             .then(blob => {
                 alert('Compra procesada');
