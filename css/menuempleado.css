@@ -42,7 +42,7 @@ main.contenido {
     padding: 10px;
     width: 100%;
     border-radius: 10px;
-    text-align: left;
+
 }
 
 .details .name, .details .role {
@@ -64,7 +64,7 @@ main.contenido {
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
-    display: flex;
+
     align-items: center;
     justify-content: center;
     flex-direction: column;
