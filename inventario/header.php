@@ -162,7 +162,7 @@
         <h1>Don Perico</h1>
 
         <div class="user-options">
-          <a href="#">Empleado</a>
+          <a href="../logout.php">Cerrar sesión</a>
         </div>
       </div>
     </header>
