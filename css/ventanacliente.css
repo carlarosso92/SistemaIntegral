@@ -86,8 +86,8 @@ body {
 .container {
     margin: 20px auto;
     max-width: 800px;
-    background-color: #F2EDD0;
-    border: 1px solid #000;
+    background-color: #e4f2b5;
+    border: 1px solid #72a603;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -126,7 +126,7 @@ h2 {
 }
 
 a {
-    color: #EAF207;
+    color: #72a603;
     text-decoration: none;
 }
 

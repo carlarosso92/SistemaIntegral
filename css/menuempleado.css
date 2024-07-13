@@ -2,21 +2,22 @@
 
 main.contenido {
     padding: 20px;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .employee-section {
     background-color: #F2EDD0;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    max-width: 800px;
-    margin: 20px auto;
+    box-shadow: 0 12px 39px #72a603;
+    max-width: 450px;
+    margin: 42px auto;
     text-align: center;
+    display: table;
 }
 
 .employee-info {
-    background-color: #E4F2B5;
+    background-color: #e1f5a9;
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
@@ -42,7 +43,6 @@ main.contenido {
     padding: 10px;
     width: 100%;
     border-radius: 10px;
-
 }
 
 .details .name, .details .role {
@@ -52,27 +52,36 @@ main.contenido {
 }
 
 .activities {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
-.activities .activities {
+.activities a {
+    text-decoration: none;
+}
+
+.activities .activity {
     background-color: #e1f5a9;
     border: none;
     padding: 15px;
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
-
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    text-decoration: none;
     color: black;
+    transition: background-color 0.3s;
+    min-height: 100px; /* Ajustar la altura mínima para mejor alineación */
 }
 
 .activities .activity .icon {
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 5px; /* Ajustar el margen inferior para mejor alineación */
+}
+
+.activities .activity:hover {
+    background-color: #d4e48b;
 }

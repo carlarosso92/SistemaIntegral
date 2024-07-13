@@ -12,10 +12,6 @@ if (!isset($_SESSION['usuario_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/menuempleado.css">
-    <link rel="stylesheet" href="css/agregarproducto.css" />
-    <link rel="stylesheet" href="./global.css" />
-    <link rel="stylesheet" href="./index.css" />
     <link rel="stylesheet" href="css/ventanacliente.css">
     <?php include "headerindex.php"; ?>
     <title>Don Perico</title>
@@ -27,7 +23,7 @@ if (!isset($_SESSION['usuario_id'])) {
         <div class="employee-section">
             <div class="employee-info">
                 <div class="details">
-                    <div class="name">Nombre: <?php echo ($_SESSION['cliente_nombre']); ?></div>
+                    <div class="name">Cliente: <?php echo ($_SESSION['cliente_nombre']); ?></div>
                     
                 </div>
             </div>
@@ -68,61 +64,59 @@ if (!isset($_SESSION['usuario_id'])) {
     </main>
 
     <div class="container">
-    <h2>Reservas activas</h2>
-</div>
-<div class="container">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Cliente</th>
-                <th scope="col">Hora de Reserva</th>
-                <th scope="col">Producto</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            // Incluir el archivo de configuración para la conexión a la base de datos
-            require("inventario/config/conexion.php");
+        <h2>Reservas activas</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Hora de Reserva</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Incluir el archivo de configuración para la conexión a la base de datos
+                require("inventario/config/conexion.php");
 
-            // Consulta SQL para obtener el listado de reservas con detalles de reservas y productos
-            $sql = "
-                SELECT r.hora_reserva, u.nombre AS nombre_cliente, p.nombre AS nombre_producto, dr.cantidad, r.id
-                FROM reservas r
-                INNER JOIN usuarios u ON r.cliente_id = usuario_id
-                INNER JOIN detalle_reservas dr ON r.id = dr.reserva_id
-                INNER JOIN productos p ON dr.producto_id = p.id_producto";
+                // Consulta SQL para obtener el listado de reservas con detalles de reservas y productos
+                $sql = "
+                    SELECT r.hora_reserva, u.nombre AS nombre_cliente, p.nombre AS nombre_producto, dr.cantidad, r.id
+                    FROM reservas r
+                    INNER JOIN usuarios u ON r.usuario_id = u.usuario_id
+                    INNER JOIN detalle_reservas dr ON r.id = dr.reserva_id
+                    INNER JOIN productos p ON dr.producto_id = p.id_producto";
 
-            // Ejecutar la consulta
-            $resultado = $conexion->query($sql);
+                // Ejecutar la consulta
+                $resultado = $conexion->query($sql);
 
-            // Verificar si se encontraron resultados
-            if ($resultado->num_rows > 0) {
-                // Iterar sobre los resultados obtenidos
-                while ($reserva = $resultado->fetch_assoc()) {
-                    ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($reserva['nombre_cliente']); ?></td>
-                        <td><?php echo htmlspecialchars($reserva['hora_reserva']); ?></td>
-                        <td><?php echo htmlspecialchars($reserva['nombre_producto']); ?></td>
-                        <td><?php echo htmlspecialchars($reserva['cantidad']); ?></td>
-                        <td>
-                            <a href="" onclick="return confirm('¿Estás seguro de que deseas eliminar esta reserva?');">Eliminar</a>
-                        </td>
-                    </tr>
-                    <?php
+                // Verificar si se encontraron resultados
+                if ($resultado->num_rows > 0) {
+                    // Iterar sobre los resultados obtenidos
+                    while ($reserva = $resultado->fetch_assoc()) {
+                        ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($reserva['nombre_cliente']); ?></td>
+                            <td><?php echo htmlspecialchars($reserva['hora_reserva']); ?></td>
+                            <td><?php echo htmlspecialchars($reserva['nombre_producto']); ?></td>
+                            <td><?php echo htmlspecialchars($reserva['cantidad']); ?></td>
+                            <td>
+                                <a href="" onclick="return confirm('¿Estás seguro de que deseas eliminar esta reserva?');">Eliminar</a>
+                            </td>
+                        </tr>
+                        <?php
+                    }
+                } else {
+                    echo "<tr><td colspan='5'>No se encontraron reservas.</td></tr>";
                 }
-            } else {
-                echo "<tr><td colspan='5'>No se encontraron reservas.</td></tr>";
-            }
 
-            // Cerrar la conexión
-            $conexion->close();
-            ?>
-        </tbody>
-    </table>
-</div>
+                // Cerrar la conexión
+                $conexion->close();
+                ?>
+            </tbody>
+        </table>
+    </div>
 
 </body>
 
