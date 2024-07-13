@@ -101,6 +101,40 @@ $result = mysqli_query($conexion, $sql);
             background-color: #ddd; /* Mantener el color de fondo gris */
             color: #666; /* Mantener el color de texto gris */
         }
+        .products-section {
+            display: flex;
+            gap: 20px;
+            max-width: 500px;
+            margin: auto;
+            margin-top: 10px;
+            padding: 20px;
+            border: 1px solid #72A603;
+            border-radius: 10px;
+            background-color: #E4F2B5;
+        }
+
+        .products-section h3 {
+            font-size: 1.2em;
+            color: #333;
+            margin: 0 0 15px 0;
+        }
+
+        .products-section p {
+            font-size: 1em;
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .products-section .Precio-Original,
+        .products-section .Descuento,
+        .products-section .Precio-con-Descuento {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .product-box .Precio-con-Descuento {
+            color: #e60000;
+        }
     </style>
 </head>
 <body>
