@@ -64,7 +64,7 @@ session_start();
             </ul>
             <div class="carrito-footer">
                 <p>Total: <span id="totalCarrito">$0</span></p>
-                <button id="checkoutButton">Ir a Pagar</button>
+                <button id="checkoutButton">Reservar</button>
             </div>
         </div>
     </div>

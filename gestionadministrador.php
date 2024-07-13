@@ -47,12 +47,16 @@ if (!isset($_SESSION['usuario_id'])) {
                 <button class="activity"><span class="icon">✓</span> Registrar venta</button>
                 <button class="activity"><span class="icon">🧩</span> Gestionar Producto</button>
                 <button class="activity"><span class="icon">✏️</span> Devoluciones</button>
+                <a href="ventas/reservas.php">
                 <button class="activity"><span class="icon">📑</span> Reservas</button>
+                </a>
                 <a href="inventario/index.php">
                     <button class="activity"><span class="icon">📦</span> Inventario</button>
                 </a>
                 <button class="activity"><span class="icon">📄</span> Generar informes</button>
-                <button class="activity"><span class="icon">👤</span> Gestión de Usuarios</button>
+                <a href="empleados.php">
+                <button class="activity"><span class="icon">👤</span> Gestión de Empleados</button>
+                </a>
                 <button class="activity"><span class="icon">📚</span> Historial de ventas</button>
             </div>
         </div>
