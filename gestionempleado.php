@@ -27,18 +27,13 @@ if (!isset($_SESSION['usuario_id'])) {
             </div>
             <h2>Actividades Empleado</h2>
             <div class="activities">
-                <button class="activity"><span class="icon">✓</span> Registrar venta</button>
-                <button class="activity"><span class="icon">🧩</span> Gestionar Producto</button>
-                <button class="activity"><span class="icon">✏️</span> Devoluciones</button>
-                <a href="ventas/reservas.php">
-                <button class="activity"><span class="icon">📑</span> Reservas</button>
-                </a>
-                <a href="inventario/index.php" class=""button>
-                <button class="activity"><span class="icon">📦</span> Inventario</button>
-                </a>
+                <a href="ventas/ventas.php"><button class="activity"><span class="icon">✓</span> Registrar venta</button></a>
+                <a href="inventario/index.php"><button class="activity"><span class="icon">🧩</span> Gestionar Producto</button></a>
+                <a href="#"><button class="activity"><span class="icon">✏️</span> Devoluciones</button></a>
+                <a href="ventas/reservas.php"><button class="activity"><span class="icon">📑</span> Reservas</button></a>
+                <a href="inventario/index.php"><button class="activity"><span class="icon">📦</span> Inventario</button></a>
             </div>
         </div>
     </main>
-
 </body>
 </html>
