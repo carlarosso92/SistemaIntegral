@@ -33,7 +33,7 @@
             <tbody>
                 <?php
                 // Incluir el archivo de configuración para la conexión a la base de datos
-                require("config/conexion.php");
+                require ("config/conexion.php");
 
                 // Consulta SQL para obtener el listado de productos con categorías, subcategorías y proveedores
                 $sql = "SELECT p.id_producto, p.codigo_barras, c.nombre_categoria, s.nombre_subcategoria, p.nombre, p.descripcion, p.precio, p.cantidad_stock, prov.nombre_proveedor
@@ -61,8 +61,10 @@
                             <td><?php echo htmlspecialchars($producto['cantidad_stock']); ?></td>
                             <td><?php echo htmlspecialchars($producto['nombre_proveedor']); ?></td>
                             <td>
-                                <a href="editarproducto.php?id_producto=<?php echo htmlspecialchars($producto['id_producto']); ?>">Editar</a>
-                                <a href="eliminarproducto.php?id_producto=<?php echo htmlspecialchars($producto['id_producto']); ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?');">Eliminar</a>
+                                <a
+                                    href="editarproducto.php?id_producto=<?php echo htmlspecialchars($producto['id_producto']); ?>">Editar</a>
+                                <a href="eliminarproducto.php?id_producto=<?php echo htmlspecialchars($producto['id_producto']); ?>"
+                                    onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?');">Eliminar</a>
                             </td>
                         </tr>
                         <?php
