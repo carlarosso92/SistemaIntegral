@@ -222,7 +222,7 @@ nav li a:hover {
 }
 
 .carrito-header {  
-    margin-left: 30px;
+
     align-items: center;
     padding: 20px;
     background-color: #72A603;
@@ -263,7 +263,6 @@ nav li a:hover {
 
 .carrito-footer {
     border: 10px solid #EAF207;
-    margin: 20px;
     border-radius: 10px;
     padding: 20px;
     background-color: #72A603;
@@ -455,7 +454,7 @@ nav li a:hover {
 
 .home-button {
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 20px; /* Aumenta el margen para alejar el botón de la casa */
     font-size: 24px;
     color: #EAF207;
     text-decoration: none;

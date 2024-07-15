@@ -89,7 +89,7 @@
 .table th, .table td {
     border: 1px solid black;
     padding: 8px;
-    text-align: left;
+    text-align: center;
 }
 
 .table th {
@@ -126,6 +126,7 @@ a:hover {
     text-align: center;
     text-decoration: none;
     cursor: pointer;
+    margin: 5px;
 }
 
 .button:hover {
