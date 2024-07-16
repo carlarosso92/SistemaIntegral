@@ -35,21 +35,43 @@
                     <tbody>
                         <?php
                         include '../php/config.php';
-                        $query = "SELECT 
-                            prod.codigo_barras, 
-                            cat.nombre_categoria, 
-                            subc.nombre_subcategoria, 
-                            prod.nombre, 
-                            prod.descripcion, 
-                            prod.precio, 
-                            prod.cantidad_stock, 
-                            prod.id_producto, 
-                            des.valor_descuento,
-                            (prod.precio * ( 1 - (IF(des.valor_descuento = 0,0,des.valor_descuento)) / 100)) as precio_final
-                        FROM productos prod
-                        INNER JOIN categorias cat ON prod.id_categoria = cat.id
-                        LEFT JOIN subcategorias subc ON prod.id_subcategoria = subc.id
-                        LEFT JOIN descuentos des ON prod.id_producto = des.producto_id";
+                        $query = "SELECT
+                            prod.codigo_barras,
+                            cat.nombre_categoria,
+                            subc.nombre_subcategoria,
+                            prod.nombre,
+                            prod.descripcion,
+                            prod.precio,
+                            prod.cantidad_stock,
+                            prod.id_producto,
+                            IF(
+                                des.valor_descuento IS NULL,
+                                0,
+                                des.valor_descuento
+                            ) AS valor_descuento,
+                            (
+                                prod.precio *(
+                                    1 -(
+                                        IF(
+                                            IF(
+                                                des.valor_descuento IS NULL,
+                                                0,
+                                                des.valor_descuento
+                                            ) = 0,
+                                            0,
+                                            des.valor_descuento
+                                        )
+                                    ) / 100
+                                )
+                            ) AS precio_final
+                        FROM
+                            productos prod
+                        INNER JOIN categorias cat ON
+                            prod.id_categoria = cat.id
+                        LEFT JOIN subcategorias subc ON
+                            prod.id_subcategoria = subc.id
+                        LEFT JOIN descuentos des ON
+                            prod.id_producto = des.producto_id";
                         $result = mysqli_query($conexion, $query);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
