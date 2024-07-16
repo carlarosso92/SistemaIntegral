@@ -37,9 +37,9 @@
                     echo '<div class="oferta">';
                     echo '<img src="img/producto_default.jpg" alt="' . htmlspecialchars($oferta['nombre']) . '">';
                     echo '<h3>' . htmlspecialchars($oferta['nombre']) . '</h3>';
-                    echo '<p class="precio-original">$' . number_format($oferta['precio'], 2) . '</p>';
+                    echo '<p class="precio-original">$' . $oferta['precio'] . '</p>';
                     $precio_con_descuento = $oferta['precio'] * (1 - $oferta['valor_descuento'] / 100);
-                    echo '<p class="precio-con-descuento">$' . number_format($precio_con_descuento, 2) . '</p>';
+                    echo '<p class="precio-con-descuento">$' . $precio_con_descuento . '</p>';
                     echo '<p class="descuento">-' . $oferta['valor_descuento'] . '%</p>';
                     echo '<button class="btn-agregar" data-id="' . $oferta['id_producto'] . '">Agregar</button>';
                     echo '</div>';
@@ -63,7 +63,7 @@
                     echo '<div class="producto">';
                     echo '<img src="img/producto_default.jpg" alt="' . htmlspecialchars($producto['nombre']) . '">';
                     echo '<h3>' . htmlspecialchars($producto['nombre']) . '</h3>';
-                    echo '<p>$' . number_format($producto['precio'], 2) . '</p>';
+                    echo '<p>$' . $producto['precio'] . '</p>';
                     echo '<button class="btn-agregar" data-id="' . $producto['id_producto'] . '">Agregar</button>';
                     echo '</div>';
                 }
@@ -220,7 +220,7 @@
                         <img src="${producto.imagen}" alt="${producto.name}">
                         <div>
                             <p>${producto.name}</p>
-                            <p class="precio-con-descuento">$${precioConDescuento.toFixed(2)}</p>
+                            <p class="precio-con-descuento">$${precioConDescuento}</p>
                             <div class="cantidad">
                                 <button onclick="modificarCantidad(${id}, -1)">-</button>
                                 <span>${producto.quantity}</span>
@@ -235,7 +235,7 @@
                 tieneProductos = true;
             }
 
-            document.getElementById('totalCarrito').innerText = `$${total.toFixed(2)}`;
+            document.getElementById('totalCarrito').innerText = `$${total}`;
 
             // Mostrar u ocultar el mensaje de carrito vacío
             if (tieneProductos) {

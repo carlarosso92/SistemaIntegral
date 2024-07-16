@@ -152,12 +152,12 @@
 
             carrito.forEach(producto => {
                 total += producto.precio * producto.cantidad;
-                listaCarrito.innerHTML += `<li>${producto.nombre} - ${producto.cantidad} x $${producto.precio.toFixed(2)} 
+                listaCarrito.innerHTML += `<li>${producto.nombre} - ${producto.cantidad} x $${producto.precio} 
             <button onclick="agregarAlCarrito(${producto.id}, '${producto.nombre}', ${producto.precio}, ${producto.stock})">+</button>
             <button onclick="quitarDelCarrito(${producto.id})">-</button></li>`;
             });
 
-            totalCarrito.innerText = total.toFixed(2);
+            totalCarrito.innerText = total;
             carritoInput.value = JSON.stringify(carrito);
         }
 

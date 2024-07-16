@@ -116,8 +116,8 @@
 
                         productoDiv.innerHTML = `
                             <img src="${producto.imagen}" alt="${producto.nombre}">
-                            ${producto.descuento > 0 ? `<p class="precio-original">$${precioOriginal.toFixed(2)}</p>` : ''}
-                            <p class="precio-con-descuento">$${precioConDescuento.toFixed(2)}</p>
+                            ${producto.descuento > 0 ? `<p class="precio-original">$${precioOriginal}</p>` : ''}
+                            <p class="precio-con-descuento">$${precioConDescuento}</p>
                             ${producto.descuento > 0 ? `<p class="descuento">-${producto.descuento}%</p>` : ''}
                             <p class="descripcion">${producto.nombre}</p>
                             <button class="btn-agregar" data-id="${producto.id}">Agregar</button>
@@ -227,7 +227,7 @@
                         <img src="${producto.imagen}" alt="${producto.name}">
                         <div>
                             <p>${producto.name}</p>
-                            <p class="precio-con-descuento">$${precioConDescuento.toFixed(2)}</p>
+                            <p class="precio-con-descuento">$${precioConDescuento}</p>
                             <div class="cantidad">
                                 <button onclick="modificarCantidad(${id}, -1)">-</button>
                                 <span>${producto.quantity}</span>
@@ -242,7 +242,7 @@
                 tieneProductos = true;
             }
 
-            document.getElementById('totalCarrito').innerText = `$${total.toFixed(2)}`;
+            document.getElementById('totalCarrito').innerText = `$${total}`;
 
             // Mostrar u ocultar el mensaje de carrito vacío
             if (tieneProductos) {

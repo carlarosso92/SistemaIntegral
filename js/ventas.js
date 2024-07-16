@@ -40,7 +40,7 @@ function actualizarCarrito() {
         <button onclick="quitarDelCarrito(${producto.id})">-</button></li>`;
     });
 
-    totalCarrito.innerText = total.toFixed(2);
+    totalCarrito.innerText = total;
     carritoInput.value = JSON.stringify(carrito);
 }
 
