@@ -9,37 +9,47 @@
     <link rel="icon" href="img/logo2.png" type="image/png">
     <script src="js/validacionFormularios.js"></script>
     <style>
-        h2 {
+          h2 {
             padding: 10px;
-            font-style: normal;
-            text-align: center;
-            margin: 2em 26em auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
             color: #72A603;
             background-color: #E4F2B5;
-            max-width: 500px;
+            min-width: calc(100% - 5vh);
+            margin-bottom: 10px;
+            border: 1px solid;
             border-radius: 10px;
-            border: 1px solid #72A603;
         }
-        h2:hover{
+
+        h2:hover {
             background-color: #D3E1A4;
             color: #61A502;
+            border-radius: 10px;
         }
 
         form {
-            max-width: 500px;
-            margin: 2em auto;
+            min-height: 70vh;
+            max-width: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: center;
+            margin: 10vh auto;
             padding: 20px;
             border: 1px solid #72A603;
             border-radius: 10px;
             background-color: #E4F2B5;
         }
-
         form input[type="text"],
         form input[type="email"],
         form input[type="password"],
         form input[type="number"] {
             width: calc(100% - 22px);
             padding: 10px;
+            margin-top: 5px;
             margin-bottom: 20px;
             border: 1px solid #72A603;
             border-radius: 20px;
@@ -86,13 +96,20 @@
             background-color: #ddd; /* Mantener el color de fondo gris */
             color: #666; /* Mantener el color de texto gris */
         }
+
+        span.texto{
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+
     </style>
 </head>
 <body>
-    <h2>Registro</h2>
+    
     <form action="ingresarempleado.php" method="POST">
-    <div>
-            Nombre: <input type="text" name="nombre" id="name"><br>
+    <h2>Registro</h2>
+        <div>
+            <span class="texto">Nombre: </span><input type="text" name="nombre" id="name"><br>
             <p id="nombreOutput" class="validation-message">El nombre no puede estar vacío.</p>
         </div>
         <div>

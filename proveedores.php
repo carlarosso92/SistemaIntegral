@@ -9,20 +9,17 @@
     <link rel="icon" href="../img/logo2.png" type="image/png">
     <style>
         h2 {
-            padding: 12px;
+            padding: 10px;
             font-style: normal;
             text-align: center;
-            margin: 8em 21em auto;
-            margin-bottom: 1em;
-            color: #72A603;
-            background-color: #E4F2B5;
-            max-width: 500px;
+            margin: auto;
+            color: ;
+            background-color: #72A603;
             border-radius: 10px;
-            border: 1px solid #72A603;
         }
         h2:hover {
-            background-color: #D3E1A4;
-            color: #61A502;
+            background-color:  rgb(234, 234, 76);
+            color: #333;
         }
 
         form {
@@ -92,11 +89,17 @@
 <body>
     <?php include "inventario/header.php"; ?>
     <div class="container">
-        <h2 class="text-center">LISTADO DE PROVEEDORES</h2>
+        
     </div>
     <div class="container">
+    
         <table class="table">
             <thead>
+                <tr class="text-center">
+                    <td colspan="6">
+                        <h2>LISTADO DE PROVEEDORES</h2>
+                    </td>
+                </tr>
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nombre del Proveedor</th>

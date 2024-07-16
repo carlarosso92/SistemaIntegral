@@ -12,11 +12,15 @@
 <body>
     <?php include "inventario/header.php"; ?>
     <div class="container">
-        <h1 class="text-center">LISTADO DE EMPLEADOS</h1>
     </div>
     <div class="container">
         <table class="table">
             <thead>
+                <tr>
+                    <td colspan="7" class="titulo">
+                        <h1 class="text-center">LISTADO DE EMPLEADOS</h1>
+                    </td>
+                </tr>
                 <tr>
                     <th scope="col">Nombre</th>
                     <!--<th scope="col">ID</th>-->

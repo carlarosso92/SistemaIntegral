@@ -10,10 +10,10 @@
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: #f2edd0; 
+    background-color: #F2EDD0; 
 }
 .modal-contenido {
-    background-color: #F2EDD0;
+    background-color: #E4F2B5;
     padding: 20px;
     border: 1px solid #53730D;
     width: 80%; 

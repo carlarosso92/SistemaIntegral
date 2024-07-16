@@ -26,8 +26,13 @@
         }
 
         form {
-            max-width: 500px;
-            margin: 2em auto;
+            min-height: 70vh;
+            max-width: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 15vh auto;
             padding: 20px;
             border: 1px solid #72A603;
             border-radius: 10px;
