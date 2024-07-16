@@ -15,7 +15,7 @@ $result = $conexion->query($query);
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/menuempleado.css">
     <title>Ingreso de proveedor</title>
-    <link rel="icon" href="img/logo2.png" type="image/png">
+    <link rel="icon" href="../img/logo2.png" type="image/png">
     <script src="../js/validacionFormularios.js"></script>
     <style>
         body {

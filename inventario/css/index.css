@@ -19,15 +19,24 @@ body {
 }
 
 h1.text-center {
-    margin-top: 162px;
-    margin-bottom: 20px;
+    margin: 0;
     font-size: 2em;
     color: #333;
     text-align: center;
     background-color: #72A603;
+    border-radius: 10px;
+}
+h1.text-center:hover{
+    background-color:  rgb(234, 234, 76);
+    color: #333;
+}
+
+td.titulo {
+    background-color: rgb(234, 234, 76);
 }
 
 .table {
+    margin-top: 20%;
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
@@ -90,3 +99,8 @@ a.button:hover {
     background-color: #0056b3;
     text-decoration: none; /* Opcional: mantener el estilo de botón al pasar el ratón */
 }
+.text-center {
+    background-color: #72A603;
+}
+
+
