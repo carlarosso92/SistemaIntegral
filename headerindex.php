@@ -92,11 +92,7 @@ session_start();
             </ul>
             <div class="carrito-footer">
                 <p>Total: <span id="totalCarrito">$0</span></p>
-                <?php if (isset($_SESSION['usuario_id'])): ?>
-                    <button id="checkoutButton">Reservar</button>
-                <?php else: ?>
-                    <button id="checkoutButton" onclick="window.location.href='crudlogincliente.php'">Iniciar Sesión</button>
-                <?php endif; ?>
+                <button id="checkoutButton">Reservar</button>
             </div>
         </div>
     </div>
@@ -162,7 +158,7 @@ session_start();
                         <img src="${producto.imagen}" alt="${producto.name}">
                         <div>
                             <p>${producto.name}</p>
-                            <p class="precio-con-descuento">$${precioConDescuento.toFixed(2)}</p>
+                            <p class="precio-con-descuento">$${precioConDescuento}</p>
                             <div class="cantidad">
                                 <button onclick="modificarCantidad(${id}, -1)">-</button>
                                 <span>${producto.quantity}</span>
@@ -177,7 +173,7 @@ session_start();
                 tieneProductos = true;
             }
 
-            document.getElementById('totalCarrito').innerText = `$${total.toFixed(2)}`;
+            document.getElementById('totalCarrito').innerText = `$${total}`;
 
             // Mostrar u ocultar el mensaje de carrito vacío
             if (tieneProductos) {
