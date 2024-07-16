@@ -11,15 +11,35 @@ session_start();
     <link rel="icon" href="img/logo2.png" type="image/png">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+                /* Estilo para el precio original tachado */
+        .precio-original {
+            text-decoration: line-through !important;
+            color: red !important;
+            font-size: 1em !important;
+        }
+
+        /* Estilo para el precio con descuento */
+        .precio-con-descuento {
+            color: green;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Estilo para el porcentaje de descuento */
+        .descuento {
+            color: orange;
+            font-size: 1em;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="contenedor">
             <img src="img/logo.png" alt="Logo">
             <h1>Don Perico</h1>
-            <a href="index.php" class="home-button">
-                <i class="fas fa-home"></i>
-            </a>
+            
             <input type="text" placeholder="¿Qué buscas?">
             <div class="opcionusuario">
                 <?php if (isset($_SESSION['cliente_nombre'])): ?>
@@ -40,6 +60,9 @@ session_start();
         <nav>
             <div class="menuopcion">
                 <ul>
+                <a href="index.php" class="home-button">
+                <i class="fas fa-home"></i>
+            </a>
                     <li><a href="pantallaproducto.php">Productos</a></li>
                     <li><a href="#ofertas">Ofertas</a></li>
                     <li><a href="#contacto">Contacto</a></li>
@@ -107,7 +130,7 @@ session_start();
 
         // Mostrar y ocultar el carrito lateral
         document.getElementById('carritoButton').onclick = function() {
-            document.getElementById('carritoLateral').style.width = '300px';
+            document.getElementById('carritoLateral').style.width = '600px';
         };
 
         document.getElementById('closeCarrito').onclick = function() {
@@ -141,7 +164,7 @@ session_start();
                                 <span>${producto.quantity}</span>
                                 <button onclick="modificarCantidad(${id}, 1)">+</button>
                             </div>
-                            <button class="eliminar" onclick="eliminarProducto(${id})">Eliminar</button>
+                            <button class="eliminar" onclick="eliminarProducto(${id})">X</button>
                         </div>
                     </div>
                 `;

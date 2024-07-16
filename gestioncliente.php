@@ -117,7 +117,10 @@ if (!isset($_SESSION['usuario_id'])) {
             </tbody>
         </table>
     </div>
-
+    <footer id="contacto">
+        <p>&copy; 2024 Don Perico. Todos los derechos reservados.</p>
+        <p><a href="formulario_contacto.php">Contáctanos aquí</a></p>
+    </footer>
 </body>
 
 </html>

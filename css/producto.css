@@ -165,3 +165,8 @@ section.productos {
 #contacto a:hover {
     text-decoration: underline;
 }
+
+.btn-agregar:hover {
+    background-color: #EAF207;
+    color: #72A603;
+}

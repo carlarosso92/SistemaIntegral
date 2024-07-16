@@ -214,7 +214,6 @@ nav li a:hover {
     background: #F2EDD0;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 2;
     display: flex;
@@ -222,11 +221,12 @@ nav li a:hover {
 }
 
 .carrito-header {  
-    margin-left: 30px;
+
     align-items: center;
     padding: 20px;
     background-color: #72A603;
     border-bottom: 1px solid #ddd;
+    text-align: center;
 }
 
 .carrito-header span {
@@ -241,7 +241,7 @@ nav li a:hover {
     border: none;
     font-size: 30px;
     cursor: pointer;
-    color: rgba(169, 160, 107, 0.636);
+    color: #eaf207;
 }
 
 .carrito-body {
@@ -263,7 +263,6 @@ nav li a:hover {
 
 .carrito-footer {
     border: 10px solid #EAF207;
-    margin: 20px;
     border-radius: 10px;
     padding: 20px;
     background-color: #72A603;
@@ -324,14 +323,15 @@ nav li a:hover {
 }
 
 .producto-carrito div { 
-    border: 2px solid green;
+    border: 2px solid #72A603 ;
     display: inline-flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
     width: 100%;
     justify-content: space-evenly;
     align-content: stretch;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    border-radius: 24px 24px 24px 24px; ;
 }
 
 .producto-carrito p {
@@ -344,7 +344,7 @@ nav li a:hover {
 .producto-carrito .cantidad {
     margin: 10px;
     background: #ddd;
-    display: flex;
+    display: contents;
     align-items: auto;
 }
 
@@ -360,15 +360,15 @@ nav li a:hover {
 }
 
 .producto-carrito .eliminar {
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-size: 20px; /* Cambios para botón eliminar */
-    border: 1px solid black;
-    color: black;
+    font-size: 15px; /* Cambios para botón eliminar */
+    color: #fefefe;
     border: none;
     padding: 5px 5px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 15px 15px 15px 15px;
+    background-color:red;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 #intentaloAquiButton {
@@ -422,11 +422,13 @@ nav li a:hover {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #e4f2b5;
     margin: 15% auto;
+    text-align: center;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    border: 1px solid #72a603;
+    width: 200px;
+    height: 197px;
 }
 
 .close {
@@ -455,10 +457,10 @@ nav li a:hover {
 
 .home-button {
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 20px; /* Aumenta el margen para alejar el botón de la casa */
     font-size: 24px;
-    color: #EAF207;
-    text-decoration: none;
+    color: #72a603
+
 }
 
 .home-button:hover {
