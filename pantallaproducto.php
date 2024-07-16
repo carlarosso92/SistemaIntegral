@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/producto.css">
     <link rel="icon" href="../img/logo2.png" type="image/png">
     <style>
-                /* Estilo para el precio original tachado */
+        /* Estilo para el precio original tachado */
         .precio-original {
             text-decoration: line-through !important;
             color: red !important;
@@ -31,7 +31,10 @@
     </style>
 </head>
 <body>
-    <?php include('headerindex.php'); ?>
+    <?php
+    session_start();
+    include('headerindex.php'); 
+    ?>
 
     <div class="contenedor-productos">
         <aside class="filtros">
@@ -168,31 +171,38 @@
             document.getElementById('reservaForm').onsubmit = function(event) {
                 event.preventDefault();
                 const horaRetiro = document.getElementById('hora_retiro').value;
-                
+
                 if (!horaRetiro) {
                     alert('Por favor selecciona una hora de retiro.');
                     return;
                 }
 
-                fetch('procesar_reserva.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: `hora_retiro=${horaRetiro}`
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Reserva procesada:', data);
-                    if (data.success) {
-                        alert('Reserva confirmada.');
-                        modal.style.display = "none";
-                        actualizarCarrito({}); // Limpiar el carrito
-                    } else {
-                        alert('Error al procesar la reserva.');
-                    }
-                })
-                .catch(error => console.error('Error:', error));
+                // Verificar si la sesión está iniciada
+                <?php if(isset($_SESSION['usuario_id'])): ?>
+                    // La sesión está iniciada, procesar la reserva
+                    fetch('procesar_reserva.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: `hora_retiro=${horaRetiro}`
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Reserva procesada:', data);
+                        if (data.success) {
+                            alert('Reserva confirmada.');
+                            modal.style.display = "none";
+                            actualizarCarrito({}); // Limpiar el carrito
+                        } else {
+                            alert('Error al procesar la reserva.');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                <?php else: ?>
+                    // La sesión no está iniciada, redirigir a la página de inicio de sesión
+                    window.location.href = 'crudlogincliente.php';
+                <?php endif; ?>
             };
         });
 
