@@ -2,22 +2,32 @@
 body {
     font-family: sans-serif;
     margin: 0;
-    background-color: #f8f7f0;
+    background-color: #F2EDD0;
 }
 .formulario-contacto {
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px auto;
+    justify-content: center;
+    margin: 15vh auto;
     padding: 20px;
-    background-color: #F2EDD0; /* Color de fondo */
+    background-color: #E4F2B5; /* Color de fondo */
     border: 1px solid #72A603;
     border-radius: 10px;
     max-width: 600px;
 }
 
 .formulario-contacto h2 {
+    padding: 10px;
+    margin: auto;
     color: #72A603; /* Título verde */
+}
+
+.formulario-contacto h2:hover {
+    background-color: #D3E1A4;
+    color: #61A502;
+    border-radius: 20%;
 }
 
 .formulario-contacto label {
@@ -30,6 +40,7 @@ body {
     width: 97%;
     padding: 10px;
     margin-top: 5px;
+    margin-bottom: 10px;
     border: 1px solid #72A603;
     border-radius: 5px;
 }
