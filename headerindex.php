@@ -92,7 +92,11 @@ session_start();
             </ul>
             <div class="carrito-footer">
                 <p>Total: <span id="totalCarrito">$0</span></p>
-                <button id="checkoutButton">Reservar</button>
+                <?php if (isset($_SESSION['usuario_id'])): ?>
+                    <button id="checkoutButton">Reservar</button>
+                <?php else: ?>
+                    <button id="checkoutButton" onclick="window.location.href='crudlogincliente.php'">Iniciar Sesión</button>
+                <?php endif; ?>
             </div>
         </div>
     </div>
