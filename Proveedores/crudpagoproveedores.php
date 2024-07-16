@@ -28,22 +28,26 @@ $result = $conexion->query($query);
             padding: 10px;
             font-style: normal;
             text-align: center;
-            margin: 2em 26em auto;
+            margin: auto;
             color: #72A603;
             background-color: #E4F2B5;
             max-width: 500px;
-            border-radius: 10px;
-            border: 1px solid #72A603;
         }
 
         h2:hover {
             background-color: #D3E1A4;
             color: #61A502;
+            border-radius: 20%;
         }
 
         form {
-            max-width: 500px;
-            margin: 2em auto;
+            min-height: 70vh;
+            max-width: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 15vh auto;
             padding: 20px;
             border: 1px solid #72A603;
             border-radius: 10px;
@@ -81,6 +85,10 @@ $result = $conexion->query($query);
             heigth: 100%;
         }
 
+        label {
+            margin-bottom: 10px;
+        }
+
         .validation-message {
             color: red;
             margin: 0;
@@ -116,11 +124,17 @@ $result = $conexion->query($query);
             color: #666;
             /* Mantener el color de texto gris */
         }
+
+        .monto_input{
+            margin-top: 10px;
+        }
+
     </style>
 
 <body>
-    <h2>Registrar Pago a Proveedor</h2>
+    
     <form action="guardarpago.php" method="POST">
+        <h2>Registrar Pago a Proveedor</h2>
         <label for="proveedor_id">Proveedor:</label>
         <select name="proveedor_id" id="proveedor_id" required>
             <?php while ($row = $result->fetch_assoc()): ?>
@@ -131,7 +145,7 @@ $result = $conexion->query($query);
         <br>
         <label for="fecha_pago">Fecha de Pago:</label>
         <input type="date" name="fecha_pago" id="fecha_pago" required><br>
-        <div>
+        <div class="monto_input">
             Monto: <input type="number" name="monto" id="monto" value="0" required><br>
             <p id="montoOutput" class="validation-message"></p>
         </div>
