@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Don Perico - Ventas</title>
     <link rel="icon" href="../img/logo2.png" type="image/png">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="css/ventas.css">
 </head>
 
@@ -16,9 +14,19 @@
     <main>
         <div class="contenedor-ventas">
             <div class="productos">
-                <h2>Listado de Productos</h2>
                 <table class="table">
                     <thead>
+                        <tr>
+                            <th colspan="10"><h2>Listado de Productos</h2></th>
+                        </tr>
+                        <tr>
+                            <th colspan="10">
+                                <div class="search-container">
+                                    <label for="buscar-producto">Buscar Producto:</label>
+                                    <input type="text" id="buscar-producto" placeholder="Escriba para buscar...">
+                                </div>
+                            </th>
+                        </tr>
                         <tr>
                             <th scope="col">Código de barra</th>
                             <th scope="col">Categoría</th>
@@ -32,7 +40,7 @@
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tabla-productos">
                         <?php
                         include '../php/config.php';
                         $query = "SELECT
@@ -95,7 +103,7 @@
                                 <?php
                             }
                         } else {
-                            echo "<tr><td colspan='8'>No se encontraron productos.</td></tr>";
+                            echo "<tr><td colspan='10'>No se encontraron productos.</td></tr>";
                         }
                         mysqli_free_result($result);
                         mysqli_close($conexion);
@@ -179,6 +187,16 @@
             .catch(error => {
                 console.error('Error al generar el ticket:', error);
                 alert('Hubo un problema al generar el ticket. Por favor, inténtalo de nuevo.');
+            });
+        });
+
+        // Funcionalidad de búsqueda
+        document.getElementById('buscar-producto').addEventListener('keyup', function() {
+            const searchValue = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#tabla-productos tr');
+            rows.forEach(row => {
+                const rowText = row.textContent.toLowerCase();
+                row.style.display = rowText.includes(searchValue) ? '' : 'none';
             });
         });
     </script>
