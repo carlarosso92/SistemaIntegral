@@ -13,7 +13,6 @@
             font-style: normal;
             text-align: center;
             margin: auto;
-            color: ;
             background-color: #72A603;
             border-radius: 10px;
         }

@@ -17,8 +17,6 @@ if (!$resultCategoria) {
     <link rel="icon" href="../img/logo2.png" type="image/png">
     <title>Ingreso de Producto</title>
     <link rel="stylesheet" href="css/agregarproducto.css" />
-    <link rel="stylesheet" href="./global.css" />
-    <link rel="stylesheet" href="./index.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Knewave:wght@400&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jockey One:wght@400&display=swap" />
@@ -28,26 +26,12 @@ if (!$resultCategoria) {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/validacionFormularios.js"></script>
     <style>
-        h2 {
-            padding: 10px;
-            font-style: normal;
-            text-align: center;
-            margin: 3em 26em auto;
-            color: #72A603;
-            background-color: #E4F2B5;
-            max-width: 500px;
-            border-radius: 10px;
-            border: 1px solid #72A603;
-        }
-        h2:hover{
-            background-color: #D3E1A4;
-            color: #61A502;
-        }
+      
         
         form {
             max-width: 500px;
             margin: auto;
-            margin-top: 10px;
+            margin-top: 80px;
             padding: 20px;
             border: 1px solid #72A603;
             border-radius: 10px;
@@ -153,10 +137,12 @@ if (!$resultCategoria) {
 <body>
     <?php include "header.php"; ?>
     <div class="configuracion-div-form">
-        <h2>Nuevo producto</h2>
+    
         <div class="centrar-form">
+            
             <form action="ingresarproducto.php" method="POST">
                 <div>
+                <h2>Nuevo producto</h2>
                     Nombre: <input type="text" name="nombre" id="name"><br>
                     <p id="nombreOutput" class="validation-message">El nombre no puede estar vacío.</p>
                 </div>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/menuempleado.css">
-    <title>Registro de Cliente</title>
+    <title>Registro de Empleado</title>
     <link rel="icon" href="img/logo2.png" type="image/png">
     <script src="js/validacionFormularios.js"></script>
     <style>
@@ -20,7 +20,6 @@
             background-color: #E4F2B5;
             min-width: calc(100% - 5vh);
             margin-bottom: 10px;
-            border: 1px solid;
             border-radius: 10px;
         }
 
