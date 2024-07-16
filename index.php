@@ -76,6 +76,27 @@
         </section>
     </main>
 
+    <!-- Modal para reserva -->
+    <div id="reservaModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Confirmar Reserva</h2>
+            <form id="reservaForm">
+                <label for="hora_retiro">Hora de Retiro:</label>
+                <select id="hora_retiro" name="hora_retiro" required>
+                    <option value="">Selecciona una hora</option>
+                    <!-- Generar opciones de 10 AM a 8 PM -->
+                    <?php 
+                    for ($i = 10; $i <= 20; $i++) {
+                        echo "<option value='$i:00'>$i:00</option>";
+                    }
+                    ?>
+                </select>
+                <button type="submit">Confirmar Reserva</button>
+            </form>
+        </div>
+    </div>
+
     <script>
         let slideIndex = 0;
         const slides = document.querySelectorAll('.slides img');
@@ -255,6 +276,62 @@
             })
             .catch(error => console.error('Error:', error));
         }
+
+        // Modal
+        const modal = document.getElementById("reservaModal");
+        const span = document.getElementsByClassName("close")[0];
+
+        document.getElementById("checkoutButton").onclick = function() {
+            modal.style.display = "block";
+        };
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+
+        // Manejar el formulario de reserva
+        document.getElementById('reservaForm').onsubmit = function(event) {
+            event.preventDefault();
+            const horaRetiro = document.getElementById('hora_retiro').value;
+
+            if (!horaRetiro) {
+                alert('Por favor selecciona una hora de retiro.');
+                return;
+            }
+
+            // Verificar si la sesión está iniciada
+            <?php if(isset($_SESSION['usuario_id'])): ?>
+                // La sesión está iniciada, procesar la reserva
+                fetch('procesar_reserva.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `hora_retiro=${horaRetiro}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Reserva procesada:', data);
+                    if (data.success) {
+                        alert('Reserva confirmada.');
+                        modal.style.display = "none";
+                        actualizarCarrito({}); // Limpiar el carrito
+                    } else {
+                        alert('Error al procesar la reserva.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            <?php else: ?>
+                // La sesión no está iniciada, redirigir a la página de inicio de sesión
+                window.location.href = 'crudlogincliente.php';
+            <?php endif; ?>
+        };
     </script>
     <footer id="contacto">
         <p>&copy; 2024 Don Perico. Todos los derechos reservados.</p>
