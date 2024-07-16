@@ -20,13 +20,6 @@
             background-color: #E4F2B5;
             min-width: calc(100% - 5vh);
             margin-bottom: 10px;
-            border: 1px solid;
-            border-radius: 10px;
-        }
-
-        h2:hover {
-            background-color: #D3E1A4;
-            color: #61A502;
             border-radius: 10px;
         }
 
