@@ -24,9 +24,9 @@
     
         <section id="ofertas" class="ofertas">
             <h2>Ofertas</h2>
-            <div class="ofertas-grid">
+            <div class="ofertas-carrusel">
                 <?php
-                include 'php/config.php';
+                include('php/config.php');
                 // Consultar productos con oferta
                 $ofertas_query = "SELECT p.*, d.valor_descuento 
                                   FROM productos p 
@@ -41,9 +41,14 @@
                     $precio_con_descuento = $oferta['precio'] * (1 - $oferta['valor_descuento'] / 100);
                     echo '<p class="precio-con-descuento">$' . number_format($precio_con_descuento, 2) . '</p>';
                     echo '<p class="descuento">-' . $oferta['valor_descuento'] . '%</p>';
+                    echo '<button class="btn-agregar" data-id="' . $oferta['id_producto'] . '">Agregar</button>';
                     echo '</div>';
                 }
                 ?>
+            </div>
+            <div class="ofertas-controls">
+                <span class="ofertas-prev" onclick="changeOfferSlide(-1)">&#10094;</span>
+                <span class="ofertas-next" onclick="changeOfferSlide(1)">&#10095;</span>
             </div>
         </section>
         
@@ -59,12 +64,12 @@
                     echo '<img src="img/producto_default.jpg" alt="' . htmlspecialchars($producto['nombre']) . '">';
                     echo '<h3>' . htmlspecialchars($producto['nombre']) . '</h3>';
                     echo '<p>$' . number_format($producto['precio'], 2) . '</p>';
-                    echo '<button>Agregar</button>';
+                    echo '<button class="btn-agregar" data-id="' . $producto['id_producto'] . '">Agregar</button>';
                     echo '</div>';
                 }
                 ?>
             </div>
-            <div class="controls">
+            <div class="producto-controls">
                 <span class="prev" onclick="changeProductSlide(-1)">&#10094;</span>
                 <span class="next" onclick="changeProductSlide(1)">&#10095;</span>
             </div>
@@ -120,17 +125,136 @@
         }
 
         function changeProductSlide(n) {
-            const maxIndex = totalProducts - visibleProducts;
-            productSlideIndex = (productSlideIndex + n + totalProducts) % totalProducts;
-            if (productSlideIndex > maxIndex) {
-                productSlideIndex = maxIndex;
-            } else if (productSlideIndex < 0) {
+            productSlideIndex += n;
+            if (productSlideIndex >= totalProducts) {
                 productSlideIndex = 0;
+            } else if (productSlideIndex < 0) {
+                productSlideIndex = totalProducts - visibleProducts;
             }
             showProductSlide(productSlideIndex);
         }
 
         document.addEventListener('DOMContentLoaded', () => showProductSlide(productSlideIndex));
+
+        let offerSlideIndex = 0;
+        const offers = document.querySelectorAll('.ofertas-carrusel .oferta');
+        const totalOffers = offers.length;
+
+        function showOfferSlide(index) {
+            const offset = index * -productWidth;
+            offers.forEach(offer => {
+                offer.style.transform = `translateX(${offset}px)`;
+            });
+        }
+
+        function changeOfferSlide(n) {
+            offerSlideIndex += n;
+            if (offerSlideIndex >= totalOffers) {
+                offerSlideIndex = 0;
+            } else if (offerSlideIndex < 0) {
+                offerSlideIndex = totalOffers - visibleProducts;
+            }
+            showOfferSlide(offerSlideIndex);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => showOfferSlide(offerSlideIndex));
+        
+        // Agregar funcionalidad para añadir productos al carrito
+        document.querySelectorAll('.btn-agregar').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-id');
+                
+                fetch('logicapantallaproducto.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `action=add&product_id=${productId}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Producto agregado al carrito:', data);
+                    actualizarCarrito(data.cart);
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        });
+
+        // Función para actualizar el carrito
+        function actualizarCarrito(carrito) {
+            const carritoItems = document.getElementById('carritoItems');
+            const carritoVacio = document.getElementById('carritoVacio');
+            carritoItems.innerHTML = '';
+
+            let total = 0;
+            let tieneProductos = false;
+            for (const [id, producto] of Object.entries(carrito)) {
+                const item = document.createElement('li');
+                const precioOriginal = parseFloat(producto.price);
+                const descuento = parseFloat(producto.descuento) || 0;
+                const precioConDescuento = precioOriginal * (1 - descuento / 100);
+
+                item.innerHTML = `
+                    <div class="producto-carrito">
+                        <img src="${producto.imagen}" alt="${producto.name}">
+                        <div>
+                            <p>${producto.name}</p>
+                            <p class="precio-con-descuento">$${precioConDescuento.toFixed(2)}</p>
+                            <div class="cantidad">
+                                <button onclick="modificarCantidad(${id}, -1)">-</button>
+                                <span>${producto.quantity}</span>
+                                <button onclick="modificarCantidad(${id}, 1)">+</button>
+                            </div>
+                            <button class="eliminar" onclick="eliminarProducto(${id})">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+                carritoItems.appendChild(item);
+                total += precioConDescuento * producto.quantity;
+                tieneProductos = true;
+            }
+
+            document.getElementById('totalCarrito').innerText = `$${total.toFixed(2)}`;
+
+            // Mostrar u ocultar el mensaje de carrito vacío
+            if (tieneProductos) {
+                carritoVacio.style.display = 'none';
+            } else {
+                carritoVacio.style.display = 'block';
+            }
+        }
+
+        // Función para modificar la cantidad de un producto en el carrito
+        function modificarCantidad(productId, cantidad) {
+            fetch('logicapantallaproducto.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `action=modify&product_id=${productId}&quantity=${cantidad}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                actualizarCarrito(data.cart);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Función para eliminar un producto del carrito
+        function eliminarProducto(productId) {
+            fetch('logicapantallaproducto.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `action=remove&product_id=${productId}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                actualizarCarrito(data.cart);
+            })
+            .catch(error => console.error('Error:', error));
+        }
     </script>
     <footer id="contacto">
         <p>&copy; 2024 Don Perico. Todos los derechos reservados.</p>
