@@ -118,6 +118,7 @@ a:hover {
 
 .button {
     display: inline-block;
+    margin: 5px;
     padding: 10px 20px;
     background-color: #72A603;
     color: #E4F2B5;
