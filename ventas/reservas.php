@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="css/ventas.css">
+    <link rel="stylesheet" href="css/reservas.css">
     <title>Listado de reserva</title>
     <link rel="icon" href="../img/logo2.png" type="image/png">
 </head>
