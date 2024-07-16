@@ -37,9 +37,9 @@
                     echo '<div class="oferta">';
                     echo '<img src="img/producto_default.jpg" alt="' . htmlspecialchars($oferta['nombre']) . '">';
                     echo '<h3>' . htmlspecialchars($oferta['nombre']) . '</h3>';
-                    echo '<p class="precio-original">$' . number_format($oferta['precio'], 2) . '</p>';
+                    echo '<p class="precio-original">$' . $oferta['precio'] . '</p>';
                     $precio_con_descuento = $oferta['precio'] * (1 - $oferta['valor_descuento'] / 100);
-                    echo '<p class="precio-con-descuento">$' . number_format($precio_con_descuento, 2) . '</p>';
+                    echo '<p class="precio-con-descuento">$' . $precio_con_descuento . '</p>';
                     echo '<p class="descuento">-' . $oferta['valor_descuento'] . '%</p>';
                     echo '<button class="btn-agregar" data-id="' . $oferta['id_producto'] . '">Agregar</button>';
                     echo '</div>';
@@ -63,7 +63,7 @@
                     echo '<div class="producto">';
                     echo '<img src="img/producto_default.jpg" alt="' . htmlspecialchars($producto['nombre']) . '">';
                     echo '<h3>' . htmlspecialchars($producto['nombre']) . '</h3>';
-                    echo '<p>$' . number_format($producto['precio'], 2) . '</p>';
+                    echo '<p>$' . $producto['precio'] . '</p>';
                     echo '<button class="btn-agregar" data-id="' . $producto['id_producto'] . '">Agregar</button>';
                     echo '</div>';
                 }
@@ -75,6 +75,27 @@
             </div>
         </section>
     </main>
+
+    <!-- Modal para reserva -->
+    <div id="reservaModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Confirmar Reserva</h2>
+            <form id="reservaForm">
+                <label for="hora_retiro">Hora de Retiro:</label>
+                <select id="hora_retiro" name="hora_retiro" required>
+                    <option value="">Selecciona una hora</option>
+                    <!-- Generar opciones de 10 AM a 8 PM -->
+                    <?php 
+                    for ($i = 10; $i <= 20; $i++) {
+                        echo "<option value='$i:00'>$i:00</option>";
+                    }
+                    ?>
+                </select>
+                <button type="submit">Confirmar Reserva</button>
+            </form>
+        </div>
+    </div>
 
     <script>
         let slideIndex = 0;
@@ -199,7 +220,7 @@
                         <img src="${producto.imagen}" alt="${producto.name}">
                         <div>
                             <p>${producto.name}</p>
-                            <p class="precio-con-descuento">$${precioConDescuento.toFixed(2)}</p>
+                            <p class="precio-con-descuento">$${precioConDescuento}</p>
                             <div class="cantidad">
                                 <button onclick="modificarCantidad(${id}, -1)">-</button>
                                 <span>${producto.quantity}</span>
@@ -214,7 +235,7 @@
                 tieneProductos = true;
             }
 
-            document.getElementById('totalCarrito').innerText = `$${total.toFixed(2)}`;
+            document.getElementById('totalCarrito').innerText = `$${total}`;
 
             // Mostrar u ocultar el mensaje de carrito vacío
             if (tieneProductos) {
@@ -255,6 +276,62 @@
             })
             .catch(error => console.error('Error:', error));
         }
+
+        // Modal
+        const modal = document.getElementById("reservaModal");
+        const span = document.getElementsByClassName("close")[0];
+
+        document.getElementById("checkoutButton").onclick = function() {
+            modal.style.display = "block";
+        };
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+
+        // Manejar el formulario de reserva
+        document.getElementById('reservaForm').onsubmit = function(event) {
+            event.preventDefault();
+            const horaRetiro = document.getElementById('hora_retiro').value;
+
+            if (!horaRetiro) {
+                alert('Por favor selecciona una hora de retiro.');
+                return;
+            }
+
+            // Verificar si la sesión está iniciada
+            <?php if(isset($_SESSION['usuario_id'])): ?>
+                // La sesión está iniciada, procesar la reserva
+                fetch('procesar_reserva.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `hora_retiro=${horaRetiro}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Reserva procesada:', data);
+                    if (data.success) {
+                        alert('Reserva confirmada.');
+                        modal.style.display = "none";
+                        actualizarCarrito({}); // Limpiar el carrito
+                    } else {
+                        alert('Error al procesar la reserva.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            <?php else: ?>
+                // La sesión no está iniciada, redirigir a la página de inicio de sesión
+                window.location.href = 'crudlogincliente.php';
+            <?php endif; ?>
+        };
     </script>
     <footer id="contacto">
         <p>&copy; 2024 Don Perico. Todos los derechos reservados.</p>

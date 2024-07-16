@@ -24,11 +24,11 @@ form {
 h2 {
     border-radius: 4px;
     margin: 0 auto;
-    margin-top: 65px;
     text-align: center;
     margin-bottom: 20px;
-    color: #333;
-    background-color: #72A603;
+    color: #72a603;
+
+
 }
 
 input[type="text"],
