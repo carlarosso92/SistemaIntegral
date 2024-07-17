@@ -6,6 +6,19 @@
     <title>Don Perico</title>
     <link rel="stylesheet" href="css/index.css">
     <?php include "headerindex.php"; ?>
+    <style>
+       h2 {
+        padding-right: 40px;
+    margin: 0;
+    font-size: 3.5em;
+    font-family: 'Brush Script MT';
+    padding-left: 5px;
+    position: relative;
+    color: #72a603;
+    text-shadow: 2px 0 0 #000, 0 2px 0 #000, -2px 0 0 #000, 0 -2px 0 #000;
+}
+        
+    </style>
 </head>
 <body>
     <main>
@@ -23,7 +36,7 @@
         </section>
     
         <section id="ofertas" class="ofertas">
-            <h2>Ofertas</h2>
+            <h2>No te pierdas nuestras grandes ofertas!!</h2>
             <div class="ofertas-carrusel">
                 <?php
                 include('php/config.php');

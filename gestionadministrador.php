@@ -12,7 +12,6 @@ if (!isset($_SESSION['usuario_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/menuempleado.css">
     <title>Don Perico</title>
     <link rel="icon" href="img/logo2.png" type="image/png">
@@ -42,7 +41,7 @@ if (!isset($_SESSION['usuario_id'])) {
                 </a>
                 <a href="informes/informes.php"><button class="activity"><span class="icon">📄</span> Generar informes</button></a>
                 <a href="empleados.php">
-                <a href="descuentos/aplicar_descuentos.php"><button class="activity"><span class="icon">🏷️</span> Gestionar descuentos</button></a>
+                <a href="descuentos/mostrar_descuentos.php"><button class="activity"><span class="icon">🏷️</span> Gestionar descuentos</button></a>
                 <a href="empleados.php">
                 <button class="activity"><span class="icon">👤</span> Gestión de Empleados</button>
                 </a>
