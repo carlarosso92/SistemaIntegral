@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $categoria = $_POST["categoria"];
     $subcategoria = $_POST["subcategoria"];
     $proveedor = $_POST["proveedor"];
+    $factura_proveedor = $_POST["factura_proveedor"];
     $descripcion = $_POST["descripcion"];
     $precio = $_POST["precio"];
     $cantidad_stock = $_POST["cantidad_stock"];
@@ -16,8 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conexion) {
         $randomNumber = rand(1000, 9999);
         $barcodeNumber = '00' . $categoria . '00' . $subcategoria .'00'. $proveedor . $randomNumber;
+        
         // Insertar datos en la tabla productos
-        $insertar = "INSERT INTO productos (nombre, id_categoria, id_subcategoria, id_proveedor, descripcion, precio, cantidad_stock, fecha_vencimiento, codigo_barras) VALUES ('$nombre', '$categoria', '$subcategoria', '$proveedor', '$descripcion', '$precio', '$cantidad_stock', '$fecha_vencimiento', '$barcodeNumber')";
+        $insertar = "INSERT INTO productos (nombre, id_categoria, id_subcategoria, id_proveedor, descripcion, precio, cantidad_stock, fecha_vencimiento, codigo_barras, factura_proveedor) VALUES ('$nombre', '$categoria', '$subcategoria', '$proveedor', '$descripcion', '$precio', '$cantidad_stock', '$fecha_vencimiento', '$barcodeNumber', '$factura_proveedor')";
         $resultado = mysqli_query($conexion, $insertar);
 
         // Verificar si la consulta fue exitosa
