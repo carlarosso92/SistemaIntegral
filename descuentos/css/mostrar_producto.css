@@ -1,12 +1,10 @@
-/* Estilos generales */
 body {
     font-family: sans-serif;
     margin: 0;
     background-color: #F2EDD0;
-    padding-top: 130px; /* Espacio para el header fijo */
+    padding-top: 100px; /* Espacio para el header fijo */
 }
 
-/* Encabezado */
 header {
     background-color: #72A603;
     color: yellow;
@@ -21,7 +19,6 @@ img {
     width: 10%;
 }
 
-/* Header Container */
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -34,7 +31,7 @@ img {
 
 h1 {
     margin: 0;
-    font-size: 1.5em;
+    font-size: 2em;
     font-family: sans-serif;
 }
 
@@ -68,7 +65,7 @@ h1 {
 }
 
 .container {
-    width: 90%; /* Ajusta este valor para cambiar el ancho de la tabla */
+    width: 90%; /* Aumentar el ancho del contenedor */
     max-width: 1200px; /* Ancho máximo */
     margin: 20px auto;
     text-align: center;
@@ -79,6 +76,7 @@ h1 {
     border-collapse: collapse;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
 }
 
 .table-header {
@@ -91,16 +89,12 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
-.header-content h1 {
+.header-title {
     margin: 0;
     font-size: 1.5em;
-    color: #333;
-}
-
-.header-content h1:hover {
-    background-color: rgb(234, 234, 76);
     color: #333;
 }
 
@@ -142,9 +136,15 @@ a.button {
     color: #fff;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
 a.button:hover {
-    background-color: rgb(167, 191, 57);
-    text-decoration: none;
+    background-color: #a1b300;
+}
+
+.actions {
+
+    justify-content: center;
+    gap: 5px;
 }

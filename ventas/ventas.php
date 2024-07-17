@@ -10,6 +10,11 @@ session_start();
     <title>Don Perico - Ventas</title>
     <link rel="icon" href="../img/logo2.png" type="image/png">
     <link rel="stylesheet" href="css/ventas.css">
+    <style>
+        h2 {
+            text-align: justify;
+        }
+    </style>
 </head>
 
 <body>
