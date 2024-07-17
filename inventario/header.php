@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,14 +8,14 @@
   <link rel="icon" href="../img/logo2.png" type="image/png">
   <style>
     /* Estilos generales */
-    body {
+    .body-dp {
       font-family: sans-serif;
       margin: 0;
       background-color: #F2EDD0;
     }
 
     /* Encabezado */
-    header {
+    .header-dp {
       background-color: #72A603;
       color: yellow;
       padding: 15px 0;
@@ -22,12 +25,12 @@
       z-index: 100;
     }
     
-    img {
+    .header-dp img {
       width: 10%;
     }
 
     /* Header Container */
-    .container {
+    .container-dp {
       max-width: 1200px;
       margin: 0 auto; /* Centers the container horizontally */
       padding: 0 15px;
@@ -37,18 +40,18 @@
       width: 100%; /* Ensures the container takes full width */
     }
 
-    h1 {
+    .container-dp h1 {
       margin: 0;
       font-size: 2em;
       font-family: sans-serif;
     }
 
-    .user-options {
+    .user-options-dp {
       display: flex;
       align-items: center;
     }
 
-    .user-options a {
+    .user-options-dp a {
       background-color: #EAF207;
       color: green;
       padding: 10px 20px;
@@ -61,32 +64,58 @@
       margin-left: 15px;
     }
 
-    .user-options a:hover {
+    .user-options-dp a:hover {
       background-color: #72A603;
       color: #EAF207;
     }
 
-    .user-options .separator {
+    .separator-dp {
       border-left: 1px solid yellow;
       height: 20px;
       margin: 0 10px;
     }
+
+    .home-button-dp {
+      display: inline-block;
+      margin-left: 20px; /* Aumenta el margen para alejar el botón de la casa */
+      font-size: 24px;
+      color: #72A603;
+    }
+
+    .home-button-dp:hover {
+      color: #007bff;
+    }
   </style>
 </head>
-<body>
-  <div class="main-container">
-    <header>
-      <div class="container">
+<body class="body-dp">
+  <div class="main-container-dp">
+    <header class="header-dp">
+      <div class="container-dp">
         <img src="../img/logo.png" alt="Don Perico Logo">
         <h1>Don Perico</h1>
-
-        <div class="user-options">
-          <a href="../gestionempleado.php">Gestiones</a>
-          <div class="separator"></div>
+        <div class="user-options-dp">
+          <a href="#" onclick="redirectUser()">Gestiones</a>
+          <div class="separator-dp"></div>
           <a href="../logout.php">Cerrar sesión</a>
+          <a href="index.php" class="home-button-dp">
+            <i class="fas fa-home"></i>
+          </a>
         </div>
       </div>
     </header>
   </div>
+  
+  <script>
+    // Obteniendo el valor de la variable de sesión desde PHP
+    var usuarioCargo = '<?php echo $_SESSION['usuario_cargo']; ?>';
+    
+    function redirectUser() {
+      if (usuarioCargo === 'Administrador') {
+        window.location.href = '../gestionadministrador.php';
+      } else {
+        window.location.href = '../gestionempleado.php';
+      }
+    }
+  </script>
 </body>
 </html>
