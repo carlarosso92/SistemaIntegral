@@ -208,8 +208,17 @@
                 $resultado->free();
                 $conexion->close();
                 ?>
+                <tr>
+                    <td colspan="7" class="text-center">
+                        <a href="Proveedores/crudproveedores.php" class="button">Agregar Proveedor</a>
+                    </td>
+                </tr>
             </tbody>
         </table>
+<<<<<<< HEAD
+       
+=======
+>>>>>>> 4bcf0b105612a8ebc2a9021f373281f41625dd52
     </div>
 </body>
 
