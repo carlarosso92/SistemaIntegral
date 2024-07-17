@@ -18,9 +18,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <td colspan="6" class="text-center titulo-tabla"><strong>LISTADO DE CLIENTES</strong></td>
-                </tr>
-                <tr>
+
                     <th scope="col">Nombre</th>
                     <!--<th scope="col">ID</th>-->
                     <th scope="col">Email</th>
@@ -35,9 +33,7 @@
                 // Incluir el archivo de configuración para la conexión a la base de datos
                 require("inventario/config/conexion.php");
 
-                $sql = "SELECT u.usuario_id, u.nombre, u.email, u.rut, c.direccion, c.telefono
-                        FROM usuarios u
-                        INNER JOIN clientes c ON u.usuario_id = c.id";
+
 
                 // Ejecutar la consulta
                 $resultado = $conexion->query($sql);
@@ -48,6 +44,7 @@
                     while ($usuario = $resultado->fetch_assoc()) {
                         ?>
                         <tr>
+
                             <!--<td><?php echo htmlspecialchars($usuario['id_usuario']); ?></td>-->
                             <td><?php echo htmlspecialchars($usuario['nombre']); ?></td>
                             <td><?php echo htmlspecialchars($usuario['email']); ?></td>
@@ -62,8 +59,6 @@
                     }
                 } else {
                     // Si no hay resultados encontrados
-                    echo "<tr><td colspan='6'>No se encontraron clientes.</td></tr>";
-                }
 
                 $resultado->free();
                 $conexion->close();
