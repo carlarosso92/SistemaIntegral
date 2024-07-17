@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+   
     background-color: #F2EDD0; 
     display: flex;
     /*justify-content: center;*/
@@ -83,7 +83,7 @@ button:hover {
 }
 
 .configuracion-div-form {
-    font-family: Arial, sans-serif;
+  
     background-color: #F2EDD0; 
     display: flex;
     /*justify-content: center;*/
