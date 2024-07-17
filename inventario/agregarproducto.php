@@ -29,25 +29,29 @@ if (!$resultCategoria) {
     <script src="../js/validacionFormularios.js"></script>
     <style>
         h2 {
+            min-width: calc(100% - 10%);
             padding: 10px;
             font-style: normal;
             text-align: center;
-            margin: 3em 26em auto;
-            color: #72A603;
-            background-color: #E4F2B5;
-            max-width: 500px;
-            border-radius: 10px;
-            border: 1px solid #72A603;
-        }
-        h2:hover{
-            background-color: #D3E1A4;
-            color: #61A502;
-        }
-        
-        form {
-            max-width: 500px;
             margin: auto;
-            margin-top: 10px;
+            margin-bottom: 20px;
+            color: ;
+            background-color: #E4F2B5;
+            border-radius: 10px;
+        }
+        h2:hover {
+            background-color:  #72A603;
+            color: #333;
+        }
+
+        form {
+            min-height: 70vh;
+            min-width: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: center;
+            margin: 10vh auto;
             padding: 20px;
             border: 1px solid #72A603;
             border-radius: 10px;
@@ -58,9 +62,10 @@ if (!$resultCategoria) {
         form input[type="email"],
         form input[type="password"],
         form input[type="number"] {
-            width: calc(100% - 22px);
+            width: calc(100% - 20px);
             padding: 10px;
-            margin-bottom: 20px;
+            margin: auto;
+            margin-top: 8px;
             border: 1px solid #72A603;
             border-radius: 20px;
         }
@@ -91,6 +96,7 @@ if (!$resultCategoria) {
         }
 
         input[type="text"] {
+            min-width: calc(100% - 10%);
             display: inline-block;
             vertical-align: middle;
         }
@@ -153,9 +159,9 @@ if (!$resultCategoria) {
 <body>
     <?php include "header.php"; ?>
     <div class="configuracion-div-form">
-        <h2>Nuevo producto</h2>
         <div class="centrar-form">
             <form action="ingresarproducto.php" method="POST">
+                <h2>Nuevo producto</h2>
                 <div>
                     Nombre: <input type="text" name="nombre" id="name"><br>
                     <p id="nombreOutput" class="validation-message">El nombre no puede estar vacío.</p>

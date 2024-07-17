@@ -147,11 +147,14 @@
                 $resultado->free();
                 $conexion->close();
                 ?>
+                <tr>
+                    <td colspan="7" class="text-center">
+                        <a href="Proveedores/crudproveedores.php" class="button">Agregar Proveedor</a>
+                    </td>
+                </tr>
             </tbody>
         </table>
-        <div>
-            <a href="Proveedores/crudproveedores.php" class="button">Agregar Proveedor</a>
-        </div>
+       
     </div>
 </body>
 

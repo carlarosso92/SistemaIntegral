@@ -90,6 +90,7 @@
     border: 1px solid black;
     padding: 8px;
     text-align: center;
+    background-color: #E4F2B5;
 }
 
 .table th {
@@ -127,10 +128,27 @@ a:hover {
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    margin: 5px;
+    min-width: calc(100% - 60%);
 }
 
 .button:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+.button3 {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #72A603;
+    color: #E4F2B5;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    min-width: calc(100% - 10%);
+}
+.button3:hover {
     background-color: #0056b3;
     text-decoration: none;
 }

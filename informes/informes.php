@@ -5,29 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informe de Ventas e Inventario</title>
     <link rel="icon" href="../img/logo2.png" type="image/png">
-    <link rel="stylesheet" href="../css/global.css"> <!-- Asegúrate de tener el archivo CSS adecuado -->
+    <link rel="stylesheet" href="../informes/css/global.css"> <!-- Asegúrate de tener el archivo CSS adecuado -->
     <style>
+   
+        h1.tituloh1 {
+            border: 1px solid #72A603;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: center;
+            margin: 10vh auto;
+            font-style: normal;
+            text-align: center;
+            color: #E4F2B5;
+            background-color: #72A603;
+            border-radius: 10px;
+        }
+
         h2 {
             padding: 10px;
             font-style: normal;
             text-align: center;
-            margin: 7em 26em auto;
-            color: #72A603;
+            margin: auto;
+            color: #333;
             background-color: #E4F2B5;
-            max-width: 500px;
             border-radius: 10px;
-            border: 1px solid #72A603;
         }
         h2:hover{
-            background-color: #D3E1A4;
-            color: #61A502;
+            background-color: #72A603;
+            color: yellow;
         }
         
         form {
-            max-width: 500px;
-            margin: auto;
-            margin-top: 1em;
-            margin-bottom: 2em;
+            min-height: 15vh;
+            max-width: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: center;
+            margin: 10vh auto;
             padding: 20px;
             border: 1px solid #72A603;
             border-radius: 10px;
@@ -110,24 +126,28 @@
 </head>
 <body>
 <?php include "../inventario/header.php"; ?>
-    <h1>Generar Informes</h1>
+    <div class="tituloh1">
+        <h1>Generar Informes</h1>
+    </div>
     
-    <h2>Informe de Ventas Diarias</h2>
     <form action="generar_informe.php" method="POST">
         <input type="hidden" name="tipo_informe" value="ventas">
+        <h2>Informe de Ventas Diarias</h2>
         <button type="submit" name="formato" value="pdf">Descargar Informe PDF</button>
         <button type="submit" name="formato" value="excel">Descargar Informe Excel</button>
     </form>
     
-    <h2>Informe de Inventario</h2>
+    
     <form action="generar_informe.php" method="POST">
         <input type="hidden" name="tipo_informe" value="inventario">
+        <h2>Informe de Inventario</h2>
         <button type="submit" name="formato" value="pdf">Descargar Informe PDF</button>
         <button type="submit" name="formato" value="excel">Descargar Informe Excel</button>
     </form>
-    <h2>Informe de Proveedores</h2>
+    
     <form action="generar_informe.php" method="POST">
         <input type="hidden" name="tipo_informe" value="inventario">
+        <h2>Informe de Proveedores</h2>
         <button type="submit" name="formato" value="pdf">Descargar Informe PDF</button>
         <button type="submit" name="formato" value="excel">Descargar Informe Excel</button>
     </form>

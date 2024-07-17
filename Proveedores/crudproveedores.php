@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/menuempleado.css">
     <title>Ingreso de proveedor</title>
-    <link rel="icon" href="img/logo2.png" type="image/png">
+    <link rel="icon" href="Proveedores/img/logo2.png" type="image/png">
     <style>
         body {
             font-family: sans-serif;
@@ -17,21 +17,20 @@
             padding: 10px;
             font-style: normal;
             text-align: center;
-            margin: 2em 26em auto;
-            color: #72A603;
-            background-color: #E4F2B5;
-            max-width: 500px;
+            margin: auto;
+            margin-bottom: 15px;
+            color: ;
+            background-color: #d5ec9b;
             border-radius: 10px;
-            border: 1px solid #72A603;
         }
-        h2:hover{
-            background-color: #D3E1A4;
-            color: #61A502;
+        h2:hover {
+            background-color:  #72a603;
+            color: #333;
         }
 
         form {
             max-width: 500px;
-            margin: 2em auto;
+            margin: 5em auto;
             padding: 20px;
             border: 1px solid #72A603;
             border-radius: 10px;
@@ -44,6 +43,7 @@
         form input[type="number"] {
             width: calc(100% - 22px);
             padding: 10px;
+            margin-top: 5px;
             margin-bottom: 20px;
             border: 1px solid #72A603;
             border-radius: 20px;
@@ -63,10 +63,11 @@
             background-color: #EAF207;
             color: #72A603;
         }
+     
     </style>
 <body>
-    <h2>Ingreso de Proveedor</h2>
     <form action="ingresar_proveedor.php" method="POST">
+        <h2>Ingreso de Proveedor</h2>
         <label for="nombre">Nombre del Proveedor:</label><br>
         <input type="text" id="nombre" name="nombre" required><br>
         
