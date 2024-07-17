@@ -85,7 +85,11 @@ CREATE TABLE facturas_proveedores (
     monto DECIMAL(10, 2) NOT NULL,
     descripcion TEXT,
     vencimiento_factura DATE,
+    
     FOREIGN KEY (proveedor_id) REFERENCES proveedores(id) ON DELETE CASCADE
+    ALTER TABLE productos DROP FOREIGN KEY fk_factura_proveedor;
+ALTER TABLE productos MODIFY COLUMN factura_proveedor VARCHAR(255);
+
 );
 
 

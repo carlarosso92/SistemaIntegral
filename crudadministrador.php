@@ -11,14 +11,16 @@
     <style>
        h2 {
             padding: 10px;
-            font-style: normal;
-            text-align: center;
-            margin: 2em 26em auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
             color: #72A603;
             background-color: #E4F2B5;
-            max-width: 500px;
+            min-width: calc(100% - 5vh);
+            margin-bottom: 10px;
             border-radius: 10px;
-            border: 1px solid #72A603;
         }
 
         h2:hover {
@@ -32,9 +34,9 @@
             max-width: 70vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: left;
             justify-content: center;
-            margin: 15vh auto;
+            margin: 10vh auto;
             padding: 20px;
             border: 1px solid #72A603;
             border-radius: 10px;
@@ -101,8 +103,9 @@
         
     </style>
 <body>
-    <h2>Registro</h2>
+   
     <form action="ingresaradministrador.php" method="POST">
+    <h2>Registro</h2>
         <div>
             Nombre: <input type="text" name="nombre" id="name"><br>
             <p id="nombreOutput" class="validation-message">El nombre no puede estar vacío.</p>
