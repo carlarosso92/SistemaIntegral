@@ -66,6 +66,7 @@
                         echo "<tr><td colspan='6'>No se encontraron proveedores.</td></tr>";
                     }
 
+
                     // Liberar resultado y cerrar la conexión
                     $resultado->free();
                     $conexion->close();
@@ -75,5 +76,4 @@
         </div>
     </main>
 </body>
-
 </html>

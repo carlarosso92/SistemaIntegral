@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informe de Ventas e Inventario</title>
     <link rel="icon" href="../img/logo2.png" type="image/png">
-    <link rel="stylesheet" href="../css/global.css"> <!-- Asegúrate de tener el archivo CSS adecuado -->
+    <link rel="stylesheet" href="../informes/css/global.css"> <!-- Asegúrate de tener el archivo CSS adecuado -->
     <style>
         body {
         
@@ -25,7 +25,7 @@
             justify-content: center;
             gap: 20px;
             padding: 20px;
-          margin-top: 150px;
+            margin-top: 240px;
         }
 
         .formulario {
@@ -63,6 +63,7 @@
             cursor: pointer;
             font-size: 1em;
             margin-top: 10px;
+            margin-bottom: 10px;
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -74,7 +75,9 @@
 </head>
 <body>
 <?php include "../inventario/header.php"; ?>
-    <h1>Generar Informes</h1>
+    <div class="tituloh1">
+        <h1>Generar Informes</h1>
+    </div>
     
     <div class="formulario-container">
         <div class="formulario">
@@ -87,7 +90,7 @@
         </div>
         
         <div class="formulario">
-            <h2>Informe de Inventario</h2>
+            <h2>Informe de Inventario</h2><br>
             <form action="generar_informe.php" method="POST">
                 <input type="hidden" name="tipo_informe" value="inventario">
                 <button type="submit" name="formato" value="pdf">Descargar Informe PDF</button>
@@ -96,7 +99,7 @@
         </div>
         
         <div class="formulario">
-            <h2>Informe de Proveedores</h2>
+            <h2>Informe de Proveedores</h2><br>
             <form action="generar_informe.php" method="POST">
                 <input type="hidden" name="tipo_informe" value="proveedores">
                 <button type="submit" name="formato" value="pdf">Descargar Informe PDF</button>
