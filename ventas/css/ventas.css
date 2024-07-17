@@ -82,9 +82,6 @@
     font-size: 1em;
 }
 
-.carrito .button:hover {
-    background-color: #0056b3;
-}
 
 .table {
     width: 100%;
@@ -154,5 +151,11 @@ a:hover {
     font-size: 1em;
     border: 1px solid #72a603;
     border-radius: 5px;
-  
+}
+
+/* Agregar estilo para el estado de clic y foco del botón de búsqueda */
+#buscar-producto:focus,
+#buscar-producto:active {
+    border-color: #72a603;
+    outline: #72A603; /* Opcional: eliminar el contorno por defecto del navegador */
 }

@@ -1,46 +1,111 @@
+/* Estilos generales */
 body {
-
-    background-color: #F2EDD0; 
-    display: flex;
-    /*justify-content: center;*/
-    align-items: center;
-    height: 150vh;
+    font-family: sans-serif;
     margin: 0;
-    /*padding: 20px;*/
-    box-sizing: border-box;
-    display: grid;
-    align-content: center;
+    background-color: #F2EDD0;
+    padding-top: 175px; /* Espacio para el header fijo */
 }
 
-.conteiner {
-    width: auto;
-    margin: 0 auto;
-    text-align: center;
-}
-
-h1.text-center {
-    margin: 0;
-    font-size: 2em;
-    color: #333;
-    text-align: center;
+/* Encabezado */
+header {
     background-color: #72A603;
-    border-radius: 10px;
-}
-h1.text-center:hover{
-    color: #333;
+    color: yellow;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
 }
 
+img {
+    width: 10%;
+}
+
+/* Header Container */
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+h1, h2 {
+    margin: 0;
+    font-size: 1.5em;
+    font-family: sans-serif;
+}
+
+.user-options {
+    display: flex;
+    align-items: center;
+}
+
+.user-options a {
+    background-color: #EAF207;
+    color: green;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    display: inline-block;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.user-options a:hover {
+    background-color: #72A603;
+    color: #EAF207;
+}
+
+.user-options .separator {
+    border-left: 1px solid yellow;
+    height: 20px;
+    margin: 0 10px;
+}
+
+.container {
+    width: 90%; /* Ajusta este valor para cambiar el ancho de la tabla */
+    max-width: 1200px; /* Ancho máximo */
+    margin: 20px auto;
+    text-align: center;
+}
 
 .table {
-    margin-top: 20%;
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.table-header {
+    background-color: #72A603;
+    padding: 10px;
+    text-align: center;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h1, .header-content h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.header-content h1:hover, .header-content h2:hover {
+    background-color: rgb(234, 234, 76);
+    color: #333;
+}
+
 .table th, .table td {
-    border: 1px solid black;
+    border: 1px solid #72A603; /* Color del borde */
     padding: 8px;
     text-align: center;
 }
@@ -66,36 +131,82 @@ a {
 
 a:hover {
     text-decoration: underline;
+    color: #EAF207;
     stroke: #333;
 }
 
 a.button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #72a603;
+    background-color: #72A603;
     color: #fff;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 a.button:hover {
-    background-color: whitesmoke;
+    background-color: rgb(167, 191, 57);
+    text-decoration: none;
 }
-a.button {
-    display: inline-block;
+
+form {
+    max-width: 500px;
+    margin: 2em auto;
+    padding: 20px;
+    border: 1px solid #72A603;
+    border-radius: 10px;
+    background-color: #E4F2B5;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #72A603;
+    border-radius: 20px;
+}
+
+form button {
+    margin-top: 1.5em;
+    background-color: #72A603;
+    color: yellow;
+    border: none;
     padding: 10px 20px;
-    background-color: #72A603;
-    color: #E4F2B5;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
-a.button:hover {
-    background-color: #0056b3;
-    text-decoration: none; /* Opcional: mantener el estilo de botón al pasar el ratón */
-}
-.text-center {
-    background-color: #72A603;
+form button:hover {
+    background-color: #EAF207;
+    color: #72A603;
 }
 
+.validation-message {
+    color: red;
+    margin: 0;
+    padding-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -40px;
+    font-size: small;
+}
 
+input[type="text"] {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#buttonSubmit:disabled {
+    background-color: #ddd;
+    color: #666;
+    cursor: default;
+    pointer-events: none;
+}
+
+#buttonSubmit:disabled:hover {
+    background-color: #ddd;
+    color: #666;
+}

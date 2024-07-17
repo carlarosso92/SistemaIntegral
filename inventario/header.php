@@ -97,9 +97,7 @@ session_start();
           <a href="#" onclick="redirectUser()">Gestiones</a>
           <div class="separator-dp"></div>
           <a href="../logout.php">Cerrar sesión</a>
-          <a href="index.php" class="home-button-dp">
-            <i class="fas fa-home"></i>
-          </a>
+        
         </div>
       </div>
     </header>

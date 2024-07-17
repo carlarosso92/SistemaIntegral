@@ -7,8 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/index.css">
+  
     <link rel="stylesheet" href="css/reservas.css">
     <title>Listado de reserva</title>
     <link rel="icon" href="../img/logo2.png" type="image/png">
@@ -22,7 +21,7 @@ session_start();
                 <table class="table">
                     <thead>
                         <tr>
-                            <th colspan="6"><h2>LISTADO DE RESERVAS</h2></th>
+                            <th colspan="6"><h2>Listado de reservas</h2></th>
                         </tr>
                         <tr>
                             <th scope="col">Código reserva</th>

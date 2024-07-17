@@ -31,8 +31,7 @@ if (!isset($_SESSION['usuario_id'])) {
             <h2>Actividades Administrador</h2>
             <div class="activities">
                <a href="ventas/ventas.php"><button class="activity"><span class="icon">✓</span> Registrar venta</button></a>
-                <a href="inventario/index.php"><button class="activity"><span class="icon">🧩</span> Gestionar Producto</button></a>
-                
+        
                 <a href="ventas/reservas.php">
                 <button class="activity"><span class="icon">📑</span> Reservas</button>
                 </a>
