@@ -7,50 +7,6 @@
     <link rel="icon" href="../img/logo2.png" type="image/png">
     <link rel="stylesheet" href="../informes/css/global.css"> <!-- Asegúrate de tener el archivo CSS adecuado -->
     <style>
-<<<<<<< HEAD
-   
-        h1.tituloh1 {
-            border: 1px solid #72A603;
-            display: flex;
-            flex-direction: column;
-            align-items: left;
-            justify-content: center;
-            margin: 10vh auto;
-            font-style: normal;
-            text-align: center;
-            color: #E4F2B5;
-            background-color: #72A603;
-            border-radius: 10px;
-        }
-
-        h2 {
-            padding: 10px;
-            font-style: normal;
-            text-align: center;
-            margin: auto;
-            color: #333;
-            background-color: #E4F2B5;
-            border-radius: 10px;
-        }
-        h2:hover{
-            background-color: #72A603;
-            color: yellow;
-        }
-        
-        form {
-            min-height: 15vh;
-            max-width: 80vh;
-            display: flex;
-            flex-direction: column;
-            align-items: left;
-            justify-content: center;
-            margin: 10vh auto;
-            padding: 20px;
-            border: 1px solid #72A603;
-            border-radius: 10px;
-            background-color: #E4F2B5;
-        }
-=======
         body {
         
             background-color: #F2EDD0;
@@ -69,7 +25,7 @@
             justify-content: center;
             gap: 20px;
             padding: 20px;
-          margin-top: 150px;
+            margin-top: 240px;
         }
 
         .formulario {
@@ -96,7 +52,6 @@
             background-color: #D3E1A4;
             color: #61A502;
         }
->>>>>>> 4bcf0b105612a8ebc2a9021f373281f41625dd52
 
         .formulario button {
             width: 100%;
@@ -108,6 +63,7 @@
             cursor: pointer;
             font-size: 1em;
             margin-top: 10px;
+            margin-bottom: 10px;
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -123,29 +79,6 @@
         <h1>Generar Informes</h1>
     </div>
     
-<<<<<<< HEAD
-    <form action="generar_informe.php" method="POST">
-        <input type="hidden" name="tipo_informe" value="ventas">
-        <h2>Informe de Ventas Diarias</h2>
-        <button type="submit" name="formato" value="pdf">Descargar Informe PDF</button>
-        <button type="submit" name="formato" value="excel">Descargar Informe Excel</button>
-    </form>
-    
-    
-    <form action="generar_informe.php" method="POST">
-        <input type="hidden" name="tipo_informe" value="inventario">
-        <h2>Informe de Inventario</h2>
-        <button type="submit" name="formato" value="pdf">Descargar Informe PDF</button>
-        <button type="submit" name="formato" value="excel">Descargar Informe Excel</button>
-    </form>
-    
-    <form action="generar_informe.php" method="POST">
-        <input type="hidden" name="tipo_informe" value="inventario">
-        <h2>Informe de Proveedores</h2>
-        <button type="submit" name="formato" value="pdf">Descargar Informe PDF</button>
-        <button type="submit" name="formato" value="excel">Descargar Informe Excel</button>
-    </form>
-=======
     <div class="formulario-container">
         <div class="formulario">
             <h2>Informe de Ventas Diarias</h2>
@@ -157,7 +90,7 @@
         </div>
         
         <div class="formulario">
-            <h2>Informe de Inventario</h2>
+            <h2>Informe de Inventario</h2><br>
             <form action="generar_informe.php" method="POST">
                 <input type="hidden" name="tipo_informe" value="inventario">
                 <button type="submit" name="formato" value="pdf">Descargar Informe PDF</button>
@@ -166,7 +99,7 @@
         </div>
         
         <div class="formulario">
-            <h2>Informe de Proveedores</h2>
+            <h2>Informe de Proveedores</h2><br>
             <form action="generar_informe.php" method="POST">
                 <input type="hidden" name="tipo_informe" value="proveedores">
                 <button type="submit" name="formato" value="pdf">Descargar Informe PDF</button>
@@ -174,6 +107,5 @@
             </form>
         </div>
     </div>
->>>>>>> 4bcf0b105612a8ebc2a9021f373281f41625dd52
 </body>
 </html>
