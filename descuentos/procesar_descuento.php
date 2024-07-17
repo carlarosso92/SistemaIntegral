@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_query($conexion, $sql)) {
         echo "<script>
                 alert('Descuento aplicado exitosamente.');
-                window.location.href = 'aplicar_descuentos.php';
+                window.location.href = 'mostrar_descuentos.php';
               </script>";
     } else {
         echo "<script>

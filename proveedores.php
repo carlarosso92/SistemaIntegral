@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="inventario/css/index.css" />
+    <link rel="stylesheet" href="inventario/css/proveedorespantalla.css" />
     <title>Listado de Proveedores</title>
     <link rel="icon" href="../img/logo2.png" type="image/png">
     <style>
@@ -13,7 +13,7 @@
             font-style: normal;
             text-align: center;
             margin: auto;
-            background-color: #72A603;
+          
             border-radius: 10px;
         }
         h2:hover {
@@ -82,22 +82,84 @@
             background-color: #ddd;
             color: #666;
         }
+
+        .table-header {
+            background-color: #72A603;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-content h2 {
+            margin: 0;
+            color: #333;
+        }
+
+        .header-content h2:hover {
+            background-color: rgb(234, 234, 76);
+            color: #333;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #72A603;
+            color: #E4F2B5;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        a.button:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th, .table td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .table th {
+            background-color: #E4F2B5;
+            color: #333;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
     </style>
 </head>
 
 <body>
     <?php include "inventario/header.php"; ?>
     <div class="container">
-        
-    </div>
-    <div class="container">
-    
         <table class="table">
             <thead>
-                <tr class="text-center">
-                    <td colspan="6">
-                        <h2>LISTADO DE PROVEEDORES</h2>
-                    </td>
+                <tr>
+                    <th colspan="6" class="table-header">
+                        <div class="header-content">
+                            <h2>LISTADO DE PROVEEDORES</h2>
+                            <a href="Proveedores/crudproveedores.php" class="button">Agregar Proveedor</a>
+                        </div>
+                    </th>
                 </tr>
                 <tr>
                     <th scope="col">ID</th>
@@ -153,7 +215,10 @@
                 </tr>
             </tbody>
         </table>
+<<<<<<< HEAD
        
+=======
+>>>>>>> 4bcf0b105612a8ebc2a9021f373281f41625dd52
     </div>
 </body>
 

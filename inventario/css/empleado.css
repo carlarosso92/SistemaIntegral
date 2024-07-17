@@ -1,50 +1,44 @@
 body {
-
     background-color: #F2EDD0; 
     display: flex;
-    /*justify-content: center;*/
     align-items: center;
-    /*height: 150vh;*/
     margin: 0;
-    /*padding: 20px;*/
+    margin-top: 100px; /* Añadir margen superior para evitar solapamiento con el header */
     box-sizing: border-box;
     display: grid;
     align-content: center;
 }
 
-.conteiner {
+.lista {
     width: auto;
     margin: 0 auto;
     text-align: center;
+    background-color: #E4F2B5; /* Fondo verde claro */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Añadir sombra para mejor visualización */
 }
 
 h1.text-center {
     margin: 0;
+    font-size: 1.5em;
     color: #333;
     text-align: center;
-    background-color: #72A603;
     border-radius: 10px;
 }
-h1.text-center:hover{
-    background-color:  rgb(234, 234, 76);
+h1.text-center:hover {
     color: #333;
-}
-
-td.titulo {
-    padding: 0;
-    background-color: #72A603;
 }
 
 .table {
-    margin-top: 20%;
+    margin-top: 20px;
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .table th, .table td {
-    border: 1px solid black;
+    border: 1px solid #72a603;
     padding: 8px;
     text-align: center;
 }
@@ -77,18 +71,6 @@ a:hover {
 a.button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #72a603;
-    color: #fff;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-a.button:hover {
-    background-color: whitesmoke;
-}
-a.button {
-    display: inline-block;
-    padding: 10px 20px;
     background-color: #72A603;
     color: #E4F2B5;
     border-radius: 5px;
@@ -96,12 +78,10 @@ a.button {
 }
 
 a.button:hover {
-    color: #333;
-    background-color: rgb(234, 234, 76);
+    background-color: #0056b3;
     text-decoration: none; /* Opcional: mantener el estilo de botón al pasar el ratón */
 }
-.text-center {
-    background-color: #72A603;
+
+.boton-agregar {
+    text-align: right;
 }
-
-

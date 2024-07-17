@@ -1,5 +1,8 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -24,7 +27,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="col">Codigo reserva</th>
+                            <th colspan="6"><h2>LISTADO DE RESERVAS</h2></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Código reserva</th>
                             <th scope="col">Nombre cliente</th>
                             <th scope="col">Hora reserva</th>
                             <th scope="col">Hora retiro</th>
@@ -153,7 +159,7 @@
 
                 // Recargar la página si la operación fue exitosa
                 //if (data.exito) {
-                //    location.reload();
+                  location.reload();
                 //}
             })
             .catch(error => {

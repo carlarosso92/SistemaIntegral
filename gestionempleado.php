@@ -14,6 +14,7 @@ if (!isset($_SESSION['usuario_id'])) {
     <link rel="stylesheet" href="css/menuempleado.css">
     <title>Don Perico</title>
     <link rel="icon" href="img/logo2.png" type="image/png">
+    
 </head>
 <body>
     <?php include "inventario/header.php"; ?>
