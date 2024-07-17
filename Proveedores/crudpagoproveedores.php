@@ -12,8 +12,6 @@ $result = $conexion->query($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/menuempleado.css">
     <title>Ingreso de proveedor</title>
     <link rel="icon" href="../img/logo2.png" type="image/png">
     <script src="../js/validacionFormularios.js"></script>
@@ -22,6 +20,10 @@ $result = $conexion->query($query);
             font-family: sans-serif;
             margin: 0;
             background-color: #F2EDD0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         h2 {
@@ -41,38 +43,40 @@ $result = $conexion->query($query);
         }
 
         form {
-            min-height: 70vh;
-            max-width: 70vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 15vh auto;
-            padding: 20px;
-            border: 1px solid #72A603;
-            border-radius: 10px;
             background-color: #E4F2B5;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
         }
 
         form input[type="text"],
         form input[type="email"],
         form input[type="password"],
-        form input[type="number"] {
-            width: calc(60% - 10px);
+        form input[type="number"],
+        form input[type="date"],
+        form select,
+        form textarea {
+            width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #72A603;
             border-radius: 20px;
+            font-size: 16px;
+            box-sizing: border-box;
         }
 
         form button {
-            margin-top: 1.5em;
+            width: 100%;
             background-color: #72A603;
             color: yellow;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 0;
             border-radius: 20px;
+            font-size: 18px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         form button:hover {
@@ -80,59 +84,39 @@ $result = $conexion->query($query);
             color: #72A603;
         }
 
-        textarea {
-            width: 60%;
-            heigth: 100%;
-        }
-
         label {
-            margin-bottom: 10px;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #495057;
         }
 
         .validation-message {
             color: red;
             margin: 0;
             padding-left: 10px;
-            /* Ajusta este valor según tus necesidades */
-            display: inline-block;
-            vertical-align: middle;
-            margin-top: -40px;
             font-size: small;
         }
 
-        input[type="text"] {
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        /* Estilo para el botón "Guardar" cuando está deshabilitado */
         #buttonSubmit:disabled {
             background-color: #ddd;
-            /* Color de fondo gris */
             color: #666;
-            /* Color de texto gris */
             cursor: default;
-            /* Cursor predeterminado */
             pointer-events: none;
-            /* Evitar eventos de puntero */
         }
 
-        /* Estilo adicional para deshabilitar el efecto de hover */
         #buttonSubmit:disabled:hover {
             background-color: #ddd;
-            /* Mantener el color de fondo gris */
             color: #666;
-            /* Mantener el color de texto gris */
         }
 
-        .monto_input{
+        .monto_input {
             margin-top: 10px;
         }
-
     </style>
+</head>
 
 <body>
-    
     <form action="guardarpago.php" method="POST">
         <h2>Registrar Pago a Proveedor</h2>
         <label for="proveedor_id">Proveedor:</label>
@@ -141,20 +125,18 @@ $result = $conexion->query($query);
                 <option value="<?php echo $row['id']; ?>"><?php echo $row['nombre_proveedor']; ?></option>
             <?php endwhile; ?>
         </select>
-        <br>
-        <br>
         <label for="fecha_pago">Fecha de Pago:</label>
-        <input type="date" name="fecha_pago" id="fecha_pago" required><br>
+        <input type="date" name="fecha_pago" id="fecha_pago" required>
         <div class="monto_input">
-            Monto: <input type="number" name="monto" id="monto" value="0" required><br>
+            <label for="monto">Monto:</label>
+            <input type="number" name="monto" id="monto" value="0" required>
             <p id="montoOutput" class="validation-message"></p>
         </div>
         <div>
-            Descripción: <input type="text" name="descripcion" id="descripcion" required><br>
+            <label for="descripcion">Descripción:</label>
+            <input type="text" name="descripcion" id="descripcion" required>
             <p id="descripcionOutput" class="validation-message">La descripcion no puede estar vacía.</p>
         </div>
         <button type="submit" id="buttonSubmit">Registrar Pago</button>
     </form>
 </body>
-
-</html>

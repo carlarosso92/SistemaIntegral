@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Don Perico - Ventas</title>
     <link rel="icon" href="../img/logo2.png" type="image/png">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="css/ventas.css">
 </head>
 
@@ -16,9 +14,19 @@
     <main>
         <div class="contenedor-ventas">
             <div class="productos">
-                <h2>Listado de Productos</h2>
                 <table class="table">
                     <thead>
+                        <tr>
+                            <th colspan="10"><h2>Listado de Productos</h2></th>
+                        </tr>
+                        <tr>
+                            <th colspan="10">
+                                <div class="search-container">
+                                    <label for="buscar-producto">Buscar Producto:</label>
+                                    <input type="text" id="buscar-producto" placeholder="Escriba para buscar...">
+                                </div>
+                            </th>
+                        </tr>
                         <tr>
                             <th scope="col">Código de barra</th>
                             <th scope="col">Categoría</th>
@@ -32,24 +40,46 @@
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tabla-productos">
                         <?php
                         include '../php/config.php';
-                        $query = "SELECT 
-                            prod.codigo_barras, 
-                            cat.nombre_categoria, 
-                            subc.nombre_subcategoria, 
-                            prod.nombre, 
-                            prod.descripcion, 
-                            prod.precio, 
-                            prod.cantidad_stock, 
-                            prod.id_producto, 
-                            des.valor_descuento,
-                            (prod.precio * ( 1 - (IF(des.valor_descuento = 0,0,des.valor_descuento)) / 100)) as precio_final
-                        FROM productos prod
-                        INNER JOIN categorias cat ON prod.id_categoria = cat.id
-                        LEFT JOIN subcategorias subc ON prod.id_subcategoria = subc.id
-                        LEFT JOIN descuentos des ON prod.id_producto = des.producto_id";
+                        $query = "SELECT
+                            prod.codigo_barras,
+                            cat.nombre_categoria,
+                            subc.nombre_subcategoria,
+                            prod.nombre,
+                            prod.descripcion,
+                            prod.precio,
+                            prod.cantidad_stock,
+                            prod.id_producto,
+                            IF(
+                                des.valor_descuento IS NULL,
+                                0,
+                                des.valor_descuento
+                            ) AS valor_descuento,
+                            (
+                                prod.precio *(
+                                    1 -(
+                                        IF(
+                                            IF(
+                                                des.valor_descuento IS NULL,
+                                                0,
+                                                des.valor_descuento
+                                            ) = 0,
+                                            0,
+                                            des.valor_descuento
+                                        )
+                                    ) / 100
+                                )
+                            ) AS precio_final
+                        FROM
+                            productos prod
+                        INNER JOIN categorias cat ON
+                            prod.id_categoria = cat.id
+                        LEFT JOIN subcategorias subc ON
+                            prod.id_subcategoria = subc.id
+                        LEFT JOIN descuentos des ON
+                            prod.id_producto = des.producto_id";
                         $result = mysqli_query($conexion, $query);
                         if (mysqli_num_rows($result) > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -73,7 +103,7 @@
                                 <?php
                             }
                         } else {
-                            echo "<tr><td colspan='8'>No se encontraron productos.</td></tr>";
+                            echo "<tr><td colspan='10'>No se encontraron productos.</td></tr>";
                         }
                         mysqli_free_result($result);
                         mysqli_close($conexion);
@@ -130,12 +160,12 @@
 
             carrito.forEach(producto => {
                 total += producto.precio * producto.cantidad;
-                listaCarrito.innerHTML += `<li>${producto.nombre} - ${producto.cantidad} x $${producto.precio.toFixed(2)} 
+                listaCarrito.innerHTML += `<li>${producto.nombre} - ${producto.cantidad} x $${producto.precio} 
             <button onclick="agregarAlCarrito(${producto.id}, '${producto.nombre}', ${producto.precio}, ${producto.stock})">+</button>
             <button onclick="quitarDelCarrito(${producto.id})">-</button></li>`;
             });
 
-            totalCarrito.innerText = total.toFixed(2);
+            totalCarrito.innerText = total;
             carritoInput.value = JSON.stringify(carrito);
         }
 
@@ -157,6 +187,16 @@
             .catch(error => {
                 console.error('Error al generar el ticket:', error);
                 alert('Hubo un problema al generar el ticket. Por favor, inténtalo de nuevo.');
+            });
+        });
+
+        // Funcionalidad de búsqueda
+        document.getElementById('buscar-producto').addEventListener('keyup', function() {
+            const searchValue = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#tabla-productos tr');
+            rows.forEach(row => {
+                const rowText = row.textContent.toLowerCase();
+                row.style.display = rowText.includes(searchValue) ? '' : 'none';
             });
         });
     </script>

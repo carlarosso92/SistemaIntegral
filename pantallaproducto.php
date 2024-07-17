@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/producto.css">
     <link rel="icon" href="../img/logo2.png" type="image/png">
     <style>
-                /* Estilo para el precio original tachado */
+        /* Estilo para el precio original tachado */
         .precio-original {
             text-decoration: line-through !important;
             color: red !important;
@@ -31,7 +31,10 @@
     </style>
 </head>
 <body>
-    <?php include('headerindex.php'); ?>
+    <?php
+    session_start();
+    include('headerindex.php'); 
+    ?>
 
     <div class="contenedor-productos">
         <aside class="filtros">
@@ -113,8 +116,8 @@
 
                         productoDiv.innerHTML = `
                             <img src="${producto.imagen}" alt="${producto.nombre}">
-                            ${producto.descuento > 0 ? `<p class="precio-original">$${precioOriginal.toFixed(2)}</p>` : ''}
-                            <p class="precio-con-descuento">$${precioConDescuento.toFixed(2)}</p>
+                            ${producto.descuento > 0 ? `<p class="precio-original">$${precioOriginal}</p>` : ''}
+                            <p class="precio-con-descuento">$${precioConDescuento}</p>
                             ${producto.descuento > 0 ? `<p class="descuento">-${producto.descuento}%</p>` : ''}
                             <p class="descripcion">${producto.nombre}</p>
                             <button class="btn-agregar" data-id="${producto.id}">Agregar</button>
@@ -168,31 +171,38 @@
             document.getElementById('reservaForm').onsubmit = function(event) {
                 event.preventDefault();
                 const horaRetiro = document.getElementById('hora_retiro').value;
-                
+
                 if (!horaRetiro) {
                     alert('Por favor selecciona una hora de retiro.');
                     return;
                 }
 
-                fetch('procesar_reserva.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: `hora_retiro=${horaRetiro}`
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Reserva procesada:', data);
-                    if (data.success) {
-                        alert('Reserva confirmada.');
-                        modal.style.display = "none";
-                        actualizarCarrito({}); // Limpiar el carrito
-                    } else {
-                        alert('Error al procesar la reserva.');
-                    }
-                })
-                .catch(error => console.error('Error:', error));
+                // Verificar si la sesión está iniciada
+                <?php if(isset($_SESSION['usuario_id'])): ?>
+                    // La sesión está iniciada, procesar la reserva
+                    fetch('procesar_reserva.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: `hora_retiro=${horaRetiro}`
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Reserva procesada:', data);
+                        if (data.success) {
+                            alert('Reserva confirmada.');
+                            modal.style.display = "none";
+                            actualizarCarrito({}); // Limpiar el carrito
+                        } else {
+                            alert('Error al procesar la reserva.');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                <?php else: ?>
+                    // La sesión no está iniciada, redirigir a la página de inicio de sesión
+                    window.location.href = 'crudlogincliente.php';
+                <?php endif; ?>
             };
         });
 
@@ -217,7 +227,7 @@
                         <img src="${producto.imagen}" alt="${producto.name}">
                         <div>
                             <p>${producto.name}</p>
-                            <p class="precio-con-descuento">$${precioConDescuento.toFixed(2)}</p>
+                            <p class="precio-con-descuento">$${precioConDescuento}</p>
                             <div class="cantidad">
                                 <button onclick="modificarCantidad(${id}, -1)">-</button>
                                 <span>${producto.quantity}</span>
@@ -232,7 +242,7 @@
                 tieneProductos = true;
             }
 
-            document.getElementById('totalCarrito').innerText = `$${total.toFixed(2)}`;
+            document.getElementById('totalCarrito').innerText = `$${total}`;
 
             // Mostrar u ocultar el mensaje de carrito vacío
             if (tieneProductos) {

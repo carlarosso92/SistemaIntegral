@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/menuempleado.css">
-    <title>Registro de Cliente</title>
+    <title>Registro de Administrador</title>
     <link rel="icon" href="img/logo2.png" type="image/png">
     <script src="js/validacionFormularios.js"></script>
     <style>
-        h2 {
+       h2 {
             padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: auto;
+            font-style: normal;
+            text-align: center;
+            margin: 2em 26em auto;
             color: #72A603;
             background-color: #E4F2B5;
-            min-width: calc(100% - 5vh);
-            margin-bottom: 10px;
+            max-width: 500px;
             border-radius: 10px;
+            border: 1px solid #72A603;
         }
-        h2:hover{
+
+        h2:hover {
             background-color: #D3E1A4;
             color: #61A502;
+            border-radius: 10px;
         }
 
         form {
@@ -32,21 +32,21 @@
             max-width: 70vh;
             display: flex;
             flex-direction: column;
-            align-items: left;
+            align-items: center;
             justify-content: center;
-            margin: 10vh auto;
+            margin: 15vh auto;
             padding: 20px;
             border: 1px solid #72A603;
             border-radius: 10px;
             background-color: #E4F2B5;
         }
-
         form input[type="text"],
         form input[type="email"],
         form input[type="password"],
         form input[type="number"] {
             width: calc(100% - 22px);
             padding: 10px;
+            margin-top: 5px;
             margin-bottom: 20px;
             border: 1px solid #72A603;
             border-radius: 20px;
@@ -66,7 +66,6 @@
             background-color: #EAF207;
             color: #72A603;
         }
-
         .validation-message {
             color: red;
             margin: 0;
@@ -94,10 +93,16 @@
             background-color: #ddd; /* Mantener el color de fondo gris */
             color: #666; /* Mantener el color de texto gris */
         }
+
+        span.texto{
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+        
     </style>
 <body>
+    <h2>Registro</h2>
     <form action="ingresaradministrador.php" method="POST">
-        <h2>Registro</h2>
         <div>
             Nombre: <input type="text" name="nombre" id="name"><br>
             <p id="nombreOutput" class="validation-message">El nombre no puede estar vacío.</p>
