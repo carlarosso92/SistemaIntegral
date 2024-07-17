@@ -28,7 +28,7 @@ if (!$resultCategoria) {
     <style>
         form {
             min-height: 70vh;
-            min-width: 80vh;
+            min-width: 75vh;
             display: flex;
             flex-direction: column;
             align-items: left;
@@ -137,7 +137,6 @@ if (!$resultCategoria) {
     </script>
 </head>
 <body>
-    <?php include "header.php"; ?>
     <div class="configuracion-div-form">
         <div class="centrar-form">
             <form action="ingresarproducto.php" method="POST">

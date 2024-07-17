@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/menuempleado.css">
     <title>Ingreso de proveedor</title>
     <link rel="icon" href="Proveedores/img/logo2.png" type="image/png">
     <style>
@@ -13,18 +11,15 @@
             margin: 0;
             background-color: #F2EDD0;
         }
+
         h2 {
+            color: #72A603;
             padding: 10px;
             font-style: normal;
             text-align: center;
             margin: auto;
             margin-bottom: 15px;
-            background-color: #d5ec9b;
             border-radius: 10px;
-        }
-        h2:hover {
-            background-color:  #72a603;
-            color: #333;
         }
 
         form {
@@ -49,7 +44,8 @@
         }
 
         form button {
-            margin-top: 1.5em;
+            display: block;
+            margin: 1.5em auto 0;
             background-color: #72A603;
             color: yellow;
             border: none;
@@ -64,6 +60,7 @@
         }
      
     </style>
+</head>
 <body>
     <form action="ingresar_proveedor.php" method="POST">
         <h2>Ingreso de Proveedor</h2>
