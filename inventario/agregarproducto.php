@@ -18,31 +18,14 @@ if (!$resultCategoria) {
     <title>Ingreso de Producto</title>
     <link rel="stylesheet" href="css/agregarproducto.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Knewave:wght@400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jockey One:wght@400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jomhuria:wght@400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kameron:wght@400&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JejuGothic:wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jockey+One&wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jomhuria&wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kameron&wght@400&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jeju+Gothic&wght@400&display=swap" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/validacionFormularios.js"></script>
     <style>
-        h2 {
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: auto;
-            color: #72A603;
-            background-color: #E4F2B5;
-            min-width: calc(100% - 5vh);
-            margin-bottom: 10px;
-            border-radius: 10px;
-        }
-        h2:hover{
-            background-color: #D3E1A4;
-            color: #61A502;
-        }
-        
         form {
             min-height: 70vh;
             min-width: 80vh;
@@ -87,7 +70,7 @@ if (!$resultCategoria) {
         .validation-message {
             color: red;
             margin: 0;
-            padding-left: 10px; /* Ajusta este valor según tus necesidades */
+            padding-left: 10px;
             display: inline-block;
             vertical-align: middle;
             margin-top: -40px;
@@ -99,18 +82,17 @@ if (!$resultCategoria) {
             display: inline-block;
             vertical-align: middle;
         }
-        /* Estilo para el botón "Guardar" cuando está deshabilitado */
+
         #buttonSubmit:disabled {
-            background-color: #ddd; /* Color de fondo gris */
-            color: #666; /* Color de texto gris */
-            cursor: default; /* Cursor predeterminado */
-            pointer-events: none; /* Evitar eventos de puntero */
+            background-color: #ddd;
+            color: #666;
+            cursor: default;
+            pointer-events: none;
         }
 
-        /* Estilo adicional para deshabilitar el efecto de hover */
         #buttonSubmit:disabled:hover {
-            background-color: #ddd; /* Mantener el color de fondo gris */
-            color: #666; /* Mantener el color de texto gris */
+            background-color: #ddd;
+            color: #666;
         }
     </style>
     <script>
@@ -124,7 +106,7 @@ if (!$resultCategoria) {
                     dataType: 'json',
                     success: function(response) {
                         $('#subcategoria').empty();
-                        if(response.length > 0){
+                        if (response.length > 0) {
                             response.forEach(function(subcategoria) {
                                 $('#subcategoria').append('<option value="' + subcategoria.id + '">' + subcategoria.nombre_subcategoria + '</option>');
                             });
@@ -135,15 +117,14 @@ if (!$resultCategoria) {
                 });
             });
 
-            // Cargar proveedores al cargar la página
             $.ajax({
                 url: 'get_proveedores.php',
                 type: 'GET',
                 dataType: 'json',
                 success: function(response) {
                     $('#proveedor').empty();
-                    $('#proveedor').append('<option value="" selected disabled>Seleccionar proveedor</option>'); // Placeholder
-                    if(response.length > 0){
+                    $('#proveedor').append('<option value="" selected disabled>Seleccionar proveedor</option>');
+                    if (response.length > 0) {
                         response.forEach(function(proveedor) {
                             $('#proveedor').append('<option value="' + proveedor.id + '">' + proveedor.nombre_proveedor + '</option>');
                         });
@@ -158,12 +139,10 @@ if (!$resultCategoria) {
 <body>
     <?php include "header.php"; ?>
     <div class="configuracion-div-form">
-        
         <div class="centrar-form">
-            
             <form action="ingresarproducto.php" method="POST">
-                <h2>Nuevo producto</h2>
                 <div>
+                    <h2>Nuevo producto</h2>
                     Nombre: <input type="text" name="nombre" id="name"><br>
                     <p id="nombreOutput" class="validation-message">El nombre no puede estar vacío.</p>
                 </div>
@@ -186,8 +165,9 @@ if (!$resultCategoria) {
                 </select><br>
                 <label for="proveedor">Selecciona un proveedor:</label>
                 <select name="proveedor" id="proveedor" required>
-                    <!-- Placeholder añadido dinámicamente por JavaScript -->
                 </select><br>
+                <label for="factura_proveedor">Número de factura:</label>
+                <input type="text" name="factura_proveedor" id="factura_proveedor" required><br>
                 <div>
                     Descripción: <input type="text" name="descripcion" id="descripcion" required><br>
                     <p id="descripcionOutput" class="validation-message">La descripcion no puede estar vacía.</p>

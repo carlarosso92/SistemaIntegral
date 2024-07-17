@@ -81,7 +81,7 @@
     
     <div class="formulario-container">
         <div class="formulario">
-            <h2>Informe de Ventas Diarias</h2>
+            <h2>Informe de Ventas</h2>
             <form action="generar_informe.php" method="POST">
                 <input type="hidden" name="tipo_informe" value="ventas">
                 <button type="submit" name="formato" value="pdf">Descargar Informe PDF</button>
