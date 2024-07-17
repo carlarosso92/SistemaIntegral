@@ -1,5 +1,6 @@
 body {
-   
+
+    font-family: sans-serif;
     background-color: #F2EDD0; 
     display: flex;
     /*justify-content: center;*/
@@ -75,7 +76,7 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 button:hover {
@@ -93,7 +94,7 @@ button:hover {
     /*padding: 20px;*/
     box-sizing: border-box;
     display: grid;
-    padding-top: 117px;
+    padding-top: 40px;
 }
 
 .centrar-form {
