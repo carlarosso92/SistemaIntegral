@@ -20,11 +20,6 @@ session_start();
             <div class="productos">
                 <table class="table">
                     <thead>
-                        <tr class="text-center">
-                            <td colspan="6">
-                            <h2>LISTADO DE PROVEEDORES</h2>
-                            </td>
-                        </tr>
                         <tr>
                             <th colspan="6"><h2>Listado de reservas</h2></th>
                         </tr>
@@ -92,7 +87,7 @@ session_start();
                                     <td>
                                         <button class="button" onclick="procesarAnularReserva(<?php echo $id_reserva; ?>, 'procesar')">Procesar</button>
                                         <button class="button" onclick="procesarAnularReserva(<?php echo $id_reserva; ?>, 'anular')">Anular</button>
-                                        <button class="button3" onclick="toggleListado(<?php echo $id_reserva; ?>)">Mostrar/Ocultar Listado</button>
+                                        <button class="button" onclick="toggleListado(<?php echo $id_reserva; ?>)">Mostrar/Ocultar Listado</button>
                                     </td>
                                 </tr>
                                 <tr class="listado-row" id="listado-<?php echo $id_reserva; ?>" style="display: none;">

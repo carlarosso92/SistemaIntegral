@@ -13,30 +13,27 @@
             margin: 0;
             background-color: #F2EDD0;
         }
-
         h2 {
             padding: 10px;
             font-style: normal;
             text-align: center;
             margin: auto;
-            margin-top: 20px;
-            color: ;
+            margin-top: 8em;
+            color: #72A603;
             background-color: #E4F2B5;
+            max-width: 400px;
             border-radius: 10px;
+            border: 1px solid #72A603;
         }
-        h2:hover {
-            background-color:  #72A603;
-            color: #333;
+        h2:hover{
+            background-color: #D3E1A4;
+            color: #61A502;
         }
 
-       form {
-            min-height: 70vh;
-            max-width: 70vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 25vh auto;
+        form {
+            max-width: 500px;
+            margin: auto;
+            margin-top: 10px;
             padding: 20px;
             border: 1px solid #72A603;
             border-radius: 10px;
@@ -97,9 +94,10 @@
 </head>
 <body>
     <?php include "header.php"; ?>
+
+    <h2>Crear categoría nueva y subcategorías de la misma</h2>
     
     <form action="process_category.php" method="POST">
-        <h2>Crear categoría nueva y subcategorías de la misma</h2>
         <label for="category">Categoría:</label>
         <input type="text" id="category" name="category" required>
         <br><br>
