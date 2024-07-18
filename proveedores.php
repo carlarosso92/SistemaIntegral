@@ -58,7 +58,7 @@
                                 <td><?php echo htmlspecialchars($proveedor['telefono_proveedor']); ?></td>
                                 <td><?php echo htmlspecialchars($proveedor['email_proveedor']); ?></td>
                                 <td>
-                                    <a href="editarproveedores.php?id=<?php echo htmlspecialchars($proveedor['id']); ?>">Editar</a>
+                                    <a href="Proveedores/editarproveedores.php?id=<?php echo htmlspecialchars($proveedor['id']); ?>">Editar</a>
                                     <a href="eliminarproveedor.php?id=<?php echo htmlspecialchars($proveedor['id']); ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este proveedor?');">Eliminar</a>
                                 </td>
                             </tr>

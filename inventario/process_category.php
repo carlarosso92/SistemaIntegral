@@ -31,7 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $conn->query($sql);
         }
         
-        echo "Categoría y subcategorías agregadas correctamente.";
+        // Use JavaScript to display the alert
+        echo "<script>alert('Categoría y subcategorías agregadas correctamente.');</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
