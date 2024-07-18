@@ -137,7 +137,7 @@
     $sql_categorias = "SELECT id, nombre_categoria FROM categorias";
     $resultCategoria = $conexion->query($sql_categorias);
     ?>
-    <form action="actualizarproducto.php" method="POST">
+    <form action="actualizarproducto.php" method="POST" enctype="multipart/form-data">
         <h2>Editar producto</h2>
         <input type="hidden" name="id_producto" value="<?php echo $producto_id; ?>">
         <div>
@@ -198,6 +198,9 @@
         </div>
         <div>
             Fecha de vencimiento: <input type="date" name="fecha_vencimiento" value="<?php echo $producto['fecha_vencimiento']; ?>" required>
+        </div>
+        <div>
+            Nueva imagen: <input type="file" name="imagen" accept="image/*">
         </div>
         <button type="submit">Actualizar</button>
         <button><a href="index.php">Regresar</a></button>

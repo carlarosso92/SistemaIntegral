@@ -44,9 +44,8 @@ session_start();
             <div class="opcionusuario">
                 <?php if (isset($_SESSION['cliente_nombre'])): ?>
                     <span>Bienvenido, <?php echo htmlspecialchars($_SESSION['cliente_nombre']); ?></span>
-        <a href="gestioncliente.php" id="editarPerfilButton">Editar Perfil</a>
-        <a href="cerrarsesioncliente.php" id="cerrarSesionButton">Cerrar Sesión</a>
-
+                        <a href="gestioncliente.php" id="editarPerfilButton">Editar Perfil</a>
+                        <a href="cerrarsesioncliente.php" id="cerrarSesionButton">Cerrar Sesión</a>
                 <?php else: ?>
                     <a href="crudlogincliente.php">Iniciar Sesión</a>
                     <a href="crudcliente.php">Registrarse</a>

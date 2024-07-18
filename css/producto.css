@@ -78,12 +78,6 @@ section.productos {
     box-shadow: 0 0 10px #72A603;
 }
 
-.producto img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
 .producto .precio {
     color: #72a603;
     font-size: 1.2em;
@@ -114,7 +108,8 @@ section.productos {
 /* Estilo para las imágenes */
 .producto img {
     max-width: 100%;
-    height: auto;
+    width: 227px;
+    height: 200px;
     margin-bottom: 10px;
     border-radius: 10px;
 }

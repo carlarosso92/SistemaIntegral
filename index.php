@@ -18,9 +18,19 @@
             text-shadow: 2px 0 0 #000, 0 2px 0 #000, -2px 0 0 #000, 0 -2px 0 #000;
         }
 
-        .estilo-imagenes {
+        .estilo-producto {
             width: 227px;
             height: 200px;
+        }
+
+        .estilo-oferta {
+            width: 183px;
+            height: 171px;
+        }
+
+        /* Estilo de precios debajo de cada imagen de forma orizontal */
+        .visualizacion-precios {
+            display: ruby;
         }
         
     </style>
@@ -53,12 +63,14 @@
                 $ofertas_result = mysqli_query($conexion, $ofertas_query);
                 while ($oferta = mysqli_fetch_assoc($ofertas_result)) {
                     echo '<div class="oferta">';
-                    echo '<img src="img/producto_default.jpg" alt="' . htmlspecialchars($oferta['nombre']) . '">';
+                    echo '<img class="estilo-oferta" src="img/productos/' . $oferta['id_producto'] . '.jpg" alt="' . htmlspecialchars($oferta['nombre']) . '">';
                     echo '<h3>' . htmlspecialchars($oferta['nombre']) . '</h3>';
+                    echo '<div class="visualizacion-precios">';
                     echo '<p class="precio-original">$' . $oferta['precio'] . '</p>';
                     $precio_con_descuento = $oferta['precio'] * (1 - $oferta['valor_descuento'] / 100);
                     echo '<p class="precio-con-descuento">$' . $precio_con_descuento . '</p>';
                     echo '<p class="descuento">-' . $oferta['valor_descuento'] . '%</p>';
+                    echo '</div>';
                     echo '<button class="btn-agregar" data-id="' . $oferta['id_producto'] . '">Agregar</button>';
                     echo '</div>';
                 }
@@ -79,7 +91,7 @@
                 $productos_result = mysqli_query($conexion, $productos_query);
                 while ($producto = mysqli_fetch_assoc($productos_result)) {
                     echo '<div class="producto">';
-                    echo '<img class="estilo-imagenes" src="img/productos/' . $producto['id_producto'] . '.jpg" alt="' . htmlspecialchars($producto['nombre']) . '">';
+                    echo '<img class="estilo-producto" src="img/productos/' . $producto['id_producto'] . '.jpg" alt="' . htmlspecialchars($producto['nombre']) . '">';
                     echo '<h3>' . htmlspecialchars($producto['nombre']) . '</h3>';
                     echo '<p>$' . $producto['precio'] . '</p>';
                     echo '<button class="btn-agregar" data-id="' . $producto['id_producto'] . '">Agregar</button>';
@@ -235,7 +247,7 @@
 
                 item.innerHTML = `
                     <div class="producto-carrito">
-                        <img src="${producto.imagen}" alt="${producto.name}">
+                        <img src="img/productos/${producto.id}.jpg" alt="${producto.nombre}">
                         <div>
                             <p>${producto.name}</p>
                             <p class="precio-con-descuento">$${precioConDescuento}</p>
