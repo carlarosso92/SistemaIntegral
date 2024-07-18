@@ -35,15 +35,15 @@ if (!isset($_SESSION['usuario_id'])) {
                 <a href="ventas/reservas.php">
                 <button class="activity"><span class="icon">📑</span> Reservas</button>
                 </a>
-                <a href="inventario/crudcategoria.php"><button class="activity"><span class="icon">🧩</span>Gestión Categoría</button></a>
+                <a href="inventario/categoria.php"><button class="activity"><span class="icon">🧩</span>Gestión Categorías</button></a>
                 <a href="inventario/index.php"><button class="activity"><span class="icon">📦</span>Gestión Inventario</button></a>
-                <a href="informes/informes.php"><button class="activity"><span class="icon">📄</span> Generar informes</button></a>
                 <a href="empleados.php">
                 <a href="descuentos/mostrar_descuentos.php"><button class="activity"><span class="icon">🏷️</span> Gestionar descuentos</button></a>
                 <a href="empleados.php">
                 <button class="activity"><span class="icon">👤</span> Gestión de Empleados</button>
                 </a>
                 <a href="proveedores.php"><button class="activity"><span class="icon">📚</span> Proveedores</button></a>
+                <a href="informes/informes.php"><button class="activity"><span class="icon">📄</span> Generar informes</button></a>
                 <button class="activity"><span class="icon">✏️</span> Devoluciones</button>
             </div>
         </div>

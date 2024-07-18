@@ -25,7 +25,7 @@
             justify-content: center;
             gap: 20px;
             padding: 20px;
-          margin-top: 150px;
+          margin-top: 105px;
         }
 
         .formulario {
@@ -56,7 +56,7 @@
         .formulario button {
             width: 100%;
             background-color: #72A603;
-            color: yellow;
+            color: #F2EDD0;
             border: none;
             padding: 10px 20px;
             border-radius: 20px;

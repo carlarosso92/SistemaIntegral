@@ -1,9 +1,46 @@
 <?php
 include '../php/config.php'; // Incluye el archivo de configuración para la conexión a la base de datos
 
+$factura_id = $_GET['id'] ?? null;
+$factura = null;
+
+if ($factura_id) {
+    // Consulta para obtener los datos de la factura
+    $query = "SELECT * FROM facturas_proveedores WHERE id = ?";
+    $stmt = $conexion->prepare($query);
+    $stmt->bind_param('i', $factura_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $factura = $result->fetch_assoc();
+    $stmt->close();
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $factura_id = $_POST['factura_id'];
+    $fecha_pago = $_POST['fecha_pago'];
+    $monto = $_POST['monto'];
+    $descripcion = $_POST['descripcion'];
+    $proveedor_id = $_POST['proveedor_id'];
+
+    // Actualizar los datos de la factura
+    $query = "UPDATE facturas_proveedores SET fecha_pago = ?, monto = ?, descripcion = ?, proveedor_id = ? WHERE id = ?";
+    $stmt = $conexion->prepare($query);
+    $stmt->bind_param('sdsii', $fecha_pago, $monto, $descripcion, $proveedor_id, $factura_id);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Factura actualizada exitosamente.');window.location.href='listadofacturas.php';</script>";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+    $conexion->close();
+    exit();
+}
+
 // Consulta para obtener todos los proveedores
 $query = "SELECT id, nombre_proveedor FROM proveedores";
-$result = $conexion->query($query);
+$proveedores_result = $conexion->query($query);
 ?>
 
 <!DOCTYPE html>
@@ -12,9 +49,9 @@ $result = $conexion->query($query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingreso de proveedor</title>
+    <title>Editar Factura</title>
     <link rel="icon" href="../img/logo2.png" type="image/png">
-    <script src="../js/validacionFormularios.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         body {
             font-family: sans-serif;
@@ -117,26 +154,36 @@ $result = $conexion->query($query);
 </head>
 
 <body>
-    <form action="guardarpago.php" method="POST">
-        <h2>Registrar Pago a Proveedor</h2>
+    <form action="editarfactura.php" method="POST">
+        <h2>Editar Factura</h2>
+        <input type="hidden" name="factura_id" value="<?php echo htmlspecialchars($factura['id'] ?? ''); ?>">
+
         <label for="proveedor_id">Proveedor:</label>
         <select name="proveedor_id" id="proveedor_id" required>
-            <?php while ($row = $result->fetch_assoc()): ?>
-                <option value="<?php echo $row['id']; ?>"><?php echo $row['nombre_proveedor']; ?></option>
+            <option value="" selected disabled>Seleccionar proveedor</option>
+            <?php while ($row = $proveedores_result->fetch_assoc()): ?>
+                <option value="<?php echo $row['id']; ?>" <?php echo isset($factura['proveedor_id']) && $factura['proveedor_id'] == $row['id'] ? 'selected' : ''; ?>><?php echo $row['nombre_proveedor']; ?></option>
             <?php endwhile; ?>
         </select>
+
+        <label for="numero_factura">Número de factura:</label>
+        <input type="text" name="numero_factura" id="numero_factura" value="<?php echo htmlspecialchars($factura['numero_factura'] ?? ''); ?>" disabled>
+
         <label for="fecha_pago">Fecha de Pago:</label>
-        <input type="date" name="fecha_pago" id="fecha_pago" required>
+        <input type="date" name="fecha_pago" id="fecha_pago" value="<?php echo htmlspecialchars($factura['fecha_pago'] ?? ''); ?>" required>
+
         <div class="monto_input">
             <label for="monto">Monto:</label>
-            <input type="number" name="monto" id="monto" value="0" required>
+            <input type="number" name="monto" id="monto" value="<?php echo htmlspecialchars($factura['monto'] ?? ''); ?>" required>
             <p id="montoOutput" class="validation-message"></p>
         </div>
+
         <div>
             <label for="descripcion">Descripción:</label>
-            <input type="text" name="descripcion" id="descripcion" required>
+            <input type="text" name="descripcion" id="descripcion" value="<?php echo htmlspecialchars($factura['descripcion'] ?? ''); ?>" required>
             <p id="descripcionOutput" class="validation-message">La descripcion no puede estar vacía.</p>
         </div>
-        <button type="submit" id="buttonSubmit">Registrar Pago</button>
+        <button type="submit" id="buttonSubmit">Guardar Cambios</button>
     </form>
 </body>
+</html>
