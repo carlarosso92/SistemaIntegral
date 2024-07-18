@@ -178,6 +178,7 @@ if (!$resultCategoria) {
                         <label>Precio: <input type="number" name="precio[]" value="0" required></label><br>
                         <label>Cantidad: <input type="number" name="cantidad_stock[]" value="0" required></label><br>
                         <label>Fecha de vencimiento: <input type="date" name="fecha_vencimiento[]" required></label><br>
+                        <label>Imagen: <input type="file" name="imagen[]" accept="image/*" required></label><br>
                     </div>`;
                 $('#products').append(productGroup);
             });
@@ -206,7 +207,7 @@ if (!$resultCategoria) {
 <body>
     <div class="configuracion-div-form">
         <div class="centrar-form">
-            <form action="ingresarproducto.php" method="POST">
+            <form action="ingresarproducto.php" method="POST" enctype="multipart/form-data">
                 <div>
                     <h2>Nuevo producto</h2>
                 </div>
@@ -241,6 +242,7 @@ if (!$resultCategoria) {
                         <label>Precio: <input type="number" name="precio[]" value="0" required></label><br>
                         <label>Cantidad: <input type="number" name="cantidad_stock[]" value="0" required></label><br>
                         <label>Fecha de vencimiento: <input type="date" name="fecha_vencimiento[]" required></label><br>
+                        <label>Imagen: <input type="file" name="imagen[]" accept="image/*" required></label><br>
                     </div>
                 </div>
                 <button type="button" id="addProduct">Agregar otro producto</button><br>

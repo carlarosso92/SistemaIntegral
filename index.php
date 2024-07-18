@@ -9,14 +9,19 @@
     <style>
        h2 {
         padding-right: 40px;
-    margin: 0;
-    font-size: 3.5em;
-    font-family: 'Brush Script MT';
-    padding-left: 5px;
-    position: relative;
-    color: #72a603;
-    text-shadow: 2px 0 0 #000, 0 2px 0 #000, -2px 0 0 #000, 0 -2px 0 #000;
-}
+            margin: 0;
+            font-size: 3.5em;
+            font-family: 'Brush Script MT';
+            padding-left: 5px;
+            position: relative;
+            color: #72a603;
+            text-shadow: 2px 0 0 #000, 0 2px 0 #000, -2px 0 0 #000, 0 -2px 0 #000;
+        }
+
+        .estilo-imagenes {
+            width: 227px;
+            height: 200px;
+        }
         
     </style>
 </head>
@@ -74,7 +79,7 @@
                 $productos_result = mysqli_query($conexion, $productos_query);
                 while ($producto = mysqli_fetch_assoc($productos_result)) {
                     echo '<div class="producto">';
-                    echo '<img src="img/producto_default.jpg" alt="' . htmlspecialchars($producto['nombre']) . '">';
+                    echo '<img class="estilo-imagenes" src="img/productos/' . $producto['id_producto'] . '.jpg" alt="' . htmlspecialchars($producto['nombre']) . '">';
                     echo '<h3>' . htmlspecialchars($producto['nombre']) . '</h3>';
                     echo '<p>$' . $producto['precio'] . '</p>';
                     echo '<button class="btn-agregar" data-id="' . $producto['id_producto'] . '">Agregar</button>';

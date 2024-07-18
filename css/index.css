@@ -170,12 +170,6 @@ main {
     justify-content: space-between;
 }
 
-.producto img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 15px; /* Espacio entre la imagen y el contenido */
-}
-
 .producto-controls {
     position: absolute;
     top: 50%;
