@@ -20,6 +20,7 @@ if (!isset($_SESSION['usuario_id'])) {
         .main-container {
             display: flex;
             justify-content: space-between;
+            margin-top: 90px;
         }
 
         .left-column, .right-column {
