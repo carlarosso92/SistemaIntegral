@@ -69,13 +69,16 @@ section.productos {
 }
 
 .producto {
-    width: calc(25% - 20px);
+    width: calc(25% - 30px);
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 20px;
     text-align: center;
     background-color: #fff;
     box-shadow: 0 0 10px #72A603;
+    height: fit-content;
+    display: grid;
+    justify-content: center;
 }
 
 .producto .precio {
@@ -112,6 +115,7 @@ section.productos {
     height: 200px;
     margin-bottom: 10px;
     border-radius: 10px;
+    z-index: auto;
 }
 
 /* Estilo para el precio original tachado */

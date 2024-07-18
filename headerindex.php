@@ -31,6 +31,7 @@ session_start();
             color: orange;
             font-size: 1em;
             font-weight: bold;
+            display: ruby-text
         }
     </style>
 </head>

@@ -5,6 +5,9 @@ main {
     align-items: center; /* Centra el contenido horizontalmente */
 }
 
+h3 {
+    color: #72A603;
+}
 .carrusel {
     padding-top: 39px;
     top: 0;
@@ -101,16 +104,21 @@ main {
 }
 
 .oferta {
-    width: calc(25% - 120px);
+    width: calc(25% - 20px);
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 20px;
+    display: flex;
     text-align: center;
     background-color: #fff;
     box-shadow: 0 0 10px #8fce06;
     margin: 10px;
     flex-shrink: 0;
     transition: transform 0.5s ease-in-out;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: stretch;
+    flex-direction: column;
 }
 
 .ofertas-controls {

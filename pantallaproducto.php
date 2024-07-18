@@ -29,6 +29,9 @@
             font-weight: bold;
         }
 
+        .display-precios-producto {
+            display: ruby;
+        }
     </style>
 </head>
 <body>
@@ -47,14 +50,7 @@
             </div>
         </aside>
         <section class="productos">
-            <div class="ordenar">
-                <label for="ordenar">Ordenar</label>
-                <select id="ordenar">
-                    <option value="recomendados">Recomendados</option>
-                    <option value="precio-asc">Precio: Menor a Mayor</option>
-                    <option value="precio-desc">Precio: Mayor a Menor</option>
-                </select>
-            </div>
+        
             <div class="lista-productos" id="productos-list"></div>
         </section>
     </div>
@@ -117,10 +113,12 @@
 
                         productoDiv.innerHTML = `
                             <img src="img/productos/${producto.id}.jpg" alt="${producto.nombre}">
+                            <p class="descripcion">${producto.nombre}</p>
+                            <div class="display-precios-producto">
                             ${producto.descuento > 0 ? `<p class="precio-original">$${precioOriginal}</p>` : ''}
                             <p class="precio-con-descuento">$${precioConDescuento}</p>
                             ${producto.descuento > 0 ? `<p class="descuento">-${producto.descuento}%</p>` : ''}
-                            <p class="descripcion">${producto.nombre}</p>
+                            </div>
                             <button class="btn-agregar" data-id="${producto.id}">Agregar</button>
                         `;
                         productosList.appendChild(productoDiv);
