@@ -22,14 +22,24 @@ if ($tipo_informe == 'ventas') {
               LEFT JOIN clientes c ON v.cliente_id = c.id
               LEFT JOIN usuarios u ON c.usuario_id = u.usuario_id
               LEFT JOIN detalle_ventas dv ON v.id = dv.venta_id
-              LEFT JOIN productos p ON dv.producto_id = p.id_producto
-              WHERE v.fecha_venta = '$fecha_hoy'";
-    $titulo = "Informe de Ventas Diarias";
+              LEFT JOIN productos p ON dv.producto_id = p.id_producto";
+    $titulo = "Informe de Ventas";
 } else if ($tipo_informe == 'inventario') {
     $query = "SELECT p.nombre, p.descripcion, p.cantidad_stock, p.fecha_vencimiento, p.precio, pr.nombre_proveedor
               FROM productos p
               LEFT JOIN proveedores pr ON p.id_proveedor = pr.id";
     $titulo = "Informe de Inventario";
+} else if ($tipo_informe == 'proveedores') {
+    $query = "SELECT
+        fp.numero_factura,
+        fp.fecha_pago,
+        p.nombre_proveedor,
+        fp.monto,
+        IF(fp.flagpagado = 1, 'Pagado', 'No Pagado') as estado
+    FROM
+        facturas_proveedores fp
+    LEFT JOIN proveedores p ON fp.proveedor_id = p.id";
+    $titulo = "Estado de cuenta proveedores";
 }
 
 $result = mysqli_query($conexion, $query);
@@ -43,11 +53,9 @@ if ($formato == 'pdf') {
     if ($tipo_informe == 'ventas') {
         $html .= '<th>ID Venta</th>
                   <th>Fecha Venta</th>
-                  <th>Cliente</th>
                   <th>Producto</th>
                   <th>Cantidad</th>
-                  <th>Precio Unitario</th>
-                  <th>Total Venta</th>';
+                  <th>Precio Unitario</th>';
     } else if ($tipo_informe == 'inventario') {
         $html .= '<th>Producto</th>
                   <th>Descripción</th>
@@ -55,6 +63,12 @@ if ($formato == 'pdf') {
                   <th>Fecha de Vencimiento</th>
                   <th>Precio</th>
                   <th>Proveedor</th>';
+    } else if ($tipo_informe == 'proveedores') {
+        $html .= '<th>Numero factura</th>
+                  <th>Fecha pago</th>
+                  <th>Proveedor</th>
+                  <th>Monto</th>
+                  <th>Estado</th>';
     }
     $html .= '</tr></thead><tbody>';
 
@@ -63,11 +77,9 @@ if ($formato == 'pdf') {
         if ($tipo_informe == 'ventas') {
             $html .= '<td>' . $row['id'] . '</td>
                       <td>' . $row['fecha_venta'] . '</td>
-                      <td>' . $row['cliente'] . '</td>
                       <td>' . $row['producto'] . '</td>
                       <td>' . $row['cantidad'] . '</td>
-                      <td>' . $row['precio_unitario'] . '</td>
-                      <td>' . $row['total'] . '</td>';
+                      <td>' . $row['precio_unitario'] . '</td>';
         } else if ($tipo_informe == 'inventario') {
             $html .= '<td>' . $row['nombre'] . '</td>
                       <td>' . $row['descripcion'] . '</td>
@@ -75,6 +87,12 @@ if ($formato == 'pdf') {
                       <td>' . $row['fecha_vencimiento'] . '</td>
                       <td>' . $row['precio'] . '</td>
                       <td>' . $row['nombre_proveedor'] . '</td>';
+        } else if ($tipo_informe == 'proveedores') {
+            $html .= '<td>' . $row['numero_factura'] . '</td>
+            <td>' . $row['fecha_pago'] . '</td>
+            <td>' . $row['nombre_proveedor'] . '</td>
+            <td>' . $row['monto'] . '</td>
+            <td>' . $row['estado'] . '</td>';
         }
         $html .= '</tr>';
     }
@@ -101,11 +119,9 @@ if ($formato == 'pdf') {
     if ($tipo_informe == 'ventas') {
         $sheet->setCellValue('A1', 'ID Venta');
         $sheet->setCellValue('B1', 'Fecha Venta');
-        $sheet->setCellValue('C1', 'Cliente');
-        $sheet->setCellValue('D1', 'Producto');
-        $sheet->setCellValue('E1', 'Cantidad');
-        $sheet->setCellValue('F1', 'Precio Unitario');
-        $sheet->setCellValue('G1', 'Total Venta');
+        $sheet->setCellValue('C1', 'Producto');
+        $sheet->setCellValue('D1', 'Cantidad');
+        $sheet->setCellValue('E1', 'Precio Unitario');
     } else if ($tipo_informe == 'inventario') {
         $sheet->setCellValue('A1', 'Producto');
         $sheet->setCellValue('B1', 'Descripción');
@@ -113,9 +129,14 @@ if ($formato == 'pdf') {
         $sheet->setCellValue('D1', 'Fecha de Vencimiento');
         $sheet->setCellValue('E1', 'Precio');
         $sheet->setCellValue('F1', 'Proveedor');
+    } else if ($tipo_informe == 'proveedores') {
+        $sheet->setCellValue('A1', 'Numero factura');
+        $sheet->setCellValue('B1', 'Fecha pago');
+        $sheet->setCellValue('C1', 'Proveedor');
+        $sheet->setCellValue('D1', 'Monto');
+        $sheet->setCellValue('E1', 'Estado');
     }
 
-    // Aplicar estilos a los encabezados
     $headerStyle = [
         'font' => [
             'bold' => true,
@@ -123,7 +144,7 @@ if ($formato == 'pdf') {
         ],
         'fill' => [
             'fillType' => Fill::FILL_SOLID,
-            'startColor' => ['argb' => '4F81BD'],
+            'startColor' => ['argb' => '72A603'],
         ],
         'alignment' => [
             'horizontal' => Alignment::HORIZONTAL_CENTER,
@@ -157,6 +178,12 @@ if ($formato == 'pdf') {
             $sheet->setCellValue('D' . $rowNumber, $row['fecha_vencimiento']);
             $sheet->setCellValue('E' . $rowNumber, $row['precio']);
             $sheet->setCellValue('F' . $rowNumber, $row['nombre_proveedor']);
+        } else if ($tipo_informe == 'proveedores') {
+            $sheet->setCellValue('A' . $rowNumber, $row['numero_factura']);
+            $sheet->setCellValue('B' . $rowNumber, $row['fecha_pago']);
+            $sheet->setCellValue('C' . $rowNumber, $row['nombre_proveedor']);
+            $sheet->setCellValue('D' . $rowNumber, $row['monto']);
+            $sheet->setCellValue('E' . $rowNumber, $row['estado']);
         }
         $rowNumber++;
     }
