@@ -12,6 +12,7 @@ $resultadoVentas = $conexion->query($sqlVentas);
     <meta charset="UTF-8">
     <title>Registrar Devolución</title>
     <link rel="stylesheet" href="css/registro_devolucion.css">
+    <link rel="icon" href="../img/logo2.png" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Knewave:wght@400&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" />
 </head>

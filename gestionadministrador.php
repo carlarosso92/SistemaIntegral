@@ -45,7 +45,8 @@ if (!isset($_SESSION['usuario_id'])) {
                 <a href="proveedores.php"><button class="activity"><span class="icon">📚</span> Proveedores</button></a>
                 <a href="informes/informes.php"><button class="activity"><span class="icon">📄</span> Generar informes</button></a>
                 <a href="index.php"><button class="activity"><span class="icon">🌐</span> Catálogo</button></a>
-                <button class="activity"><span class="icon">✏️</span> Devoluciones</button>
+                <a href="devoluciones/ver_devolucion.php"><button class="activity"><span class="icon">✏️</span> Devoluciones</button></a>
+              
             </div>
         </div>
     </main>

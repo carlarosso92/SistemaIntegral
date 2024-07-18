@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingreso de proveedor</title>
-    <link rel="icon" href="Proveedores/img/logo2.png" type="image/png">
+    <link rel="icon" href="../img/logo2.png" type="image/png">
     <style>
         body {
             font-family: sans-serif;

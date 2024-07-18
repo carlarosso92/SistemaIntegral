@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/global.css"> <!-- Asegúrate de tener el archivo CSS adecuado -->
     <style>
         body {
-        
             background-color: #F2EDD0;
             margin: 0;
             padding: 0;
@@ -16,7 +15,6 @@
 
         h1 {
             text-align: center;
-        
         }
 
         .formulario-container {
@@ -25,7 +23,7 @@
             justify-content: center;
             gap: 20px;
             padding: 20px;
-          margin-top: 105px;
+            margin-top: 105px;
         }
 
         .formulario {
@@ -99,6 +97,15 @@
             <h2>Informe de Proveedores</h2>
             <form action="generar_informe.php" method="POST">
                 <input type="hidden" name="tipo_informe" value="proveedores">
+                <button type="submit" name="formato" value="pdf">Descargar Informe PDF</button>
+                <button type="submit" name="formato" value="excel">Descargar Informe Excel</button>
+            </form>
+        </div>
+
+        <div class="formulario">
+            <h2>Informe de Devoluciones</h2>
+            <form action="generar_informe.php" method="POST">
+                <input type="hidden" name="tipo_informe" value="devoluciones">
                 <button type="submit" name="formato" value="pdf">Descargar Informe PDF</button>
                 <button type="submit" name="formato" value="excel">Descargar Informe Excel</button>
             </form>
