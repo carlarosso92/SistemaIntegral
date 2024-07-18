@@ -194,6 +194,18 @@
                             alert('Reserva confirmada.');
                             modal.style.display = "none";
                             actualizarCarrito({}); // Limpiar el carrito
+
+                            // Generación de pdf de reserva
+                            fetch('generar_ticket_reserva.php')
+                            .then(response => response.blob())
+                            .then(blob => {
+                                const pdfUrl = URL.createObjectURL(blob);
+                                window.open(pdfUrl, '_blank');
+                            })
+                            .catch(error => {
+                                console.error('Error al generar el ticket:', error);
+                                alert('Hubo un problema al generar el ticket. Por favor, inténtalo de nuevo.');
+                            });
                         } else {
                             alert('Error al procesar la reserva.');
                         }
