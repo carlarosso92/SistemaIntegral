@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $precios = $_POST["precio"];
     $cantidades = $_POST["cantidad_stock"];
     $fechas_vencimiento = $_POST["fecha_vencimiento"];
+    $imagenes = $_FILES["imagen"];
 
     // Verificar si la conexión a la base de datos fue exitosa
     if ($conexion) {
@@ -38,9 +39,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $resultadoProducto = mysqli_query($conexion, $insertarProducto);
 
                 // Verificar si la consulta fue exitosa
-                if (!$resultadoProducto) {
-                    echo "Error al ingresar los registros en la tabla productos: " . mysqli_error($conexion);
-                    break;
+                if ($resultadoProducto) {
+                    $last_id = mysqli_insert_id($conexion);
+                    $imagenNombre = $imagenes['name'][$index];
+                    $imagenTmpNombre = $imagenes['tmp_name'][$index];
+                    $imagenError = $imagenes['error'][$index];
+
+                    if ($imagenError === UPLOAD_ERR_OK) {
+                        $imagenExtension = pathinfo($imagenNombre, PATHINFO_EXTENSION);
+                        $imagenNueva = $last_id . "." . $imagenExtension; // Conservar extensión original
+
+                        $uploadDirectory = $_SERVER['DOCUMENT_ROOT'] . '/img/productos/'; // Ruta absoluta
+
+                        if (!is_dir($uploadDirectory)) {
+                            mkdir($uploadDirectory, 0777, true); // Crear carpeta si no existe
+                        }
+
+                        if (move_uploaded_file($imagenTmpNombre, $uploadDirectory . $imagenNueva)) {
+                            echo "Producto e imagen guardados exitosamente.<br>";
+                        } else {
+                            echo "Error al subir la imagen: " . $imagenError . "<br>"; // Mostrar error específico
+                        }
+                    } else {
+                        echo "Error en la carga de la imagen: " . $imagenError . "<br>"; // Mostrar error específico
+                    }
+                } else {
+                    echo "Error al ingresar los registros en la tabla productos: " . mysqli_error($conexion) . "<br>";
+                    break; 
                 }
             }
 
@@ -49,13 +74,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<script>alert('Los registros se ingresaron correctamente.');window.location.href = 'index.php';</script>";
             }
         } else {
-            echo "Error al ingresar los registros en la tabla facturas_proveedores: " . mysqli_error($conexion);
+            echo "Error al ingresar los registros en la tabla facturas_proveedores: " . mysqli_error($conexion) . "<br>";
         }
 
         // Cerrar la conexión a la base de datos
         mysqli_close($conexion);
     } else {
-        echo "Error en la conexión a la base de datos: " . mysqli_connect_error();
+        echo "Error en la conexión a la base de datos: " . mysqli_connect_error() . "<br>";
     }
 }
 ?>
