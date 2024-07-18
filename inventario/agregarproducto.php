@@ -43,7 +43,8 @@ if (!$resultCategoria) {
         form input[type="text"],
         form input[type="email"],
         form input[type="password"],
-        form input[type="number"] {
+        form input[type="number"],
+        form input[type="date"] {
             width: calc(100% - 20px);
             padding: 10px;
             margin: auto;
@@ -94,29 +95,16 @@ if (!$resultCategoria) {
             background-color: #ddd;
             color: #666;
         }
+
+        .product-group {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
     </style>
     <script>
         $(document).ready(function() {
-            $('#categoria').change(function() {
-                var categoria_id = $(this).val();
-                $.ajax({
-                    url: 'get_subcategorias.php',
-                    type: 'POST',
-                    data: { categoria_id: categoria_id },
-                    dataType: 'json',
-                    success: function(response) {
-                        $('#subcategoria').empty();
-                        if (response.length > 0) {
-                            response.forEach(function(subcategoria) {
-                                $('#subcategoria').append('<option value="' + subcategoria.id + '">' + subcategoria.nombre_subcategoria + '</option>');
-                            });
-                        } else {
-                            $('#subcategoria').append('<option value="">No hay subcategorías disponibles</option>');
-                        }
-                    }
-                });
-            });
-
             $.ajax({
                 url: 'get_proveedores.php',
                 type: 'GET',
@@ -133,6 +121,85 @@ if (!$resultCategoria) {
                     }
                 }
             });
+
+            $('#proveedor').change(function() {
+                var proveedor_id = $(this).val();
+                // Opcional: Cargar facturas del proveedor si es necesario
+            });
+
+            // Inicializar categorías para el primer producto
+            cargarCategorias($('.categoria'));
+
+            $(document).on('change', '.categoria', function() {
+                var categoria_id = $(this).val();
+                var subcategoriaSelect = $(this).closest('.product-group').find('.subcategoria');
+                $.ajax({
+                    url: 'get_subcategorias.php',
+                    type: 'POST',
+                    data: { categoria_id: categoria_id },
+                    dataType: 'json',
+                    success: function(response) {
+                        subcategoriaSelect.empty();
+                        if (response.length > 0) {
+                            response.forEach(function(subcategoria) {
+                                subcategoriaSelect.append('<option value="' + subcategoria.id + '">' + subcategoria.nombre_subcategoria + '</option>');
+                            });
+                        } else {
+                            subcategoriaSelect.append('<option value="">No hay subcategorías disponibles</option>');
+                        }
+                    }
+                });
+            });
+
+            $('#addProduct').click(function() {
+                var productGroup = `
+                    <div class="product-group">
+                        <label>Categoría:
+                            <select name="categoria[]" class="categoria" required>
+                                <option value="" selected disabled>Seleccionar categoría</option>
+                                <?php
+                                    if ($resultCategoria->num_rows > 0) {
+                                        while($row = $resultCategoria->fetch_assoc()) {
+                                            echo "<option value='" . $row["id"] . "'>" . $row["nombre_categoria"] . "</option>";
+                                        }
+                                    } else {
+                                        echo "<option value=''>No hay categorías disponibles</option>";
+                                    }
+                                ?>
+                            </select>
+                        </label><br>
+                        <label>Subcategoría:
+                            <select name="subcategoria[]" class="subcategoria" required>
+                                <option value="">Selecciona una categoría primero</option>
+                            </select>
+                        </label><br>
+                        <label>Nombre: <input type="text" name="nombre[]" required></label><br>
+                        <label>Descripción: <input type="text" name="descripcion[]" required></label><br>
+                        <label>Precio: <input type="number" name="precio[]" value="0" required></label><br>
+                        <label>Cantidad: <input type="number" name="cantidad_stock[]" value="0" required></label><br>
+                        <label>Fecha de vencimiento: <input type="date" name="fecha_vencimiento[]" required></label><br>
+                    </div>`;
+                $('#products').append(productGroup);
+            });
+
+            function cargarCategorias(selectElement) {
+                $.ajax({
+                    url: 'get_categorias.php',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        selectElement.empty();
+                        selectElement.append('<option value="" selected disabled>Seleccionar categoría</option>');
+                        if (response.length > 0) {
+                            response.forEach(function(categoria) {
+                                selectElement.append('<option value="' + categoria.id + '">' + categoria.nombre_categoria + '</option>');
+                            });
+                        } else {
+                            selectElement.append('<option value="">No hay categorías disponibles</option>');
+                        }
+                    }
+                });
+            }
         });
     </script>
 </head>
@@ -142,44 +209,41 @@ if (!$resultCategoria) {
             <form action="ingresarproducto.php" method="POST">
                 <div>
                     <h2>Nuevo producto</h2>
-                    Nombre: <input type="text" name="nombre" id="name"><br>
-                    <p id="nombreOutput" class="validation-message">El nombre no puede estar vacío.</p>
                 </div>
-                <label for="categoria">Selecciona una categoría:</label>
-                <select name="categoria" id="categoria" required>
-                    <option value="" selected disabled>Seleccionar categoría</option>
-                    <?php
-                        if ($resultCategoria->num_rows > 0) {
-                            while($row = $resultCategoria->fetch_assoc()) {
-                                echo "<option value='" . $row["id"] . "'>" . $row["nombre_categoria"] . "</option>";
-                            }
-                        } else {
-                            echo "<option value=''>No hay categorías disponibles</option>";
-                        }
-                    ?>
-                </select><br>
-                <label for="subcategoria">Selecciona una subcategoría:</label>
-                <select name="subcategoria" id="subcategoria" required>
-                    <option value="">Selecciona una categoría primero</option>
-                </select><br>
                 <label for="proveedor">Selecciona un proveedor:</label>
-                <select name="proveedor" id="proveedor" required>
-                </select><br>
+                <select name="proveedor" id="proveedor" required></select><br>
                 <label for="factura_proveedor">Número de factura:</label>
                 <input type="text" name="factura_proveedor" id="factura_proveedor" required><br>
-                <div>
-                    Descripción: <input type="text" name="descripcion" id="descripcion" required><br>
-                    <p id="descripcionOutput" class="validation-message">La descripcion no puede estar vacía.</p>
+
+                <div id="products">
+                    <div class="product-group">
+                        <label>Categoría:
+                            <select name="categoria[]" class="categoria" required>
+                                <option value="" selected disabled>Seleccionar categoría</option>
+                                <?php
+                                    if ($resultCategoria->num_rows > 0) {
+                                        while($row = $resultCategoria->fetch_assoc()) {
+                                            echo "<option value='" . $row["id"] . "'>" . $row["nombre_categoria"] . "</option>";
+                                        }
+                                    } else {
+                                        echo "<option value=''>No hay categorías disponibles</option>";
+                                    }
+                                ?>
+                            </select>
+                        </label><br>
+                        <label>Subcategoría:
+                            <select name="subcategoria[]" class="subcategoria" required>
+                                <option value="">Selecciona una categoría primero</option>
+                            </select>
+                        </label><br>
+                        <label>Nombre: <input type="text" name="nombre[]" required></label><br>
+                        <label>Descripción: <input type="text" name="descripcion[]" required></label><br>
+                        <label>Precio: <input type="number" name="precio[]" value="0" required></label><br>
+                        <label>Cantidad: <input type="number" name="cantidad_stock[]" value="0" required></label><br>
+                        <label>Fecha de vencimiento: <input type="date" name="fecha_vencimiento[]" required></label><br>
+                    </div>
                 </div>
-                <div>
-                    Precio: <input type="number" name="precio" id="precio" value="0" required><br>
-                    <p id="precioOutput" class="validation-message"></p>
-                </div>
-                <div>
-                    Cantidad: <input type="number" name="cantidad_stock" id="cantidad" value="0" required><br>
-                    <p id="cantidadOutput" class="validation-message"></p>
-                </div>
-                Fecha de vencimiento: <input type="date" name="fecha_vencimiento" required><br>
+                <button type="button" id="addProduct">Agregar otro producto</button><br>
                 <button type="submit" id="buttonSubmit">Ingresar</button>
             </form>
         </div>

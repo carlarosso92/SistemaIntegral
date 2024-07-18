@@ -20,6 +20,8 @@
                             <div class="header-content">
                                 <h2 class="text-center">Listado de Proveedores</h2>
                                 <a href="Proveedores/crudproveedores.php" class="button">Agregar Proveedor</a>
+                                <h2 class="text-center"></h2>
+                                <a href="Proveedores/listadofacturas.php" class="button">Pagos a realizar</a>
                             </div>
                         </th>
                     </tr>
@@ -57,6 +59,7 @@
                                 <td>
                                     <a href="editarproveedor.php?id=<?php echo htmlspecialchars($proveedor['id']); ?>">Editar</a>
                                     <a href="eliminarproveedor.php?id=<?php echo htmlspecialchars($proveedor['id']); ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este proveedor?');">Eliminar</a>
+                            
                                 </td>
                             </tr>
                             <?php
