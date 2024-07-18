@@ -38,34 +38,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $insertarProducto = "INSERT INTO productos (nombre, id_categoria, id_subcategoria, id_proveedor, descripcion, precio, cantidad_stock, fecha_vencimiento, codigo_barras, factura_proveedor) VALUES ('$nombre', '$categoria', '$subcategoria', '$proveedor', '$descripcion', '$precio', '$cantidad_stock', '$fecha_vencimiento', '$barcodeNumber', '$facturaId')";
                 $resultadoProducto = mysqli_query($conexion, $insertarProducto);
 
-                // Verificar si la consulta fue exitosa
                 if ($resultadoProducto) {
-                    $last_id = mysqli_insert_id($conexion);
+                    // Obtener el ID del producto recién insertado
+                    $last_id = mysqli_insert_id($conexion); 
+
+                    // Manejo de imágenes
                     $imagenNombre = $imagenes['name'][$index];
                     $imagenTmpNombre = $imagenes['tmp_name'][$index];
                     $imagenError = $imagenes['error'][$index];
 
                     if ($imagenError === UPLOAD_ERR_OK) {
-                        $imagenExtension = pathinfo($imagenNombre, PATHINFO_EXTENSION);
-                        $imagenNueva = $last_id . "." . $imagenExtension; // Conservar extensión original
+                        $imagenNueva = $last_id . ".jpg"; // Utilizar el ID del producto actual
 
-                        $uploadDirectory = $_SERVER['DOCUMENT_ROOT'] . '/img/productos/'; // Ruta absoluta
+                        $uploadDirectory = '../img/productos/';
 
                         if (!is_dir($uploadDirectory)) {
-                            mkdir($uploadDirectory, 0777, true); // Crear carpeta si no existe
+                            mkdir($uploadDirectory, 0777, true);
                         }
 
                         if (move_uploaded_file($imagenTmpNombre, $uploadDirectory . $imagenNueva)) {
                             echo "Producto e imagen guardados exitosamente.<br>";
                         } else {
-                            echo "Error al subir la imagen: " . $imagenError . "<br>"; // Mostrar error específico
+                            echo "Error al subir la imagen: " . $imagenError . "<br>";
                         }
                     } else {
-                        echo "Error en la carga de la imagen: " . $imagenError . "<br>"; // Mostrar error específico
+                        echo "Error en la carga de la imagen: " . $imagenError . "<br>";
                     }
                 } else {
                     echo "Error al ingresar los registros en la tabla productos: " . mysqli_error($conexion) . "<br>";
-                    break; 
+                    break; // Salir del bucle si hay un error
                 }
             }
 

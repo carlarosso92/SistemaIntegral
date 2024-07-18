@@ -28,6 +28,7 @@
             font-size: 1em;
             font-weight: bold;
         }
+
     </style>
 </head>
 <body>
@@ -115,7 +116,7 @@
                         const precioOriginal = producto.precio;
 
                         productoDiv.innerHTML = `
-                            <img src="${producto.imagen}" alt="${producto.nombre}">
+                            <img src="img/productos/${producto.id}.jpg" alt="${producto.nombre}">
                             ${producto.descuento > 0 ? `<p class="precio-original">$${precioOriginal}</p>` : ''}
                             <p class="precio-con-descuento">$${precioConDescuento}</p>
                             ${producto.descuento > 0 ? `<p class="descuento">-${producto.descuento}%</p>` : ''}
@@ -236,7 +237,7 @@
 
                 item.innerHTML = `
                     <div class="producto-carrito">
-                        <img src="${producto.imagen}" alt="${producto.name}">
+                        <img src="img/productos/${producto.id}.jpg" alt="${producto.nombre}">
                         <div>
                             <p>${producto.name}</p>
                             <p class="precio-con-descuento">$${precioConDescuento}</p>
