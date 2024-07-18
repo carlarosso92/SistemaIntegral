@@ -30,7 +30,7 @@ if (!isset($_SESSION['usuario_id'])) {
             <div class="activities">
                 <a href="ventas/ventas.php"><button class="activity"><span class="icon">✓</span> Registrar venta</button></a>
                 <a href="inventario/index.php"><button class="activity"><span class="icon">🧩</span> Gestionar Producto</button></a>
-                <a href="#"><button class="activity"><span class="icon">✏️</span> Devoluciones</button></a>
+                <a href="devoluciones/devoluciones.php"><button class="activity"><span class="icon">✏️</span> Devoluciones</button></a>
                 <a href="ventas/reservas.php"><button class="activity"><span class="icon">📑</span> Reservas</button></a>
                 <a href="inventario/index.php"><button class="activity"><span class="icon">📦</span> Inventario</button></a>
             </div>

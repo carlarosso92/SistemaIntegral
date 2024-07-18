@@ -40,6 +40,10 @@ if ($tipo_informe == 'ventas') {
         facturas_proveedores fp
     LEFT JOIN proveedores p ON fp.proveedor_id = p.id";
     $titulo = "Estado de cuenta proveedores";
+} else if ($tipo_informe == 'devoluciones') {
+    $query = "SELECT d.id, d.id_venta, d.id_producto, d.cantidad, d.monto_devuelto, d.fecha_devolucion, d.motivo, d.tipo_devolucion
+              FROM devoluciones d";
+    $titulo = "Informe de Devoluciones";
 }
 
 $result = mysqli_query($conexion, $query);
@@ -69,6 +73,15 @@ if ($formato == 'pdf') {
                   <th>Proveedor</th>
                   <th>Monto</th>
                   <th>Estado</th>';
+    } else if ($tipo_informe == 'devoluciones') {
+        $html .= '<th>ID Devolución</th>
+                  <th>ID Venta</th>
+                  <th>ID Producto</th>
+                  <th>Cantidad</th>
+                  <th>Monto Devuelto</th>
+                  <th>Fecha Devolución</th>
+                  <th>Motivo</th>
+                  <th>Tipo Devolución</th>';
     }
     $html .= '</tr></thead><tbody>';
 
@@ -89,10 +102,19 @@ if ($formato == 'pdf') {
                       <td>' . $row['nombre_proveedor'] . '</td>';
         } else if ($tipo_informe == 'proveedores') {
             $html .= '<td>' . $row['numero_factura'] . '</td>
-            <td>' . $row['fecha_pago'] . '</td>
-            <td>' . $row['nombre_proveedor'] . '</td>
-            <td>' . $row['monto'] . '</td>
-            <td>' . $row['estado'] . '</td>';
+                      <td>' . $row['fecha_pago'] . '</td>
+                      <td>' . $row['nombre_proveedor'] . '</td>
+                      <td>' . $row['monto'] . '</td>
+                      <td>' . $row['estado'] . '</td>';
+        } else if ($tipo_informe == 'devoluciones') {
+            $html .= '<td>' . $row['id'] . '</td>
+                      <td>' . $row['id_venta'] . '</td>
+                      <td>' . $row['id_producto'] . '</td>
+                      <td>' . $row['cantidad'] . '</td>
+                      <td>' . $row['monto_devuelto'] . '</td>
+                      <td>' . $row['fecha_devolucion'] . '</td>
+                      <td>' . $row['motivo'] . '</td>
+                      <td>' . $row['tipo_devolucion'] . '</td>';
         }
         $html .= '</tr>';
     }
@@ -135,6 +157,15 @@ if ($formato == 'pdf') {
         $sheet->setCellValue('C1', 'Proveedor');
         $sheet->setCellValue('D1', 'Monto');
         $sheet->setCellValue('E1', 'Estado');
+    } else if ($tipo_informe == 'devoluciones') {
+        $sheet->setCellValue('A1', 'ID Devolución');
+        $sheet->setCellValue('B1', 'ID Venta');
+        $sheet->setCellValue('C1', 'ID Producto');
+        $sheet->setCellValue('D1', 'Cantidad');
+        $sheet->setCellValue('E1', 'Monto Devuelto');
+        $sheet->setCellValue('F1', 'Fecha Devolución');
+        $sheet->setCellValue('G1', 'Motivo');
+        $sheet->setCellValue('H1', 'Tipo Devolución');
     }
 
     $headerStyle = [
@@ -158,7 +189,7 @@ if ($formato == 'pdf') {
         ],
     ];
 
-    $sheet->getStyle('A1:G1')->applyFromArray($headerStyle);
+    $sheet->getStyle('A1:H1')->applyFromArray($headerStyle);
 
     // Agregar los datos
     $rowNumber = 2;
@@ -184,6 +215,15 @@ if ($formato == 'pdf') {
             $sheet->setCellValue('C' . $rowNumber, $row['nombre_proveedor']);
             $sheet->setCellValue('D' . $rowNumber, $row['monto']);
             $sheet->setCellValue('E' . $rowNumber, $row['estado']);
+        } else if ($tipo_informe == 'devoluciones') {
+            $sheet->setCellValue('A' . $rowNumber, $row['id']);
+            $sheet->setCellValue('B' . $rowNumber, $row['id_venta']);
+            $sheet->setCellValue('C' . $rowNumber, $row['id_producto']);
+            $sheet->setCellValue('D' . $rowNumber, $row['cantidad']);
+            $sheet->setCellValue('E' . $rowNumber, $row['monto_devuelto']);
+            $sheet->setCellValue('F' . $rowNumber, $row['fecha_devolucion']);
+            $sheet->setCellValue('G' . $rowNumber, $row['motivo']);
+            $sheet->setCellValue('H' . $rowNumber, $row['tipo_devolucion']);
         }
         $rowNumber++;
     }
@@ -202,10 +242,10 @@ if ($formato == 'pdf') {
         ],
     ];
 
-    $sheet->getStyle('A2:G' . $rowNumber)->applyFromArray($dataStyle);
+    $sheet->getStyle('A2:H' . $rowNumber)->applyFromArray($dataStyle);
 
     // Ajustar el ancho de las columnas
-    foreach (range('A', 'G') as $columnID) {
+    foreach (range('A', 'H') as $columnID) {
         $sheet->getColumnDimension($columnID)->setAutoSize(true);
     }
 

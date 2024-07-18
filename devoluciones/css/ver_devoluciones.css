@@ -211,3 +211,17 @@ input[type="text"] {
     background-color: #ddd;
     color: #666;
 }
+
+.actions a {
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.actions a:hover {
+    text-decoration: underline;
+}
+
+.table-actions {
+    text-align: center;
+}
