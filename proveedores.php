@@ -18,10 +18,11 @@
                     <tr>
                         <th colspan="6" class="table-header">
                             <div class="header-content">
-                                <h2 class="text-center">Listado de Proveedores</h2>
-                                <a href="Proveedores/crudproveedores.php" class="button">Agregar Proveedor</a>
-                                <h2 class="text-center"></h2>
-                                <a href="Proveedores/listadofacturas.php" class="button">Pagos a realizar</a>
+                                <h2 class="text-left">Listado de Proveedores</h2>
+                                <div class="button-group">
+                                    <a href="Proveedores/crudproveedores.php" class="button">Agregar Proveedor</a>
+                                    <a href="Proveedores/listadofacturas.php" class="button">Pagos a realizar</a>
+                                </div>
                             </div>
                         </th>
                     </tr>
@@ -57,9 +58,8 @@
                                 <td><?php echo htmlspecialchars($proveedor['telefono_proveedor']); ?></td>
                                 <td><?php echo htmlspecialchars($proveedor['email_proveedor']); ?></td>
                                 <td>
-                                    <a href="editarproveedor.php?id=<?php echo htmlspecialchars($proveedor['id']); ?>">Editar</a>
+                                    <a href="editarproveedores.php?id=<?php echo htmlspecialchars($proveedor['id']); ?>">Editar</a>
                                     <a href="eliminarproveedor.php?id=<?php echo htmlspecialchars($proveedor['id']); ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este proveedor?');">Eliminar</a>
-                            
                                 </td>
                             </tr>
                             <?php
@@ -68,7 +68,6 @@
                         // Si no hay resultados encontrados
                         echo "<tr><td colspan='6'>No se encontraron proveedores.</td></tr>";
                     }
-
 
                     // Liberar resultado y cerrar la conexión
                     $resultado->free();

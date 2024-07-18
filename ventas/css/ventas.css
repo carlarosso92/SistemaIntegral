@@ -10,6 +10,7 @@
     height: calc(100vh - 130px - 40px); /* Altura menos el header y el padding */
     overflow-y: auto; /* Habilitar scroll vertical */
     margin-top: 25px;
+    margin-left: 40px;
 }
 
 .carrito {

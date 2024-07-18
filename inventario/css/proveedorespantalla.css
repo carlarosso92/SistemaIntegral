@@ -3,7 +3,7 @@ body {
     font-family: sans-serif;
     margin: 0;
     background-color: #F2EDD0;
-    padding-top: 175px; /* Espacio para el header fijo */
+    padding-top: 155px; /* Espacio para el header fijo */
 }
 
 /* Encabezado */
@@ -93,15 +93,16 @@ h1, h2 {
     align-items: center;
 }
 
-.header-content h1, .header-content h2 {
+.header-content .text-left {
     margin: 0;
     font-size: 1.5em;
     color: #333;
+    text-align: left;
 }
 
-.header-content h1:hover, .header-content h2:hover {
-    background-color: rgb(234, 234, 76);
-    color: #333;
+.button-group {
+    display: flex;
+    gap: 10px;
 }
 
 .table th, .table td {
