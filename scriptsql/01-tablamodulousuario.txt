@@ -145,3 +145,18 @@ CREATE TABLE descuentos (
     fecha_fin DATE NOT NULL,
     FOREIGN KEY (producto_id) REFERENCES productos(id_producto) ON DELETE CASCADE
 );
+
+CREATE TABLE devoluciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_venta INT,
+    id_producto INT,
+    cantidad INT,
+    monto_devuelto DECIMAL(10, 2),
+    fecha_devolucion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    motivo VARCHAR(255),
+    tipo_devolucion ENUM('devolucion', 'cambio'),
+    FOREIGN KEY (id_venta) REFERENCES ventas(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto) ON DELETE CASCADE
+);
+
+
