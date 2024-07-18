@@ -20,7 +20,7 @@ if (!isset($_SESSION['usuario_id'])) {
         .main-container {
             display: flex;
             justify-content: space-between;
-            margin-top: 90px;
+       
         }
 
         .left-column, .right-column {
@@ -38,6 +38,11 @@ if (!isset($_SESSION['usuario_id'])) {
         .button {
             margin-right: 5px;
         }
+        form {
+    display: flex;
+}
+
+        
     </style>
 </head>
 

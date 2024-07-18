@@ -436,7 +436,7 @@ nav li a:hover {
     padding: 20px; /* Espaciado interno */
     border: 1px solid #72A603; /* Borde */
     border-radius: 10px; /* Bordes redondeados */
-    width: 80%; /* Ancho de la modal */
+    width: max-content; /* Ancho de la modal */
     max-width: 500px; /* Ancho máximo */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
     animation: fadeIn 0.3s ease-in-out; /* Animación de entrada */
@@ -486,3 +486,42 @@ nav li a:hover {
     margin: 1rem 0;
 }
 
+
+
+form {
+    display: inline-grid;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f5f5dc; /* Color de fondo similar al de la imagen */
+    padding: 10px;
+    border-radius: 5px;
+    justify-items: center;
+  }
+  
+  form label {
+    margin-bottom: 5px;
+  }
+  
+  form select {
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 200px; /* Ancho del select */
+    background-color: #fff;
+    font-size: 16px;
+  }
+  
+  form button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 3px;
+    background-color: #72A603; /* Color del botón */
+    color: yellow;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: green;
+  }

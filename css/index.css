@@ -267,3 +267,11 @@ h3 {
     background-color: #EAF207;
     color: #72A603;
 }
+
+.titulo-confir {
+
+    font-family: sans-serif;
+    color: black;
+    font-size: 26px;
+    text-shadow: none;
+}

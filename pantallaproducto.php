@@ -72,6 +72,7 @@
                     ?>
                 </select>
                 <button type="submit">Confirmar Reserva</button>
+                <p>Tiempo de espera: 60 minutos a partir de la hora de reserva</p>
             </form>
         </div>
     </div>

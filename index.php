@@ -110,7 +110,7 @@
     <div id="reservaModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Confirmar Reserva</h2>
+            <h2 class="titulo-confir">Confirmar Reserva</h2>
             <form id="reservaForm">
                 <label for="hora_retiro">Hora de Retiro:</label>
                 <select id="hora_retiro" name="hora_retiro" required>
@@ -123,6 +123,7 @@
                     ?>
                 </select>
                 <button type="submit">Confirmar Reserva</button>
+                <p>Tiempo de espera: 60 minutos a partir de la hora de reserva</p>
             </form>
         </div>
     </div>
