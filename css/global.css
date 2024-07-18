@@ -474,16 +474,3 @@ nav li a:hover {
     margin: 1rem 0;
 }
 
-.producto-carrito {
-    border: 1px solid #ddd;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 200px;
-}
-
-.producto-carrito img {
-    max-width: 100%;
-    height: auto;
-}
